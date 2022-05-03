@@ -1,0 +1,17 @@
+.fc .fc-non-business{
+    background: none;
+}
+
+
+.fc-direction-ltr .fc-button-group > .fc-button:not(:first-child) {
+    margin-left: -1px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    display: none;
+}
+
+
+  .fc-direction-ltr .fc-button-group > .fc-button:not(:last-child) {
+    border-radius:6px ;
+    
+  }
