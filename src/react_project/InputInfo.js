@@ -33,7 +33,7 @@ function InputInfo(props) {
         return (
         <select onChange={onSelect} value={select_color}>
             {props.option.map((c) => (
-                <option key={c.value} disabled={c.color === '==Color==' ? true : false} selected={c.color === '==Color==' ? true : false}>
+                <option key={c.value} disabled={c.color === '==Color==' ? true : false} defaultValue={c.color === '==Color==' ? true : false}>
                      {c.color}
         </option>
             ))}
@@ -62,7 +62,7 @@ function InputInfo(props) {
     
     const onClick = (event) => {
     
-        // event.preventDefault();
+        event.preventDefault();
         
         axios
         .post('http://localhost:8081/api/planSave',{
@@ -95,37 +95,28 @@ function InputInfo(props) {
 
     }
 
-
-    function modal_click () {
-        
-    }
-
-
     const modalStyle = {
-        overlay : {
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundColor: "rgba(255, 255, 255, 0.45)",
-        zIndex: 10,
-    },
-    content: {
-        display: "flex",
-        justifyContent: "center",
-        background: "#ffffe7",
-        overflow: "auto",
-        top: "100px",
-        left: "500px",
-        right: "500px",
-        bottom: "500px",
-        WebkitOverflowScrolling: "touch",
-        borderRadius: "14px",
-        outline: "none",
-        zIndex: 10,
-    },
-};
+        overlay: {
+          position: 'fixed',
+          top: 0,
+          backgroundColor: 'rgba(255, 255, 255, 0.45)',
+          zIndex: 10,
+          justifyContent: 'center',
+          alignItem: 'center',
+        },
+        content: {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItem: 'center',
+            background: '#ffffe7',
+            borderRadius: '20px',
+            margin: '0 auto',
+            width: '60%',
+            height: '50%',
+      
+            zIndex: 10,
+          },
+      };
 
     return(
         <div>
@@ -157,12 +148,12 @@ function InputInfo(props) {
                 <br/>
 
                 <div>
-                    <input type="text" value={props.startStr}></input>
+                    <input type="text" defaultValue={props.startStr}></input>
                     <br></br>
                     ≀
                     <br></br>
                     {/* <h6>≀</h6> */}
-                     <input type="text" value={props.endStr}></input>
+                     <input type="text" defaultValue={props.endStr}></input>
                 </div>
 
                 <br/>
