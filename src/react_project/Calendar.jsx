@@ -127,7 +127,7 @@ import FullCalendar, { formatDate } from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import { INITIAL_EVENTS, createEventId } from './event-utils'
+import {createEventId } from './event-utils'
 import axios from 'axios'
 import InputInfo from './InputInfo'
 import Modal from 'react-modal';
@@ -140,6 +140,8 @@ export default class Calendar extends React.Component {
     weekendsVisible: true,
     currentEvents: [],
     modal_state : false,
+    startStr : "",
+    endStr : "",
   }
   
   onChange = () => {
@@ -154,7 +156,7 @@ export default class Calendar extends React.Component {
       <div className='demo-app'>
         {this.renderSidebar()}
         <div className='demo-app-main'>
-          <InputInfo modal_state = {this.state.modal_state} onChange={this.onChange}/>
+          <InputInfo modal_state = {this.state.modal_state} startStr = {this.state.startStr} endStr = {this.state.endStr} onChange={this.onChange}/>
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             locale="ko"
@@ -181,7 +183,6 @@ export default class Calendar extends React.Component {
             // 이벤트명 : function(){} : 각 날짜에 대한 이벤트를 통해 처리할 내용..
             dayMaxEvents={true}
             weekends={this.state.weekendsVisible}
-            initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
             select={this.handleDateSelect}
             eventContent={renderEventContent} // custom render function
             eventClick={this.handleEventClick}
@@ -241,10 +242,17 @@ export default class Calendar extends React.Component {
 
   
 
-  handleDateSelect = () => {
+  handleDateSelect = (selectInfo) => {
     this.setState({
-      modal_state : !this.state.modal_state
+      modal_state : !this.state.modal_state,
+      startStr : selectInfo.startStr,
+      endStr : selectInfo.endStr
+        
     })
+
+    console.log(selectInfo.startStr)
+    console.log(selectInfo.endStr)
+    console.log(selectInfo.allDay)
 
 
   }

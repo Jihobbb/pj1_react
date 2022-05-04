@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import Modal from 'react-modal';
 import './InputInfo.css'
 import './Calendar';
+import { createEventId } from './event-utils';
 
 function InputInfo(props) {
 
@@ -16,6 +17,7 @@ function InputInfo(props) {
 
 
     const color_list = [
+        {value : 'none', color: 'Choose Color'},
         {value : 'red', color: 'Red'},
         {value : 'blue', color: 'Blue'},
         {value : 'green', color: 'Green'},
@@ -31,9 +33,9 @@ function InputInfo(props) {
         return (
         <select onChange={onSelect} value={select_color}>
             {props.option.map((c) => (
-                <option key={c.value}>
+                <option key={c.value} disabled={c.color === '==Color==' ? true : false} selected={c.color === '==Color==' ? true : false}>
                      {c.color}
-</option>
+        </option>
             ))}
         </select>
         )
@@ -60,14 +62,29 @@ function InputInfo(props) {
     
     const onClick = (event) => {
     
-        event.preventDefault();
+        // event.preventDefault();
+        
+        axios
+        .post('http://localhost:8081/api/planSave',{
+            id : createEventId(),
+            title : text,
+            start_time : props.startStr,
+            end_time : props.endStr,
+            people : part,
+            content : content,
+            bgcolor : select_color,
+            floor : floor,
+
+        }).then((res) => console.log(res))
         
         let info = {
             text : text,
             part : part,
             content : content,
             color : select_color,
-            floor : floor
+            floor : floor,
+            start : props.startStr,
+            end : props.endStr,
         }
 
         // axios
@@ -75,8 +92,6 @@ function InputInfo(props) {
         // .then((res) => console.log(res))
 
         console.log(info);
-
-        return (info);
 
     }
 
@@ -131,11 +146,26 @@ function InputInfo(props) {
                 />
                 </div>
 
+                <br/>
+
                 <div className="info_body">
                     <h4 className="info_body_text">참여자</h4>
                     <input type="text" placeholder="참여자" className='info_partic'
                     onChange={(event) => setPart(event.target.value)}/>
                 </div>
+
+                <br/>
+
+                <div>
+                    <input type="text" value={props.startStr}></input>
+                    <br></br>
+                    ≀
+                    <br></br>
+                    {/* <h6>≀</h6> */}
+                     <input type="text" value={props.endStr}></input>
+                </div>
+
+                <br/>
 
                 <div>
                     <textarea rows="5" cols="60"
