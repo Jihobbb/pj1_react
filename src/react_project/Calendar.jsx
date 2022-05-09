@@ -4,91 +4,111 @@ import FullCalendar, { formatDate } from '@fullcalendar/react'; // must go befor
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
-<<<<<<< HEAD
 import InputInfo from './InputInfo'
-import "./Calendar.css"
+import './Calendar.css'
 
-=======
-import InputInfo from './InputInfo';
->>>>>>> cc2d698eba137a99f5cf02287905b2a515964157
 
-import './Calendar.css';
 
 const Calendar = () => {
+
   const [modal_state, setModal_state] = useState(false);
-  const [startStr, setStartStr] = useState('');
-  const [endStr, setEndStr] = useState('');
+  const [startStr, setStartStr] = useState("");
+  const [endStr, setEndStr] = useState("");
   const [user, setUser] = useState([]);
 
+
+  let str = formatDate(new Date(), {
+    month: 'long',
+    year: 'numeric',
+    day: 'numeric',
+  });
+
+
   const getdata = async () => {
-    const response = await axios.get('http://localhost:8081//api/planDelete/');
+    const response = await axios.get('http://localhost:8081/api/planList');
 
     setUser(response.data);
-    // console.log(response.data)
+    console.log(response.data)
   };
 
-  useEffect(() => {
+  useEffect(() => {    
     getdata();
   }, []);
+
+  // axios
+  //   .get('http://localhost:8081/api/planList')
+  //   .then((Response) => {
+  //     console.log('res', Response);
+  //   })
+  //   .catch((Error) => {
+  //     console.log('getError', Error);
+  //   });
+
+  // const handleDateSelect = (selectInfo) => {
+  //   let title = prompt('일정 :');
+  //   // title 값이 있을때, 화면에 calendar.addEvent() json형식으로 일정을 추가
+  //   let calendarApi = selectInfo.view.calendar;
+  //   calendarApi.unselect(); // clear date selection
+  //   // alert('Date: ' + selectInfo.dateStr); // 선택날짜
+  //   if (title) {
+  //     calendarApi.addEvent(
+  //       axios
+  //         .post('http://localhost:8081/api/planSave', {
+  //           id: createEventId(),
+  //           title: title,
+  //           start_time: selectInfo.dateStr,
+  //           end_time: selectInfo.dateStr,
+  //           allDay: selectInfo.allDay,
+  //         })
+  //         .then(function (res) {
+  //           // 그러면
+  //           console.log(res);
+  //         })
+  //         .catch(function (error) {
+  //           //에러
+  //           console.log('postError', error);
+  //         })
+  //     );
+  //   }
+  //   // change the day's background color just for fun
+  //   // info.dayEl.style.backgroundColor = 'red';
+  // };
+
 
   const handleDateSelect = (selectInfo) => {
     setModal_state(!modal_state);
     setStartStr(selectInfo.startStr);
     setEndStr(selectInfo.endStr);
-  };
+  }
 
   const onChange = () => {
     setModal_state(!modal_state);
-  };
+  }
+
 
   const handleEventClick = (clickInfo) => {
-<<<<<<< HEAD
-    if (window.confirm(`삭제 '${clickInfo.event.id}'`)) {
+    if (window.confirm(`삭제 '${clickInfo.event.title}'`)) {
       axios.delete(`http://localhost:8081/api/planDelete/${clickInfo.event.id}`)
     }
-    window.location.replace("/")
-=======
-    axios
-      .delete('http://localhost:8081/api/planDelete/{id}')
-      .then((response) => {
-        console.log('삭제 요청 성공');
-        if (window.confirm(`삭제 '${clickInfo.event.title}'`)) {
-          clickInfo.event.remove();
-        }
-      })
-      .catch(() => {
-        console.log('삭제 요청 실패');
-      });
-
->>>>>>> cc2d698eba137a99f5cf02287905b2a515964157
     console.log('handleEventClick', clickInfo);
   };
 
   function renderEventContent(eventInfo) {
-    return (
-      <>
-        <b>{eventInfo.timeText}</b>
-        <i>{eventInfo.event.title}</i>
-      </>
-    );
-  }
+  return (
+    <>
+      <b>{eventInfo.timeText}</b>
+      <i>{eventInfo.event.title}</i>
+    </>
+  )
+}
 
-  // const box = () => {
-  //   user.map(user => {
-  //     title = user.title,
-  //     start = user.start_time,
-  //     end = user.end_time
-  //   })
-  // }
 
   return (
     <div>
-      <InputInfo
-        modal_state={modal_state}
-        startStr={startStr}
-        endStr={endStr}
-        onChange={onChange}
-      />
+      <InputInfo modal_state = {modal_state}
+                 startStr = {startStr}
+                 endStr = {endStr}
+                 onChange = {onChange}/>
 
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
@@ -102,17 +122,8 @@ const Calendar = () => {
         }}
         initialView='timeGridWeek'
         ///////////////////////////////
-<<<<<<< HEAD
-        events={user.map(user => ({ id: user.id, title: user.title,  start: user.start_time, end: user.end_time, backgroundColor: user.bgcolor, borderColor: user.bgcolor,}))}
+        events={user.map(user => ({ id:user.id, title: user.title,  start: user.start_time, end: user.end_time, backgroundColor: user.bgcolor, borderColor: user.bgcolor,}))}
         ///////////////////////////////
-=======
-        events={user.map((user) => ({
-          title: user.title,
-          start: user.start_time,
-          end: user.end_time,
-        }))}
-        ////////////////////////////////
->>>>>>> cc2d698eba137a99f5cf02287905b2a515964157
 
         // events = {{title : 'All Day',
         //         start: '2022-05-10'}}
@@ -123,6 +134,7 @@ const Calendar = () => {
         //   { title: 'event 1', date: '2022-05-11', start: '2022-05-11T08:00:00+09:00', end:'2022-05-11T11:00:00+09:00'},
         //   { title: 'event 2', date: '2022-05-10'  }
         // ]}
+
 
         eventClick={handleEventClick}
         select={handleDateSelect}
@@ -139,3 +151,6 @@ const Calendar = () => {
 };
 
 export default Calendar;
+
+
+
