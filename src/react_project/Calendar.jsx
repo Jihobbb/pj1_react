@@ -28,6 +28,7 @@ const Calendar = () => {
     const response = await axios.get('http://localhost:8081/api/planList');
 
     setUser(response.data);
+    // console.log(response.data)
   };
 
   useEffect(() => {    
@@ -86,9 +87,10 @@ const Calendar = () => {
 
 
   const handleEventClick = (clickInfo) => {
-    if (window.confirm(`삭제 '${clickInfo.event.title}'`)) {
-      clickInfo.event.remove();
+    if (window.confirm(`삭제 '${clickInfo.event.id}'`)) {
+      axios.delete(`http://localhost:8081/api/planDelete/${clickInfo.event.id}`)
     }
+    window.location.replace("/")
     console.log('handleEventClick', clickInfo);
   };
 
@@ -120,7 +122,7 @@ const Calendar = () => {
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
         locale='ko'
         businessHours={true} // 주말 색깔 블러 처리
-        weekends={false} //주말 볼지 말지
+        
         headerToolbar={{
           left: 'prev',
           center: 'title',
@@ -128,8 +130,8 @@ const Calendar = () => {
         }}
         initialView='timeGridWeek'
         ///////////////////////////////
-        events={user.map(user => ({ title: user.title,  start: user.start_time, end: user.end_time}))}
-        ////////////////////////////////
+        events={user.map(user => ({ id: user.id, title: user.title,  start: user.start_time, end: user.end_time, backgroundColor: user.bgcolor, borderColor: user.bgcolor,}))}
+        ///////////////////////////////
 
         // events = {{title : 'All Day',
         //         start: '2022-05-10'}}
@@ -144,13 +146,13 @@ const Calendar = () => {
 
         eventClick={handleEventClick}
         select={handleDateSelect}
-        editable={true} // 수정 ?
+        editable={false} // 수정 ?
         selectable={true} //드래그 가능
         selectMirror={true}
         eventContent={renderEventContent}
         // 이벤트명 : function(){} : 각 날짜에 대한 이벤트를 통해 처리할 내용..
         dayMaxEvents={true}
-        weekends={false} //주말
+        weekends={false} //주말 볼지 말지
       />
     </div>
   );
