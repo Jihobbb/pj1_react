@@ -4,13 +4,9 @@ import FullCalendar, { formatDate } from '@fullcalendar/react'; // must go befor
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
-<<<<<<< HEAD
-import InputInfo from './InputInfo'
-import "./Calendar.css"
 
-=======
 import InputInfo from './InputInfo';
->>>>>>> cc2d698eba137a99f5cf02287905b2a515964157
+import './Calendar.css';
 
 import './Calendar.css';
 
@@ -21,7 +17,7 @@ const Calendar = () => {
   const [user, setUser] = useState([]);
 
   const getdata = async () => {
-    const response = await axios.get('http://localhost:8081//api/planDelete/');
+    const response = await axios.get('http://localhost:8081//api/planList');
 
     setUser(response.data);
     // console.log(response.data)
@@ -42,16 +38,17 @@ const Calendar = () => {
   };
 
   const handleEventClick = (clickInfo) => {
-<<<<<<< HEAD
     if (window.confirm(`삭제 '${clickInfo.event.id}'`)) {
-      axios.delete(`http://localhost:8081/api/planDelete/${clickInfo.event.id}`)
+      axios.delete(
+        `http://localhost:8081/api/planDelete/${clickInfo.event.id}`
+      );
     }
-    window.location.replace("/")
-=======
+    window.location.replace('/');
+
     axios
       .delete('http://localhost:8081/api/planDelete/{id}')
       .then((response) => {
-        console.log('삭제 요청 성공');
+        console.log('response', '삭제 요청 성공');
         if (window.confirm(`삭제 '${clickInfo.event.title}'`)) {
           clickInfo.event.remove();
         }
@@ -60,7 +57,6 @@ const Calendar = () => {
         console.log('삭제 요청 실패');
       });
 
->>>>>>> cc2d698eba137a99f5cf02287905b2a515964157
     console.log('handleEventClick', clickInfo);
   };
 
@@ -72,14 +68,6 @@ const Calendar = () => {
       </>
     );
   }
-
-  // const box = () => {
-  //   user.map(user => {
-  //     title = user.title,
-  //     start = user.start_time,
-  //     end = user.end_time
-  //   })
-  // }
 
   return (
     <div>
@@ -94,7 +82,6 @@ const Calendar = () => {
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
         locale='ko'
         businessHours={true} // 주말 색깔 블러 처리
-        
         headerToolbar={{
           left: 'prev',
           center: 'title',
@@ -102,27 +89,22 @@ const Calendar = () => {
         }}
         initialView='timeGridWeek'
         ///////////////////////////////
-<<<<<<< HEAD
-        events={user.map(user => ({ id: user.id, title: user.title,  start: user.start_time, end: user.end_time, backgroundColor: user.bgcolor, borderColor: user.bgcolor,}))}
+
+        events={user.map((user) => ({
+          id: user.id,
+          title: user.title,
+          start: user.start_time,
+          end: user.end_time,
+          backgroundColor: user.bgcolor,
+          borderColor: user.bgcolor,
+        }))}
         ///////////////////////////////
-=======
         events={user.map((user) => ({
           title: user.title,
           start: user.start_time,
           end: user.end_time,
         }))}
-        ////////////////////////////////
->>>>>>> cc2d698eba137a99f5cf02287905b2a515964157
-
-        // events = {{title : 'All Day',
-        //         start: '2022-05-10'}}
-
-        // dateClick={handleDateClick} 하루클릭
-
-        // events={[
-        //   { title: 'event 1', date: '2022-05-11', start: '2022-05-11T08:00:00+09:00', end:'2022-05-11T11:00:00+09:00'},
-        //   { title: 'event 2', date: '2022-05-10'  }
-        // ]}
+        ////////////////////////////////>>>>>>> cc2d698eba137a99f5cf02287905b2a515964157
 
         eventClick={handleEventClick}
         select={handleDateSelect}
@@ -130,7 +112,6 @@ const Calendar = () => {
         selectable={true} //드래그 가능
         selectMirror={true}
         eventContent={renderEventContent}
-        // 이벤트명 : function(){} : 각 날짜에 대한 이벤트를 통해 처리할 내용..
         dayMaxEvents={true}
         weekends={false} //주말 볼지 말지
       />
