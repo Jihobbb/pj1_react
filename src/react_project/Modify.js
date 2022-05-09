@@ -3,10 +3,9 @@ import { useEffect, useState } from 'react'
 import Modal from 'react-modal';
 import './InputInfo.css'
 import './Calendar';
-import { createEventId } from './event-utils';
 
-function InputInfo(props) {
-
+function Modify(props) {
+    
     const [text, setText] = useState("");
     const [part, setPart] = useState("");
     const [content, setContent] = useState("");
@@ -33,7 +32,7 @@ function InputInfo(props) {
         return (
         <select onChange={onSelect} value={select_color}>
             {props.option.map((c) => (
-                <option key={c.value} disabled={c.color === '==Color==' ? true : false} defaultValue={c.color === '==Color==' ? true : false}>
+                <option key={c.value} disabled={c.color === '==Color==' ? true : false} defaultValue={c.color === props.bgcolor ? true : false}>
                      {c.color}
         </option>
             ))}
@@ -65,7 +64,7 @@ function InputInfo(props) {
         // event.preventDefault();
         
         axios
-        .post('http://localhost:8081/api/planSave',{
+        .put('http://localhost:8081/api/planUpdate',{
            // id : createEventId(),
             title : text,
             start_time : props.startStr,
@@ -97,6 +96,19 @@ function InputInfo(props) {
 
     }
 
+    const delete_btn = () => {
+        if (window.confirm(`삭제 '${props.title}'`)) {
+              axios
+                .delete(`http://localhost:8081/api/planDelete/${props.id}`)
+                .then(function (res) {
+                  window.location.replace("/")
+                })
+                .catch(function (error) {
+                  console.log('delErr', error);
+                });
+            }
+    }
+
     const modalStyle = {
         overlay: {
           position: 'fixed',
@@ -124,7 +136,7 @@ function InputInfo(props) {
         <div>
             
             <Modal
-            isOpen={props.modal_state}    //{modal_state} //true시 모달이 나옴 버튼 클릭시 false에서 트루로?
+            isOpen={props.modify_state}    //{modal_state} //true시 모달이 나옴 버튼 클릭시 false에서 트루로?
 			style={modalStyle} //모달창 스타일
 			//onRequestClose={false} // 오버레이나 esc를 누르면 isopen값이 false 닫힘
 			ariaHideApp={false}> 
@@ -133,7 +145,7 @@ function InputInfo(props) {
             <form className='info_form' onSubmit={asd}>
                 <div>
                 <SelectColor option={color_list}></SelectColor>
-                <input type="text" placeholder="제목" className='info_head_text'
+                <input type="text" placeholder={props.title} className='info_head_text'
                 onChange = {(event) => setText(event.target.value)}
                 value={text}
                 />
@@ -161,8 +173,9 @@ function InputInfo(props) {
                 <br/>
 
                 <div>
-                <button type='submit'>저장</button>
-                    <button type="button" onClick={props.onChange}>취소</button>
+                <button type='submit'>수정</button>
+                <button type='button' onClick={delete_btn}>삭제</button>
+                <button type="button" onClick={props.onChange}>취소</button>
                 </div>
 
                 <RadioBtn/>
@@ -173,4 +186,5 @@ function InputInfo(props) {
     )
 }
 Modal.setAppElement("#root")
-export default InputInfo;
+
+export default Modify;
