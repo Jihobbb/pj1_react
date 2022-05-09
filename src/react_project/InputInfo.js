@@ -62,11 +62,11 @@ function InputInfo(props) {
     
     const onClick = (event) => {
     
-        event.preventDefault();
+        // event.preventDefault();
         
         axios
         .post('http://localhost:8081/api/planSave',{
-            id : createEventId(),
+            // id : createEventId(),
             title : text,
             start_time : props.startStr,
             end_time : props.endStr,
@@ -92,6 +92,8 @@ function InputInfo(props) {
         // .then((res) => console.log(res))
 
         console.log(info);
+
+        // props.onChange();
 
     }
 
