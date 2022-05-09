@@ -146,17 +146,7 @@ function InputInfo(props) {
                     <input type="text" placeholder="참여자" className='info_partic'
                     onChange={(event) => setPart(event.target.value)}/>
                 </div>
-
-                <br/>
-
-                <div>
-                    <input type="text" defaultValue={props.startStr}></input>
-                    <br></br>
-                    ≀
-                    <br></br>
-                    {/* <h6>≀</h6> */}
-                     <input type="text" defaultValue={props.endStr}></input>
-                </div>
+                
 
                 <br/>
 
@@ -167,11 +157,13 @@ function InputInfo(props) {
                     onChange={(event) => setContent(event.target.value)}/>
                 </div>
 
+                <br/>
                 <div>
                     <button type="submit" onClick={onClick}>저장</button>
                     <button type="button" onClick={props.onChange}>취소</button>
                 </div>
 
+                <br/>
                 <RadioBtn/>
                 
             </form>
