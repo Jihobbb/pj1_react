@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import Modal from 'react-modal';
 import './InputInfo.css'
 import './Calendar';
-import { createEventId } from './event-utils';
 
 function InputInfo(props) {
 

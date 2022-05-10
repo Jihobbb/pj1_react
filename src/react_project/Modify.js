@@ -67,11 +67,11 @@ function Modify(props) {
         .put('http://localhost:8081/api/planUpdate',{
             id : props.id,
             title : text,
-            start_time : "2022-05-09T07:00:00+09:00",
-            end_time : "2022-05-09T09:30:00+09:00",
+            start_time : props.start,
+            end_time : props.end,
             people : part,
             content : content,
-            bgcolor : "blue",
+            bgcolor : props.bgcolor,
             floor : floor,
 
         }).then((res) => console.log(res))
