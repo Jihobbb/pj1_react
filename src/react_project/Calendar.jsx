@@ -34,7 +34,7 @@ const Calendar = () => {
     });
     setFloor(response2.data);
 
-    console.log('floor층수', response2);
+    console.log('floor층수', floor);
   };
 
   useEffect(() => {
