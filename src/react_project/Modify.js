@@ -65,13 +65,13 @@ function Modify(props) {
         
         axios
         .put('http://localhost:8081/api/planUpdate',{
-           // id : createEventId(),
+            id : props.id,
             title : text,
-            start_time : props.startStr,
-            end_time : props.endStr,
+            start_time : "2022-05-09T07:00:00+09:00",
+            end_time : "2022-05-09T09:30:00+09:00",
             people : part,
             content : content,
-            bgcolor : select_color,
+            bgcolor : "blue",
             floor : floor,
 
         }).then((res) => console.log(res))
@@ -145,9 +145,8 @@ function Modify(props) {
             <form className='info_form' onSubmit={asd}>
                 <div>
                 <SelectColor option={color_list}></SelectColor>
-                <input type="text" placeholder={props.title} className='info_head_text'
+                <input type="text" defaultValue={props.title} className='info_head_text'
                 onChange = {(event) => setText(event.target.value)}
-                value={text}
                 />
                 </div>
 
@@ -155,7 +154,7 @@ function Modify(props) {
 
                 <div className="info_body">
                     <h4 className="info_body_text">참여자</h4>
-                    <input type="text" placeholder="참여자" className='info_partic'
+                    <input type="text" defaultValue={props.people} className='info_partic'
                     onChange={(event) => setPart(event.target.value)}/>
                 </div>
 
@@ -166,7 +165,7 @@ function Modify(props) {
                 <div>
                     <textarea rows="5" cols="60"
                     className='info_content'
-                    placeholder='회의내용'
+                    defaultValue={props.content}
                     onChange={(event) => setContent(event.target.value)}/>
                 </div>
 

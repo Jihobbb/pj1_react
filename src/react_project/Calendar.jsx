@@ -73,12 +73,12 @@ const Calendar = () => {
     setModify_state(!modal_state);
     setM_id(clickInfo.event.id);
     setM_title(clickInfo.event.title);
-    setM_people(clickInfo.event.people);
+    setM_people(clickInfo.event.extendedProps.people);
     setM_bgcolo(clickInfo.event.bgcolor);
-    setM_content(clickInfo.event.content);
-    setM_floor(clickInfo.event.floor);
+    setM_content(clickInfo.event.extendedProps.content);
+    setM_floor(clickInfo.event.extendedProps.floor);
   };
-  console.log(m_people)
+  console.log(m_floor,m_content,m_people)
 
   // if (window.confirm(`삭제 '${clickInfo.event.title}'`)) {
   //   axios
@@ -129,7 +129,18 @@ const Calendar = () => {
         }}
         initialView='timeGridWeek'
         ///////////////////////////////
-        events={user.map(user => ({ people: user.people, id:user.id, title: user.title,  start: user.start_time, end: user.end_time, backgroundColor: user.bgcolor, borderColor: user.bgcolor,}))}
+        events={user.map(user => ({ 
+          id: user.id, 
+          title: user.title,  
+          start: user.start_time, 
+          end: user.end_time, 
+          backgroundColor: user.bgcolor, 
+          borderColor: user.bgcolor,
+          extendedProps:{
+          people: user.people,
+          content: user.content,
+          floor: user.floor
+        }}))}
         ///////////////////////////////
 
         // events = {{title : 'All Day',
