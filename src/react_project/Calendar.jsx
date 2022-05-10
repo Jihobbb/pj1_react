@@ -22,17 +22,25 @@ const Calendar = () => {
   const [m_id, setM_id] = useState();
   const [m_floor, setM_floor] = useState();
 
+  const [floor, setFloor] = useState([]);
+  const [togleBtn, setTogleBtn] = useState('2');
+
   const getdata = async () => {
     const response = await axios.get('http://localhost:8081/api/planList');
-
-<<<<<<< Updated upstream
     setUser(response.data);
-    console.log(response.data);
-=======
-    console.log('floor층수', floor);
-    console.log('floor층수', floor);
->>>>>>> Stashed changes
+
+    const response2 = response.data.filter(function (element) {
+      return element.floor === togleBtn;
+    });
+    setFloor(response2);
+
+    console.log('floor층수', response2);
+    console.log('floo', floor);
   };
+
+  useEffect(() => {
+    getdata();
+  }, [togleBtn]);
 
   useEffect(() => {
     getdata();
@@ -65,12 +73,12 @@ const Calendar = () => {
     setModify_state(!modal_state);
     setM_id(clickInfo.event.id);
     setM_title(clickInfo.event.title);
-    setM_people(clickInfo.event.extendedProps.people);
+    setM_people(clickInfo.event.people);
     setM_bgcolo(clickInfo.event.bgcolor);
-    setM_content(clickInfo.event.extendedProps.content);
-    setM_floor(clickInfo.event.extendedProps.floor);
+    setM_content(clickInfo.event.content);
+    setM_floor(clickInfo.event.floor);
   };
-  console.log(m_floor, m_content, m_people);
+  console.log(m_people);
 
   // if (window.confirm(`삭제 '${clickInfo.event.title}'`)) {
   //   axios
@@ -95,6 +103,26 @@ const Calendar = () => {
 
   return (
     <div>
+      <input
+        type='radio'
+        value='2'
+        checked={togleBtn === '2'}
+        onChange={(event) => {
+          setTogleBtn(event.target.value);
+        }}
+      />
+
+      <label form='2'>2층</label>
+
+      <input
+        type='radio'
+        value='3'
+        checked={togleBtn === '3'}
+        onChange={(event) => {
+          setTogleBtn(event.target.value);
+        }}
+      />
+      <label form='3'>3층</label>
       <InputInfo
         modal_state={modal_state}
         startStr={startStr}
@@ -125,17 +153,13 @@ const Calendar = () => {
         initialView='timeGridWeek'
         ///////////////////////////////
         events={user.map((user) => ({
+          people: user.people,
           id: user.id,
           title: user.title,
           start: user.start_time,
           end: user.end_time,
           backgroundColor: user.bgcolor,
           borderColor: user.bgcolor,
-          extendedProps: {
-            people: user.people,
-            content: user.content,
-            floor: user.floor,
-          },
         }))}
         ///////////////////////////////
 
