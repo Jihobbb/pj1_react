@@ -32,9 +32,9 @@ const Calendar = () => {
     const response2 = response.data.filter(function (element) {
       return element.floor === togleBtn;
     });
-    setFloor(response2.data);
+    setFloor(response2);
 
-    console.log('floor층수', floor);
+    console.log('floor층수', response2);
   };
 
   useEffect(() => {
@@ -106,7 +106,9 @@ const Calendar = () => {
         type='radio'
         value='2'
         checked={togleBtn === '2'}
-        onChange={(event) => setTogleBtn(event.target.value)}
+        onChange={(event) => {
+          setTogleBtn(event.target.value);
+        }}
       />
 
       <label form='2'>2층</label>
@@ -117,7 +119,6 @@ const Calendar = () => {
         checked={togleBtn === '3'}
         onChange={(event) => {
           setTogleBtn(event.target.value);
-          console.log('floor층수??', floor);
         }}
       />
       <label form='3'>3층</label>
