@@ -22,12 +22,6 @@ const Calendar = () => {
   const [m_id, setM_id] = useState();
   const [m_floor, setM_floor] = useState();
 
-  // let str = formatDate(new Date(), {
-  //   month: 'long',
-  //   year: 'numeric',
-  //   day: 'numeric',
-  // });
-
   const getdata = async () => {
     const response = await axios.get('http://localhost:8081/api/planList');
 
