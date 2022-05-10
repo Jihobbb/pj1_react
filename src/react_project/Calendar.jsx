@@ -4,44 +4,38 @@ import FullCalendar, { formatDate } from '@fullcalendar/react'; // must go befor
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import InputInfo from './InputInfo'
-import './Calendar.css'
+import InputInfo from './InputInfo';
+import './Calendar.css';
 import Modify from './Modify';
 
-
-
 const Calendar = () => {
-
   const [modal_state, setModal_state] = useState(false);
-  const [modify_state,setModify_state] = useState(false);
-  const [startStr, setStartStr] = useState("");
-  const [endStr, setEndStr] = useState("");
+  const [modify_state, setModify_state] = useState(false);
+  const [startStr, setStartStr] = useState('');
+  const [endStr, setEndStr] = useState('');
   const [user, setUser] = useState([]);
 
+  const [m_title, setM_title] = useState();
+  const [m_people, setM_people] = useState();
+  const [m_content, setM_content] = useState();
+  const [m_bgcolor, setM_bgcolo] = useState();
+  const [m_id, setM_id] = useState();
+  const [m_floor, setM_floor] = useState();
 
-  const [m_title,setM_title] = useState();
-  const [m_people,setM_people] = useState();
-  const [m_content,setM_content] = useState();
-  const [m_bgcolor,setM_bgcolo] = useState();
-  const [m_id,setM_id] = useState();
-  const [m_floor,setM_floor] = useState();
-
-
-  let str = formatDate(new Date(), {
-    month: 'long',
-    year: 'numeric',
-    day: 'numeric',
-  });
-
+  // let str = formatDate(new Date(), {
+  //   month: 'long',
+  //   year: 'numeric',
+  //   day: 'numeric',
+  // });
 
   const getdata = async () => {
     const response = await axios.get('http://localhost:8081/api/planList');
 
     setUser(response.data);
-    console.log(response.data)
+    console.log(response.data);
   };
 
-  useEffect(() => {    
+  useEffect(() => {
     getdata();
   }, []);
 
@@ -49,15 +43,15 @@ const Calendar = () => {
     setModal_state(!modal_state);
     setStartStr(selectInfo.startStr);
     setEndStr(selectInfo.endStr);
-  }
+  };
 
   const onChange = () => {
     setModal_state(!modal_state);
-  }
+  };
 
   const onChange_M = () => {
     setModify_state(!modify_state);
-  }
+  };
 
   // const infoDelete = (clickInfo) => {
   //   if(window.confirm(`삭제 '${clickInfo.event.title}'`)){
@@ -66,8 +60,7 @@ const Calendar = () => {
   //   }
   //     window.location.replace("/")
   //   }
-    
-  
+
   const handleEventClick = (clickInfo) => {
     // <Modify title={clickInfo.event.title} start_time={clickInfo.event.start_time} end_time={clickInfo.event.end_time} people={clickInfo.event.people} content={clickInfo.event.content} bgcolor={clickInfo.event.bgcolor} floor={clickInfo.event.floor}/>
     setModify_state(!modal_state);
@@ -78,7 +71,7 @@ const Calendar = () => {
     setM_content(clickInfo.event.extendedProps.content);
     setM_floor(clickInfo.event.extendedProps.floor);
   };
-  console.log(m_floor,m_content,m_people)
+  console.log(m_floor, m_content, m_people);
 
   // if (window.confirm(`삭제 '${clickInfo.event.title}'`)) {
   //   axios
@@ -92,36 +85,39 @@ const Calendar = () => {
   // }
   // console.log('handleEventClick', clickInfo);
 
-
-
   function renderEventContent(eventInfo) {
-  return (
-    <>
-      <b>{eventInfo.timeText}</b>
-      <i>{eventInfo.event.title}</i>
-    </>
-  )
-}
-
+    return (
+      <>
+        <b>{eventInfo.timeText}</b>
+        <i>{eventInfo.event.title}</i>
+      </>
+    );
+  }
 
   return (
     <div>
-      <InputInfo modal_state = {modal_state}
-                 startStr = {startStr}
-                 endStr = {endStr}
-                 onChange = {onChange}/>
+      <InputInfo
+        modal_state={modal_state}
+        startStr={startStr}
+        endStr={endStr}
+        onChange={onChange}
+      />
 
-      <Modify modify_state = {modify_state}
-              onChange = {onChange_M}
-              id={m_id}
-              title={m_title} people={m_people} content={m_content} bgcolor={m_bgcolor} floor={m_floor}/>
-      
+      <Modify
+        modify_state={modify_state}
+        onChange={onChange_M}
+        id={m_id}
+        title={m_title}
+        people={m_people}
+        content={m_content}
+        bgcolor={m_bgcolor}
+        floor={m_floor}
+      />
 
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
         locale='ko'
         businessHours={true} // 주말 색깔 블러 처리
-        
         headerToolbar={{
           left: 'prev',
           center: 'title',
@@ -129,18 +125,19 @@ const Calendar = () => {
         }}
         initialView='timeGridWeek'
         ///////////////////////////////
-        events={user.map(user => ({ 
-          id: user.id, 
-          title: user.title,  
-          start: user.start_time, 
-          end: user.end_time, 
-          backgroundColor: user.bgcolor, 
+        events={user.map((user) => ({
+          id: user.id,
+          title: user.title,
+          start: user.start_time,
+          end: user.end_time,
+          backgroundColor: user.bgcolor,
           borderColor: user.bgcolor,
-          extendedProps:{
-          people: user.people,
-          content: user.content,
-          floor: user.floor
-        }}))}
+          extendedProps: {
+            people: user.people,
+            content: user.content,
+            floor: user.floor,
+          },
+        }))}
         ///////////////////////////////
 
         // events = {{title : 'All Day',
@@ -152,7 +149,6 @@ const Calendar = () => {
         //   { title: 'event 1', date: '2022-05-11', start: '2022-05-11T08:00:00+09:00', end:'2022-05-11T11:00:00+09:00'},
         //   { title: 'event 2', date: '2022-05-10'  }
         // ]}
-
 
         eventClick={handleEventClick}
         select={handleDateSelect}
@@ -169,6 +165,3 @@ const Calendar = () => {
 };
 
 export default Calendar;
-
-
-
