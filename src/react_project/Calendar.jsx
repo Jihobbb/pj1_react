@@ -22,15 +22,19 @@ const Calendar = () => {
   const [m_id, setM_id] = useState();
   const [m_floor, setM_floor] = useState();
 
+  const [floor, setFloor] = useState([]);
   const [togleBtn, setTogleBtn] = useState('2');
 
   const getdata = async () => {
     const response = await axios.get('http://localhost:8081/api/planList');
     setUser(response.data);
-    const floor = response.data.filter(function (element) {
+
+    const response2 = response.data.filter(function (element) {
       return element.floor === togleBtn;
     });
-    console.log('floor층수', floor);
+    setFloor(response2.data);
+
+    console.log('floor층수', response2);
   };
 
   useEffect(() => {
@@ -113,7 +117,7 @@ const Calendar = () => {
         checked={togleBtn === '3'}
         onChange={(event) => {
           setTogleBtn(event.target.value);
-          console.log('??');
+          console.log('floor층수??', floor);
         }}
       />
       <label form='3'>3층</label>
