@@ -25,8 +25,13 @@ const Calendar = () => {
   const getdata = async () => {
     const response = await axios.get('http://localhost:8081/api/planList');
 
+<<<<<<< Updated upstream
     setUser(response.data);
     console.log(response.data);
+=======
+    console.log('floor층수', floor);
+    console.log('floor층수', floor);
+>>>>>>> Stashed changes
   };
 
   useEffect(() => {
