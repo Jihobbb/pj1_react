@@ -79,7 +79,7 @@ function InputInfo(props) {
             end_time : props.endStr,
             people : inputData.people,
             content : inputData.content,
-            bgcolor : inputData.color,
+            bgcolor : inputData.bgcolor,
             floor : inputData.floor,
 
         }).then((res) => console.log(res))
