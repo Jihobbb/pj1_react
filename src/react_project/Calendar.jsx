@@ -13,27 +13,30 @@ const Calendar = () => {
   const [modify_state, setModify_state] = useState(false);
   const [startStr, setStartStr] = useState('');
   const [endStr, setEndStr] = useState('');
-  const [user, setUser] = useState([]);
+  const [planList, setPlanList] = useState([]);
 
-  const [m_title, setM_title] = useState();
-  const [m_people, setM_people] = useState();
-  const [m_content, setM_content] = useState();
-  const [m_bgcolor, setM_bgcolo] = useState();
-  const [m_id, setM_id] = useState();
-  const [m_floor, setM_floor] = useState();
+  const [planData, setData] = useState({
+    id:"",
+    title: "",
+    people:"",
+    content:"",
+    bgcolor:"",
+    floor:""
+  })
 
-  // let str = formatDate(new Date(), {
-  //   month: 'long',
-  //   year: 'numeric',
-  //   day: 'numeric',
-  // });
+  const [togleBtn, setTogleBtn] = useState('2');
 
   const getdata = async () => {
     const response = await axios.get('http://localhost:8081/api/planList');
-
-    setUser(response.data);
-    console.log(response.data);
+    const plans = response.data.filter(function (element) {
+      return element.floor === togleBtn;
+    });
+    setPlanList(plans);
   };
+
+  useEffect(() => {
+    getdata();
+  }, [togleBtn]);
 
   useEffect(() => {
     getdata();
@@ -53,37 +56,17 @@ const Calendar = () => {
     setModify_state(!modify_state);
   };
 
-  // const infoDelete = (clickInfo) => {
-  //   if(window.confirm(`삭제 '${clickInfo.event.title}'`)){
-
-  //     axios.delete(`http://localhost:8081/api/planDelete/${clickInfo.event.id}`)
-  //   }
-  //     window.location.replace("/")
-  //   }
-
   const handleEventClick = (clickInfo) => {
-    // <Modify title={clickInfo.event.title} start_time={clickInfo.event.start_time} end_time={clickInfo.event.end_time} people={clickInfo.event.people} content={clickInfo.event.content} bgcolor={clickInfo.event.bgcolor} floor={clickInfo.event.floor}/>
     setModify_state(!modal_state);
-    setM_id(clickInfo.event.id);
-    setM_title(clickInfo.event.title);
-    setM_people(clickInfo.event.extendedProps.people);
-    setM_bgcolo(clickInfo.event.bgcolor);
-    setM_content(clickInfo.event.extendedProps.content);
-    setM_floor(clickInfo.event.extendedProps.floor);
+    setData({
+      id: clickInfo.event.id,
+      title: clickInfo.event.title,
+      people:clickInfo.event.extendedProps.people,
+      content:clickInfo.event.extendedProps.content,
+      bgcolor:clickInfo.event.backgroundColor,
+      floor:clickInfo.event.extendedProps.floor
+    });
   };
-  console.log(m_floor, m_content, m_people);
-
-  // if (window.confirm(`삭제 '${clickInfo.event.title}'`)) {
-  //   axios
-  //     .delete(`http://localhost:8081/api/planDelete/${clickInfo.event.id}`)
-  //     .then(function (res) {
-  //       window.location.replace("/")
-  //     })
-  //     .catch(function (error) {
-  //       console.log('delErr', error);
-  //     });
-  // }
-  // console.log('handleEventClick', clickInfo);
 
   function renderEventContent(eventInfo) {
     return (
@@ -96,6 +79,28 @@ const Calendar = () => {
 
   return (
     <div>
+      <input
+        type='radio'
+        value='2'
+        checked={togleBtn === '2'}
+        onChange={(event) => {
+          setTogleBtn(event.target.value);
+        }}
+      />
+
+      <label form='2'>2층</label>
+
+      <input
+        type='radio'
+        value='3'
+        checked={togleBtn === '3'}
+        onChange={(event) => {
+          setTogleBtn(event.target.value);
+        }}
+      />
+      <label form='3'>3층</label>
+
+{/* 입력폼 Props */}
       <InputInfo
         modal_state={modal_state}
         startStr={startStr}
@@ -103,16 +108,15 @@ const Calendar = () => {
         onChange={onChange}
       />
 
+{/* 수정폼 Props */}
       <Modify
         modify_state={modify_state}
         onChange={onChange_M}
-        id={m_id}
-        title={m_title}
-        people={m_people}
-        content={m_content}
-        bgcolor={m_bgcolor}
-        floor={m_floor}
+        plan = {planData}
+        start={startStr}
+        end={endStr}
       />
+      
 
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
@@ -124,41 +128,31 @@ const Calendar = () => {
           right: 'today dayGridMonth, timeGridWeek, next',
         }}
         initialView='timeGridWeek'
-        ///////////////////////////////
-        events={user.map((user) => ({
-          id: user.id,
-          title: user.title,
-          start: user.start_time,
-          end: user.end_time,
-          backgroundColor: user.bgcolor,
-          borderColor: user.bgcolor,
+
+//------------이벤트 리스트 정의---------------
+        events={planList.map((planList) => ({
+          id: planList.id,
+          title: planList.title,
+          start: planList.start_time,
+          end: planList.end_time,
+          backgroundColor: planList.bgcolor,
+          borderColor: planList.bgcolor,
           extendedProps: {
-            people: user.people,
-            content: user.content,
-            floor: user.floor,
-          },
+            people: planList.people,
+            content: planList.content,
+            floor: planList.floor
+          }
         }))}
-        ///////////////////////////////
 
-        // events = {{title : 'All Day',
-        //         start: '2022-05-10'}}
-
-        // dateClick={handleDateClick} 하루클릭
-
-        // events={[
-        //   { title: 'event 1', date: '2022-05-11', start: '2022-05-11T08:00:00+09:00', end:'2022-05-11T11:00:00+09:00'},
-        //   { title: 'event 2', date: '2022-05-10'  }
-        // ]}
-
+//------------플러그인 정리---------------
         eventClick={handleEventClick}
         select={handleDateSelect}
-        editable={false} // 수정 ?
-        selectable={true} //드래그 가능
+        editable={false} // 수정 가능 여부
+        selectable={true} //드래그 가능 여부
         selectMirror={true}
         eventContent={renderEventContent}
-        // 이벤트명 : function(){} : 각 날짜에 대한 이벤트를 통해 처리할 내용..
         dayMaxEvents={true}
-        weekends={false} //주말 볼지 말지
+        weekends={false} 
       />
     </div>
   );
