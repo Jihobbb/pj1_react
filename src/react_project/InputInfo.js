@@ -6,14 +6,13 @@ import './Calendar';
 
 function InputInfo(props) {
 
-    const [text, setText] = useState("");
-    const [part, setPart] = useState("");
-    const [content, setContent] = useState("");
-    const [select_color, setSelect_color] = useState();
-    const [floor, setFloor] = useState("2");
-
-    // const [modal_check, setModal_check] = useState(false);
-
+    const [inputData, setData] = useState({
+        title:"",
+        people:"",
+        content:"",
+        floor:"2",
+        bgcolor:""
+    });
 
     const color_list = [
         {value : 'none', color: 'Choose Color'},
@@ -26,11 +25,13 @@ function InputInfo(props) {
 
 
     const SelectColor = (props) => {
-        const onSelect = (event) => {
-            setSelect_color(event.target.value)
+        const onSelect = (e) => {
+            setData({
+                ...inputData, bgcolor:e.target.value
+            })
         }
         return (
-        <select onChange={onSelect} value={select_color}>
+        <select onChange={onSelect} value={inputData.color}>
             {props.option.map((c) => (
                 <option key={c.value} disabled={c.color === '==Color==' ? true : false} defaultValue={c.color === '==Color==' ? true : false}>
                      {c.color}
@@ -45,14 +46,21 @@ function InputInfo(props) {
         return(
             <div>
                     <input type='radio' value="2" 
-                    checked={floor === "2"}
-                    onChange={(event) => setFloor(event.target.value)}/>
+                    checked={inputData.floor === "2"}
+                    onChange={(e) => {
+                        setData({
+                            ...inputData, floor:e.target.value
+                        })
+                    }}/>
                     <label form='2'>2층</label>
 
                     <input type='radio' value="3" 
-                    checked={floor === "3"}
-                    onChange={(event) => setFloor(event.target.value)}
-                    />
+                    checked={inputData.floor === "3"}
+                    onChange={(e) => {
+                        setData({
+                            ...inputData, floor:e.target.value
+                        })
+                    }}/>
                     <label form='3'>3층</label>
                 </div>
         );
@@ -66,33 +74,27 @@ function InputInfo(props) {
         axios
         .post('http://localhost:8081/api/planSave',{
            // id : createEventId(),
-            title : text,
+            title : inputData.title,
             start_time : props.startStr,
             end_time : props.endStr,
-            people : part,
-            content : content,
-            bgcolor : select_color,
-            floor : floor,
+            people : inputData.people,
+            content : inputData.content,
+            bgcolor : inputData.color,
+            floor : inputData.floor,
 
         }).then((res) => console.log(res))
         
         let info = {
-            text : text,
-            part : part,
-            content : content,
-            color : select_color,
-            floor : floor,
+            title : inputData.title,
+            people : inputData.people,
+            content : inputData.content,
+            bgcolor : inputData.bgcolor,
+            floor : inputData.floor,
             start : props.startStr,
             end : props.endStr,
         }
 
-        // axios
-        // .post("http://localhost:3000/rkskek",info)
-        // .then((res) => console.log(res))
-
         console.log(info);
-
-        // props.onChange();
 
     }
 
@@ -133,8 +135,9 @@ function InputInfo(props) {
                 <div>
                 <SelectColor option={color_list}></SelectColor>
                 <input type="text" placeholder="제목" className='info_head_text'
-                onChange = {(event) => setText(event.target.value)}
-                value={text}
+                onChange = {(e) => setData({
+                    ...inputData, title: e.target.value
+                })}
                 />
                 </div>
 
@@ -143,7 +146,9 @@ function InputInfo(props) {
                 <div className="info_body">
                     <h4 className="info_body_text">참여자</h4>
                     <input type="text" placeholder="참여자" className='info_partic'
-                    onChange={(event) => setPart(event.target.value)}/>
+                    onChange={(e) => setData({
+                        ...inputData, people: e.target.value
+                    })}/>
                 </div>
 
                 <br/>
@@ -154,7 +159,9 @@ function InputInfo(props) {
                     <textarea rows="5" cols="60"
                     className='info_content'
                     placeholder='회의내용'
-                    onChange={(event) => setContent(event.target.value)}/>
+                    onChange={(e) => setData({
+                        ...inputData, content: e.target.value
+                    })}/>
                 </div>
 
                 <br/>

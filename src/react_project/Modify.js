@@ -15,9 +15,9 @@ function Modify(props) {
     const setDefaultData = () => {
         console.log('popup rendering')
         setData({
-            title: props.title,
-            people: props.people,
-            content: props.content
+            title: props.plan.title,
+            people: props.plan.people,
+            content: props.plan.content
         })
     }
 
@@ -58,7 +58,7 @@ function Modify(props) {
     const delete_btn = () => {
         if (window.confirm(`삭제 '${props.title}'`)) {
               axios
-                .delete(`http://localhost:8081/api/planDelete/${props.id}`)
+                .delete(`http://localhost:8081/api/planDelete/${props.plan.id}`)
                 .then(function (res) {
                   window.location.replace("/")
                 })

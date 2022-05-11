@@ -15,12 +15,14 @@ const Calendar = () => {
   const [endStr, setEndStr] = useState('');
   const [planList, setPlanList] = useState([]);
 
-  const [m_title, setM_title] = useState();
-  const [m_people, setM_people] = useState();
-  const [m_content, setM_content] = useState();
-  const [m_bgcolor, setM_bgcolor] = useState();
-  const [m_id, setM_id] = useState();
-  const [m_floor, setM_floor] = useState();
+  const [planData, setData] = useState({
+    id:"",
+    title: "",
+    people:"",
+    content:"",
+    bgcolor:"",
+    floor:""
+  })
 
   const [togleBtn, setTogleBtn] = useState('2');
 
@@ -56,14 +58,14 @@ const Calendar = () => {
 
   const handleEventClick = (clickInfo) => {
     setModify_state(!modal_state);
-    setM_id(clickInfo.event.id);
-    setM_title(clickInfo.event.title);
-    setM_people(clickInfo.event.extendedProps.people);
-    setM_bgcolor(clickInfo.event.backgroundColor);
-    setM_content(clickInfo.event.extendedProps.content);
-    setM_floor(clickInfo.event.extendedProps.floor);
-    setStartStr(clickInfo.event.start);
-    setEndStr(clickInfo.event.end)
+    setData({
+      id: clickInfo.event.id,
+      title: clickInfo.event.title,
+      people:clickInfo.event.extendedProps.people,
+      content:clickInfo.event.extendedProps.content,
+      bgcolor:clickInfo.event.backgroundColor,
+      floor:clickInfo.event.extendedProps.floor
+    });
   };
 
   function renderEventContent(eventInfo) {
@@ -110,14 +112,9 @@ const Calendar = () => {
       <Modify
         modify_state={modify_state}
         onChange={onChange_M}
-        id={m_id}
+        plan = {planData}
         start={startStr}
         end={endStr}
-        title={m_title}
-        people={m_people}
-        content={m_content}
-        bgcolor={m_bgcolor}
-        floor={m_floor}
       />
       
 
