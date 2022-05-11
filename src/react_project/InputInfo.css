@@ -1,9 +1,18 @@
-.info_head_text{
-    margin-left: 10px;
+.info_head_text {
+  margin-left: 10px;
 }
 
+.info_partic {
+  height: 30px;
+  width: 77%;
+}
+.info_body_text {
+  display: inline;
+  margin-right: 5.2%;
+  text-align: center;
+  padding-left: 16px;
 
-.info_body_text{
-    display: inline;
-    margin-right: 2%;
+  font-size: large;
+  /* margin-left: 9.2%; */
+  /* background-color: aqua; */
 }

@@ -1,17 +1,38 @@
-.fc .fc-non-business{
-    background: none;
+a {
+  text-decoration-line: none !important;
+  color: black !important;
+  font-weight: bold;
 }
 
-
-.fc-direction-ltr .fc-button-group > .fc-button:not(:first-child) {
-    margin-left: -1px;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    display: none;
+.modalStyle {
+  position: fixed;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.45);
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
 }
 
+.info_form {
+  background-color: white;
+}
+/* .formSelectColor {
+  text-align: center;
+  height: 30px;
+  width: 18%;
+} */
+.info_head_text {
+  height: 30px;
+  width: 77%;
+}
+.formSelectColor {
+}
 
-  .fc-direction-ltr .fc-button-group > .fc-button:not(:last-child) {
-    border-radius:6px ;
-    
-  }
+.formbutton {
+  float: right;
+  padding-bottom: 0px;
+}
+
+.formbutton > Button {
+  margin: 3px;
+}
