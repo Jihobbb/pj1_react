@@ -66,6 +66,8 @@ const Calendar = () => {
       bgcolor:clickInfo.event.backgroundColor,
       floor:clickInfo.event.extendedProps.floor
     });
+    setStartStr(clickInfo.event.start);
+    setEndStr(clickInfo.event.end);
   };
 
   function renderEventContent(eventInfo) {

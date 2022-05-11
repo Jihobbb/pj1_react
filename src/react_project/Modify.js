@@ -13,7 +13,7 @@ function Modify(props) {
     });
 
     const setDefaultData = () => {
-        console.log('popup rendering')
+        console.log(props.start)
         setData({
             title: props.plan.title,
             people: props.plan.people,
@@ -30,14 +30,14 @@ function Modify(props) {
             
         axios
         .put('http://localhost:8081/api/planUpdate',{
-            id : props.id,
+            id : props.plan.id,
             title : updateData.title,
             start_time : props.start,
             end_time : props.end,
             people : updateData.people,
             content : updateData.content,
-            bgcolor : props.bgcolor,
-            floor : props.floor,
+            bgcolor : props.plan.bgcolor,
+            floor : props.plan.floor,
 
         }).then((res) => console.log(res))
         
@@ -56,7 +56,7 @@ function Modify(props) {
     }
 
     const delete_btn = () => {
-        if (window.confirm(`삭제 '${props.title}'`)) {
+        if (window.confirm(`삭제 '${props.plan.title}'`)) {
               axios
                 .delete(`http://localhost:8081/api/planDelete/${props.plan.id}`)
                 .then(function (res) {
