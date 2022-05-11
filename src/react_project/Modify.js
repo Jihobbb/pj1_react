@@ -1,98 +1,57 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Modal from 'react-modal';
 import './InputInfo.css'
 import './Calendar';
 
 function Modify(props) {
     
-    const [text, setText] = useState("");
-    const [part, setPart] = useState("");
-    const [content, setContent] = useState("");
-    const [select_color, setSelect_color] = useState();
-    const [floor, setFloor] = useState("2");
+    const [updateData, setData] = useState({
+        title: "",
+        people: "",
+        content: "",
+    });
 
-    // const [modal_check, setModal_check] = useState(false);
-
-
-    const color_list = [
-        {value : 'none', color: 'Choose Color'},
-        {value : 'red', color: 'Red'},
-        {value : 'blue', color: 'Blue'},
-        {value : 'green', color: 'Green'},
-        {value : 'yellow', color: 'Yellow'},
-        {value : 'orange', color: 'Orange'},
-    ]
-
-
-    const SelectColor = (props) => {
-        const onSelect = (event) => {
-            setSelect_color(event.target.value)
-        }
-        return (
-        <select onChange={onSelect} value={select_color}>
-            {props.option.map((c) => (
-                <option key={c.value} disabled={c.color === '==Color==' ? true : false} defaultValue={c.color === props.bgcolor ? true : false}>
-                     {c.color}
-        </option>
-            ))}
-        </select>
-        )
+    const setDefaultData = () => {
+        console.log('popup rendering')
+        setData({
+            title: props.title,
+            people: props.people,
+            content: props.content
+        })
     }
 
+    useEffect(() => {
+        setDefaultData();
+      }, [props]);
 
-    function RadioBtn () {
-        return(
-            <div>
-                    <input type='radio' value="2" 
-                    checked={floor === "2"}
-                    onChange={(event) => setFloor(event.target.value)}/>
-                    <label form='2'>2층</label>
-
-                    <input type='radio' value="3" 
-                    checked={floor === "3"}
-                    onChange={(event) => setFloor(event.target.value)}
-                    />
-                    <label form='3'>3층</label>
-                </div>
-        );
-    }
-    
     
     const asd = () => {
-    
-        // event.preventDefault();
-        
+            
         axios
         .put('http://localhost:8081/api/planUpdate',{
             id : props.id,
-            title : text,
+            title : updateData.title,
             start_time : props.start,
             end_time : props.end,
-            people : part,
-            content : content,
+            people : updateData.people,
+            content : updateData.content,
             bgcolor : props.bgcolor,
-            floor : floor,
+            floor : props.floor,
 
         }).then((res) => console.log(res))
         
         let info = {
-            text : text,
-            part : part,
-            content : content,
-            color : select_color,
-            floor : floor,
+            text : updateData.title,
+            part : updateData.people,
+            content : updateData.content,
+            color : props.bgcolor,
+            floor : props.floor,
             start : props.startStr,
             end : props.endStr,
         }
 
-        // axios
-        // .post("http://localhost:3000/rkskek",info)
-        // .then((res) => console.log(res))
-
         console.log(info);
-
-        // props.onChange();
 
     }
 
@@ -144,18 +103,24 @@ function Modify(props) {
 
             <form className='info_form' onSubmit={asd}>
                 <div>
-                <SelectColor option={color_list}></SelectColor>
-                <input type="text" defaultValue={props.title} className='info_head_text'
-                onChange = {(event) => setText(event.target.value)}
-                />
+                <input type="text" value={updateData.title} className='info_head_text'
+                onChange = {(e) =>{
+                        setData({
+                            ...updateData, title: e.target.value
+                        })
+                }}/>
                 </div>
 
                 <br/>
 
                 <div className="info_body">
                     <h4 className="info_body_text">참여자</h4>
-                    <input type="text" defaultValue={props.people} className='info_partic'
-                    onChange={(event) => setPart(event.target.value)}/>
+                    <input type="text" value={updateData.people} className='info_partic'
+                    onChange = {(e) =>{
+                        setData({
+                            ...updateData, people: e.target.value
+                        })
+                }}/>
                 </div>
 
                 <br/>
@@ -165,8 +130,12 @@ function Modify(props) {
                 <div>
                     <textarea rows="5" cols="60"
                     className='info_content'
-                    defaultValue={props.content}
-                    onChange={(event) => setContent(event.target.value)}/>
+                    value={updateData.content}
+                    onChange = {(e) =>{
+                        setData({
+                            ...updateData, content: e.target.value
+                        })
+                }}/>
                 </div>
 
                 <br/>
@@ -176,8 +145,6 @@ function Modify(props) {
                 <button type='button' onClick={delete_btn}>삭제</button>
                 <button type="button" onClick={props.onChange}>취소</button>
                 </div>
-
-                <RadioBtn/>
                 
             </form>
             </Modal>

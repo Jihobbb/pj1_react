@@ -30,7 +30,6 @@ const Calendar = () => {
       return element.floor === togleBtn;
     });
     setPlanList(plans);
-    console.log('floor층수', planList);
   };
 
   useEffect(() => {
@@ -66,7 +65,6 @@ const Calendar = () => {
     setStartStr(clickInfo.event.start);
     setEndStr(clickInfo.event.end)
   };
-  console.log(m_people);
 
   function renderEventContent(eventInfo) {
     return (
@@ -121,6 +119,7 @@ const Calendar = () => {
         bgcolor={m_bgcolor}
         floor={m_floor}
       />
+      
 
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
