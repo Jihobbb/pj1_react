@@ -11,31 +11,45 @@ function InputInfo(props) {
         people:"",
         content:"",
         floor:"2",
-        bgcolor:""
+        bgcolor:"",
+        colorname:""
     });
 
     const color_list = [
         {value : 'none', color: 'Choose Color'},
-        {value : 'red', color: 'Red'},
-        {value : 'blue', color: 'Blue'},
-        {value : 'green', color: 'Green'},
-        {value : 'yellow', color: 'Yellow'},
-        {value : 'orange', color: 'Orange'},
+        {value : '#BEC5CB', color: '그레이'},
+        {value : '#F6D8D8', color: '핑크'},
+        {value : '#D0D4B2', color: '그린'},
+        {value : '#B3D3D3', color: '블루'},
+        {value : '#F3E3AD', color: '옐로우'},
     ]
 
 
     const SelectColor = (props) => {
         const onSelect = (e) => {
             setData({
-                ...inputData, bgcolor:e.target.value
+                ...inputData, 
+                bgcolor: findColorByName(e.target.value),
+                colorname: e.target.value
             })
         }
+
+        const findColorByName = (color) => {
+            let selectedColorValue;
+            props.colorList.map((c)=>{
+                if(c.color === color) {
+                    selectedColorValue = c.value
+                }
+            })
+            return selectedColorValue;
+        }
+
         return (
-        <select onChange={onSelect} value={inputData.color}>
-            {props.option.map((c) => (
+        <select onChange={onSelect} value={inputData.colorname}>
+            {props.colorList.map((c) => (
                 <option key={c.value} disabled={c.color === '==Color==' ? true : false} defaultValue={c.color === '==Color==' ? true : false}>
                      {c.color}
-        </option>
+                </option>
             ))}
         </select>
         )
@@ -133,7 +147,7 @@ function InputInfo(props) {
 
             <form className='info_form' onSubmit={asd}>
                 <div>
-                <SelectColor option={color_list}></SelectColor>
+                <SelectColor colorList={color_list}></SelectColor>
                 <input type="text" placeholder="제목" className='info_head_text'
                 onChange = {(e) => setData({
                     ...inputData, title: e.target.value
