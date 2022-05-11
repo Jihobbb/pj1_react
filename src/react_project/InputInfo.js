@@ -54,32 +54,6 @@ function InputInfo(props) {
         </select>
         )
     }
-
-
-    function RadioBtn () {
-        return(
-            <div>
-                    <input type='radio' value="2" 
-                    checked={inputData.floor === "2"}
-                    onChange={(e) => {
-                        setData({
-                            ...inputData, floor:e.target.value
-                        })
-                    }}/>
-                    <label form='2'>2층</label>
-
-                    <input type='radio' value="3" 
-                    checked={inputData.floor === "3"}
-                    onChange={(e) => {
-                        setData({
-                            ...inputData, floor:e.target.value
-                        })
-                    }}/>
-                    <label form='3'>3층</label>
-                </div>
-        );
-    }
-    
     
     const asd = () => {
     
@@ -89,27 +63,13 @@ function InputInfo(props) {
         .post('http://localhost:8081/api/planSave',{
            // id : createEventId(),
             title : inputData.title,
-            start_time : props.startStr,
-            end_time : props.endStr,
+            start_time : props.start,
+            end_time : props.end,
             people : inputData.people,
             content : inputData.content,
             bgcolor : inputData.bgcolor,
-            floor : inputData.floor,
-
+            floor : props.floorStatus
         }).then((res) => console.log(res))
-        
-        let info = {
-            title : inputData.title,
-            people : inputData.people,
-            content : inputData.content,
-            bgcolor : inputData.bgcolor,
-            floor : inputData.floor,
-            start : props.startStr,
-            end : props.endStr,
-        }
-
-        console.log(info);
-
     }
 
     const modalStyle = {
@@ -183,10 +143,7 @@ function InputInfo(props) {
                 <div>
                 <button type='submit'>저장</button>
                     <button type="button" onClick={props.onChange}>취소</button>
-                </div>
-
-                <RadioBtn/>
-                
+                </div>  
             </form>
             </Modal>
         </div>

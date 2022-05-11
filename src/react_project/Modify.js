@@ -40,19 +40,6 @@ function Modify(props) {
             floor : props.plan.floor,
 
         }).then((res) => console.log(res))
-        
-        let info = {
-            text : updateData.title,
-            part : updateData.people,
-            content : updateData.content,
-            color : props.bgcolor,
-            floor : props.floor,
-            start : props.startStr,
-            end : props.endStr,
-        }
-
-        console.log(info);
-
     }
 
     const delete_btn = () => {

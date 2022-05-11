@@ -105,8 +105,9 @@ const Calendar = () => {
 {/* 입력폼 Props */}
       <InputInfo
         modal_state={modal_state}
-        startStr={startStr}
-        endStr={endStr}
+        start={startStr}
+        end={endStr}
+        floorStatus={togleBtn}
         onChange={onChange}
       />
 
