@@ -25,7 +25,7 @@ function Modify(props) {
     setDefaultData();
   }, [props]);
 
-  const asd = () => {
+  const planUpdateApi = () => {
     axios
       .put('http://localhost:8081/api/planUpdate', {
         id: props.plan.id,
@@ -37,14 +37,16 @@ function Modify(props) {
         bgcolor: props.plan.bgcolor,
         floor: props.plan.floor,
       })
-      .then((res) => console.log(res));
+      .then(props.onChange);
   };
 
   const delete_btn = (e) => {
     if (window.confirm(`삭제 '${props.plan.title}'`)) {
       axios
         .delete(`http://localhost:8081/api/planDelete/${props.plan.id}`)
-        .then(function (res) {})
+        .then(function () {
+          props.onChange();
+        })
         .catch(function (error) {
           console.log('delErr', error);
         });
@@ -85,7 +87,7 @@ function Modify(props) {
         //onRequestClose={false} // 오버레이나 esc를 누르면 isopen값이 false 닫힘
         ariaHideApp={false}
       >
-        <form className='info_form' onSubmit={asd}>
+        <form className='info_form'>
           <div>
             <h5 className='modify_info_body_text'>제목</h5>
             <input
@@ -139,11 +141,9 @@ function Modify(props) {
 
           <br />
 
-          <div className='formbutton'>
-            <Button type='submit' variant='primary'>
-              수정
-            </Button>
-            <Button type='button' variant='secondary' onClick={delete_btn}>
+          <div>
+            <button type='button' onClick={planUpdateApi}>수정</button>
+            <button type='button' onClick={delete_btn}>
               삭제
             </Button>
             <Button
