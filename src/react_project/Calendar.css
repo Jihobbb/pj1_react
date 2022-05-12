@@ -51,7 +51,30 @@ a {
   margin-right: 8.2%;
   padding-left: 16px;
 }
-.formSelectColor {
+.formSelect {
+  height: 35px;
+  width: 20%;
+}
+.input_head_text {
+  height: 35px;
+  width: 78%;
+  margin-left: 2%;
+}
+.input_body_text {
+  display: inline;
+  height: 35px;
+  width: 20%;
+
+  padding-right: 7.2%;
+}
+.input_partic2 {
+  height: 35px;
+  width: 78%;
+  margin-left: 2%;
+}
+.input_partic {
+  height: 35px;
+  width: 20%;
 }
 
 .formbutton {

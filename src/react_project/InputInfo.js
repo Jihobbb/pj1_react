@@ -44,7 +44,11 @@ function InputInfo(props) {
     };
 
     return (
-      <select onChange={onSelect} value={inputData.colorname}>
+      <select
+        className='formSelect'
+        onChange={onSelect}
+        value={inputData.colorname}
+      >
         {props.colorList.map((c) => (
           <option
             key={c.value}
@@ -112,7 +116,7 @@ function InputInfo(props) {
             <input
               type='text'
               placeholder='제목'
-              className='info_head_text'
+              className='input_head_text'
               onChange={(e) =>
                 setData({
                   ...inputData,
@@ -125,11 +129,11 @@ function InputInfo(props) {
           <br />
 
           <div className='info_body'>
-            <h4 className='info_body_text'>참여자</h4>
+            <h5 className='input_body_text'>참여자</h5>
             <input
               type='text'
               placeholder='참여자'
-              className='info_partic'
+              className='input_partic2'
               onChange={(e) =>
                 setData({
                   ...inputData,
