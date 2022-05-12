@@ -99,6 +99,12 @@ const Calendar = () => {
     updatePlan(dropInfo.event);
   }
 
+  //이벤트 사이즈 조절
+  const eventSizing = (dragInfo) => {
+    console.log(dragInfo.event.start)
+    updatePlan(dragInfo.event)
+  }
+
   //달력에 보이는 일정 설정
   function renderEventContent(eventInfo) {
     return (
@@ -192,6 +198,7 @@ const Calendar = () => {
         eventResizableFromStart={true}
         droppable={true}
         eventDrop={dragAnddrop} //일정 옮겨서 떨어뜨릴 때 발생
+        eventResize={eventSizing} //일정을 크기조절하여 기간 변경 시 발생
       />
     </div>
   );
