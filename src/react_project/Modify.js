@@ -1,9 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './InputInfo.css';
 import './Calendar.css';
 
+import Button from 'react-bootstrap/Button';
 function Modify(props) {
   const [updateData, setData] = useState({
     title: '',
@@ -23,7 +25,7 @@ function Modify(props) {
     setDefaultData();
   }, [props]);
 
-  const asd = () => {
+  const planUpdateApi = () => {
     axios
       .put('http://localhost:8081/api/planUpdate', {
         id: props.plan.id,
@@ -35,36 +37,39 @@ function Modify(props) {
         bgcolor: props.plan.bgcolor,
         floor: props.plan.floor,
       })
-      .then((res) => console.log(res));
+      .then(props.onChange);
   };
 
-  const delete_btn = () => {
+  const delete_btn = (e) => {
     if (window.confirm(`삭제 '${props.plan.title}'`)) {
       axios
         .delete(`http://localhost:8081/api/planDelete/${props.plan.id}`)
-        .then(function (res) {
-          window.location.replace('/');
+        .then(function () {
+          props.onChange();
         })
         .catch(function (error) {
           console.log('delErr', error);
         });
     }
+    e.calendar.render();
   };
 
   const modalStyle = {
     overlay: {
       position: 'fixed',
       top: 0,
-      backgroundColor: 'rgba(255, 255, 255, 0.45)',
+      backgroundColor: 'rgba(255, 255, 255, 0.7)',
       zIndex: 10,
       justifyContent: 'center',
       alignItem: 'center',
+      width: '100%',
+      height: '100%',
     },
     content: {
       display: 'flex',
       justifyContent: 'center',
       alignItem: 'center',
-      background: '#ffffe7',
+      background: 'white',
       borderRadius: '20px',
       margin: '0 auto',
       width: '60%',
@@ -82,12 +87,13 @@ function Modify(props) {
         //onRequestClose={false} // 오버레이나 esc를 누르면 isopen값이 false 닫힘
         ariaHideApp={false}
       >
-        <form className='info_form' onSubmit={asd}>
+        <form className='info_form'>
           <div>
+            <h5 className='modify_info_body_text'>제목</h5>
             <input
               type='text'
               value={updateData.title}
-              className='info_head_text'
+              className='modify_info_head_text'
               onChange={(e) => {
                 setData({
                   ...updateData,
@@ -135,14 +141,20 @@ function Modify(props) {
 
           <br />
 
-          <div>
-            <button type='submit'>수정</button>
-            <button type='button' onClick={delete_btn}>
+          <div className='formbutton'>
+            <Button type='button' variant='primary' onClick={planUpdateApi}>
+              수정
+            </Button>
+            <Button type='button' variant='danger' onClick={delete_btn}>
               삭제
-            </button>
-            <button type='button' onClick={props.onChange}>
+            </Button>
+            <Button
+              type='button'
+              variant='outline-secondary'
+              onClick={props.onChange}
+            >
               취소
-            </button>
+            </Button>
           </div>
         </form>
       </Modal>

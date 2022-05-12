@@ -4,6 +4,22 @@ a {
   font-weight: bold;
 }
 
+.fc-non-business {
+  display: none;
+}
+
+.toggleBtn {
+  margin: 3px;
+  border-radius: 30px;
+}
+.toggleBtnGroup {
+  top: 45px;
+  left: 200px;
+}
+.fc--button fc-button fc-button-primary {
+  display: none !important;
+  background-color: aqua !important;
+}
 .modalStyle {
   position: fixed;
   top: 0;
@@ -24,6 +40,16 @@ a {
 .info_head_text {
   height: 30px;
   width: 77%;
+}
+.modify_info_head_text {
+  height: 30px;
+  width: 77%;
+}
+.modify_info_body_text {
+  display: inline;
+  text-align: center;
+  margin-right: 8.2%;
+  padding-left: 16px;
 }
 .formSelectColor {
 }
