@@ -12,7 +12,6 @@ function Modify(props) {
   });
 
   const setDefaultData = () => {
-    console.log(props.start);
     setData({
       title: props.plan.title,
       people: props.plan.people,
