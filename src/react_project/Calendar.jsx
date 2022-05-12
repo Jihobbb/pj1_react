@@ -168,7 +168,7 @@ const Calendar = () => {
         headerToolbar={{
           left: 'prev',
           center: 'title',
-          right: 'today dayGridMonth, timeGridWeek,listWeek, next',
+          right: 'today dayGridMonth timeGridWeek listWeek next',
         }}
         initialView='timeGridWeek'
         //------------이벤트 리스트 정의---------------
