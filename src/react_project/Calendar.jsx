@@ -4,9 +4,14 @@ import FullCalendar, { formatDate } from '@fullcalendar/react'; // must go befor
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import listPlugin from '@fullcalendar/list';
 import InputInfo from './InputInfo';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './Calendar.css';
 import Modify from './Modify';
+
+import ToggleButton from 'react-bootstrap/ToggleButton';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 const Calendar = () => {
   const [modal_state, setModal_state] = useState(false);
@@ -26,6 +31,11 @@ const Calendar = () => {
 
   const [togleBtn, setTogleBtn] = useState('2'); //층 상태
 
+  const radios = [
+    { name: '2층', value: '2' },
+    { name: '3층', value: '3' },
+  ];
+
   //전체 일정 GET
   const getdata = async () => {
     const response = await axios.get('http://localhost:8081/api/planList');
@@ -38,7 +48,7 @@ const Calendar = () => {
 
   useEffect(() => {
     getdata();
-  }, [togleBtn,modal_state,modify_state]);
+  }, [togleBtn, modal_state, modify_state]);
 
   //업데이트 API호출
   const updatePlan = (plan) => {
@@ -115,26 +125,23 @@ const Calendar = () => {
 
   return (
     <div>
-      <input
-        type='radio'
-        value='2'
-        checked={togleBtn === '2'}
-        onChange={(event) => {
-          setTogleBtn(event.target.value);
-        }}
-      />
-
-      <label form='2'>2층</label>
-
-      <input
-        type='radio'
-        value='3'
-        checked={togleBtn === '3'}
-        onChange={(event) => {
-          setTogleBtn(event.target.value);
-        }}
-      />
-      <label form='3'>3층</label>
+      <ButtonGroup className='toggleBtnGroup'>
+        {radios.map((radio, idx) => (
+          <ToggleButton
+            className='toggleBtn'
+            key={idx}
+            id={`radio-${idx}`}
+            type='radio'
+            variant={idx % 2 ? 'outline-dark' : 'outline-dark'}
+            name='radio'
+            value={radio.value}
+            checked={togleBtn === radio.value}
+            onChange={(e) => setTogleBtn(e.currentTarget.value)}
+          >
+            {radio.name}
+          </ToggleButton>
+        ))}
+      </ButtonGroup>
 
       {/* 입력폼 Props */}
       <InputInfo
@@ -155,13 +162,13 @@ const Calendar = () => {
       />
 
       <FullCalendar
-        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
         locale='ko'
         businessHours={true} // 주말 색깔 블러 처리
         headerToolbar={{
           left: 'prev',
           center: 'title',
-          right: 'today dayGridMonth, timeGridWeek, next',
+          right: 'today dayGridMonth, timeGridWeek,listWeek, next',
         }}
         initialView='timeGridWeek'
         //------------이벤트 리스트 정의---------------

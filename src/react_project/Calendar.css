@@ -8,6 +8,18 @@ a {
   display: none;
 }
 
+.toggleBtn {
+  margin: 3px;
+  border-radius: 30px;
+}
+.toggleBtnGroup {
+  top: 45px;
+  left: 200px;
+}
+.fc--button fc-button fc-button-primary {
+  display: none !important;
+  background-color: aqua !important;
+}
 .modalStyle {
   position: fixed;
   top: 0;
