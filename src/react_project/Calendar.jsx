@@ -24,11 +24,12 @@ const Calendar = () => {
     floor:""
   })
 
-  const [togleBtn, setTogleBtn] = useState('2');
+  const [togleBtn, setTogleBtn] = useState('2');  //층 상태
 
+  //전체 일정 GET
   const getdata = async () => {
     const response = await axios.get('http://localhost:8081/api/planList');
-    const plans = response.data.filter(function (element) {
+    const plans = response.data.filter(function (element) {   //층으로 필터링
       return element.floor === togleBtn;
     });
     setPlanList(plans);
@@ -38,36 +39,73 @@ const Calendar = () => {
     getdata();
   }, [togleBtn]);
 
-  useEffect(() => {
-    getdata();
-  }, []);
+  //업데이트 API호출
+  const updatePlan = (plan) => {
+    axios
+    .put('http://localhost:8081/api/planUpdate',{
+      id : plan.id,
+      title : plan.title,
+      start_time : plan.start,
+      end_time : plan.end,
+      people : plan.extendedProps.people,
+      content : plan.extendedProps.content,
+      bgcolor : plan.backgroundColor,
+      floor : plan.extendedProps.floor,
 
+    }).then((res) => console.log(res))
+  }
+
+  //일정 state 변경
+  const setPlanStatus = (Info) => {
+    setData({
+      id: Info.id,
+      title: Info.title,
+      people:Info.extendedProps.people,
+      content:Info.extendedProps.content,
+      bgcolor:Info.backgroundColor,
+      floor:Info.extendedProps.floor
+    });
+    setStartStr(Info.start);
+    setEndStr(Info.end);
+  }
+
+  //입력 폼 온오프
+  const inputFormControl = () => {
+    setModal_state(!modal_state);
+  };
+
+  //수정 폼 온오프
+  const updateFormControl = () => {
+    setModify_state(!modify_state);
+  };
+
+
+  //드래그해서 기간설정
   const handleDateSelect = (selectInfo) => {
     setModal_state(!modal_state);
     setStartStr(selectInfo.startStr);
     setEndStr(selectInfo.endStr);
   };
 
-  const onChange = () => {
-    setModal_state(!modal_state);
-  };
 
-  const onChange_M = () => {
-    setModify_state(!modify_state);
-  };
-
+  //일정 클릭 
   const handleEventClick = (clickInfo) => {
     setModify_state(!modal_state);
-    setData({
-      id: clickInfo.event.id,
-      title: clickInfo.event.title,
-      people:clickInfo.event.extendedProps.people,
-      content:clickInfo.event.extendedProps.content,
-      bgcolor:clickInfo.event.backgroundColor,
-      floor:clickInfo.event.extendedProps.floor
-    });
+    setPlanStatus(clickInfo.event)
   };
 
+  //드래깅 드랍 완료
+  const dragAnddrop = (dropInfo) => {
+    updatePlan(dropInfo.event);
+  }
+
+  //이벤트 사이즈 조절
+  const eventSizing = (dragInfo) => {
+    console.log(dragInfo.event.start)
+    updatePlan(dragInfo.event)
+  }
+
+  //달력에 보이는 일정 설정
   function renderEventContent(eventInfo) {
     return (
       <>
@@ -103,15 +141,16 @@ const Calendar = () => {
 {/* 입력폼 Props */}
       <InputInfo
         modal_state={modal_state}
-        startStr={startStr}
-        endStr={endStr}
-        onChange={onChange}
+        start={startStr}
+        end={endStr}
+        floorStatus={togleBtn}
+        onChange={inputFormControl}
       />
 
 {/* 수정폼 Props */}
       <Modify
         modify_state={modify_state}
-        onChange={onChange_M}
+        onChange={updateFormControl}
         plan = {planData}
         start={startStr}
         end={endStr}
@@ -144,15 +183,22 @@ const Calendar = () => {
           }
         }))}
 
-//------------플러그인 정리---------------
+//------------설정 값 정리---------------
         eventClick={handleEventClick}
         select={handleDateSelect}
-        editable={false} // 수정 가능 여부
         selectable={true} //드래그 가능 여부
         selectMirror={true}
         eventContent={renderEventContent}
         dayMaxEvents={true}
         weekends={false} 
+
+//------------드래깅으로 수정--------------
+        editable={true} // 수정 가능
+        eventStartEditable={true}
+        eventResizableFromStart={true}
+        droppable={true}
+        eventDrop={dragAnddrop} //일정 옮겨서 떨어뜨릴 때 발생
+        eventResize={eventSizing} //일정을 크기조절하여 기간 변경 시 발생
       />
     </div>
   );
