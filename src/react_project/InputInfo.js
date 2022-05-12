@@ -11,7 +11,6 @@ function InputInfo(props) {
     title: '',
     people: '',
     content: '',
-    floor: '2',
     bgcolor: '',
     colorname: '',
   });
@@ -59,9 +58,7 @@ function InputInfo(props) {
     );
   };
 
-  const asd = () => {
-    // event.preventDefault();
-
+  const planSaveApi = () => {
     axios
       .post('http://localhost:8081/api/planSave', {
         // id : createEventId(),
@@ -73,7 +70,7 @@ function InputInfo(props) {
         bgcolor: inputData.bgcolor,
         floor: props.floorStatus,
       })
-      .then((res) => console.log(res));
+      .then(props.onChange);
   };
 
   const modalStyle = {
@@ -109,7 +106,7 @@ function InputInfo(props) {
         //onRequestClose={false} // 오버레이나 esc를 누르면 isopen값이 false 닫힘
         ariaHideApp={false}
       >
-        <form className='info_form' onSubmit={asd}>
+        <form className='info_form'>
           <div>
             <SelectColor colorList={color_list}></SelectColor>
             <input
@@ -164,7 +161,7 @@ function InputInfo(props) {
           <br />
 
           <div className='formbutton'>
-            <Button variant='primary' type='submit'>
+            <Button variant='primary' type='button' onClick={planSaveApi}>
               저장
             </Button>
             <Button variant='secondary' type='button' onClick={props.onChange}>

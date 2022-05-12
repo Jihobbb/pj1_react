@@ -37,7 +37,7 @@ const Calendar = () => {
 
   useEffect(() => {
     getdata();
-  }, [togleBtn]);
+  }, [togleBtn,modal_state,modify_state]);
 
   //업데이트 API호출
   const updatePlan = (plan) => {
