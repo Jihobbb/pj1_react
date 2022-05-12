@@ -141,11 +141,11 @@ function Modify(props) {
 
           <br />
 
-          <div>
-            <Button type='button' onClick={planUpdateApi}>
+          <div className='formbutton'>
+            <Button type='button' variant='primary' onClick={planUpdateApi}>
               수정
             </Button>
-            <Button type='button' onClick={delete_btn}>
+            <Button type='button' variant='danger' onClick={delete_btn}>
               삭제
             </Button>
             <Button
