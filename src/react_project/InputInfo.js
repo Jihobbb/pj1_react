@@ -150,7 +150,7 @@ function InputInfo(props) {
             <input
               type='text'
               placeholder='참여자'
-              className='input_partic2'
+              className='input_partic'
               onChange={(e) =>
                 setData({
                   ...inputData,

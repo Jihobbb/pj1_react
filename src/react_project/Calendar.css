@@ -4,10 +4,6 @@ a {
   font-weight: bold;
 }
 
-.fc-non-business {
-  display: none;
-}
-
 .toggleBtn {
   margin: 3px;
   border-radius: 30px;
@@ -15,73 +11,4 @@ a {
 .toggleBtnGroup {
   top: 45px;
   left: 200px;
-}
-.fc--button fc-button fc-button-primary {
-  display: none !important;
-  background-color: aqua !important;
-}
-.modalStyle {
-  position: fixed;
-  top: 0;
-  background-color: rgba(255, 255, 255, 0.45);
-  z-index: 10;
-  justify-content: center;
-  align-items: center;
-}
-
-.info_form {
-  background-color: white;
-}
-/* .formSelectColor {
-  text-align: center;
-  height: 30px;
-  width: 18%;
-} */
-.info_head_text {
-  height: 30px;
-  width: 77%;
-}
-.modify_info_head_text {
-  height: 30px;
-  width: 77%;
-}
-.modify_info_body_text {
-  display: inline;
-  text-align: center;
-  margin-right: 8.2%;
-  padding-left: 16px;
-}
-.formSelect {
-  height: 35px;
-  width: 20%;
-}
-.input_head_text {
-  height: 35px;
-  width: 78%;
-  margin-left: 2%;
-}
-.input_body_text {
-  display: inline;
-  height: 35px;
-  width: 20%;
-
-  padding-right: 7.2%;
-}
-.input_partic2 {
-  height: 35px;
-  width: 78%;
-  margin-left: 2%;
-}
-.input_partic {
-  height: 35px;
-  width: 20%;
-}
-
-.formbutton {
-  float: right;
-  padding-bottom: 0px;
-}
-
-.formbutton > Button {
-  margin: 3px;
 }
