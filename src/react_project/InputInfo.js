@@ -15,6 +15,11 @@ function InputInfo(props) {
     colorname: '',
   });
 
+  //모달창이 켜지거나 꺼질 떄마다 Inpudata초기화
+  useEffect(() => {
+    inputDataRefresh();
+  }, [props.modal_state]);
+
   const color_list = [
     { value: 'none', color: 'Choose' },
     { value: '#BEC5CB', color: '그레이' },
@@ -62,6 +67,17 @@ function InputInfo(props) {
     );
   };
 
+  //Inputdata를 초기화 시켜서 다음작업에 영향이 가지 않도록 함
+  const inputDataRefresh = () => {
+    setData({...inputData,
+      title: '',
+      people: '',
+      content: '',
+      bgcolor: '',
+      colorname: ''
+    })
+  }
+
   const planSaveApi = () => {
     axios
       .post('http://localhost:8081/api/planSave', {
@@ -74,16 +90,7 @@ function InputInfo(props) {
         bgcolor: inputData.bgcolor,
         floor: props.floorStatus,
       })
-      .then(()=>{
-        props.onChange();
-        setData({...inputData,
-          title: '',
-          people: '',
-          content: '',
-          bgcolor: '',
-          colorname: ''
-        })
-      });
+      .then(props.onChange)
   };
 
   const modalStyle = {
