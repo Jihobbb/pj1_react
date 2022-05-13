@@ -69,14 +69,15 @@ function InputInfo(props) {
 
   //Inputdata를 초기화 시켜서 다음작업에 영향이 가지 않도록 함
   const inputDataRefresh = () => {
-    setData({...inputData,
+    setData({
+      ...inputData,
       title: '',
       people: '',
       content: '',
       bgcolor: '',
-      colorname: ''
-    })
-  }
+      colorname: '',
+    });
+  };
 
   const planSaveApi = () => {
     axios
@@ -90,7 +91,7 @@ function InputInfo(props) {
         bgcolor: inputData.bgcolor,
         floor: props.floorStatus,
       })
-      .then(props.onChange)
+      .then(props.onChange);
   };
 
   const modalStyle = {
