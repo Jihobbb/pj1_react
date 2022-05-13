@@ -89,11 +89,11 @@ function Modify(props) {
       >
         <form className='info_form'>
           <div>
-            <h5 className='modify_info_body_text'>제목</h5>
+            <h5 className='modify_info_head_text'>제목</h5>
             <input
               type='text'
               value={updateData.title}
-              className='modify_info_head_text'
+              className='modify_info_body_text'
               onChange={(e) => {
                 setData({
                   ...updateData,

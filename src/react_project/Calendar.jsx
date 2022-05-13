@@ -181,8 +181,9 @@ const Calendar = () => {
         select={handleDateSelect}
         selectable={true} //드래그 가능 여부
         selectMirror={true}
-        dayMaxEvents={false}
+        dayMaxEvents={6}
         weekends={false}
+        dayMaxEventRows={true}
         //------------드래깅으로 수정--------------
         editable={true} // 수정 가능
         eventStartEditable={true}
