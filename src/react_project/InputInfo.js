@@ -74,7 +74,16 @@ function InputInfo(props) {
         bgcolor: inputData.bgcolor,
         floor: props.floorStatus,
       })
-      .then(props.onChange);
+      .then(()=>{
+        props.onChange();
+        setData({...inputData,
+          title: '',
+          people: '',
+          content: '',
+          bgcolor: '',
+          colorname: ''
+        })
+      });
   };
 
   const modalStyle = {
