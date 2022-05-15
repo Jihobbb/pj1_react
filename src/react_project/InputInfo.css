@@ -43,6 +43,9 @@
   width: 78%;
   margin-left: 2%;
 }
+.formPassword {
+  display: inline-block;
+}
 /* modify */
 .modify_info_head_text {
   display: inline;
@@ -60,4 +63,8 @@
   text-align: center;
   padding-left: 16px;
   font-size: large;
+}
+
+.formPassword2 {
+  display: inline-block;
 }
