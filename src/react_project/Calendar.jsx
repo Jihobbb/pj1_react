@@ -19,8 +19,9 @@ const Calendar = () => {
   const [modify_state, setModify_state] = useState(false);
   const [startStr, setStartStr] = useState('');
   const [endStr, setEndStr] = useState('');
-  const [planList, setPlanList] = useState([]);
+  const [refresh, setRefresh] = useState(true); // 작업에 실패했는데도 화면에 남아있는 결과값을 새로고침
 
+  const [planList, setPlanList] = useState([]);
   const [planData, setData] = useState({
     id: '',
     title: '',
@@ -50,7 +51,7 @@ const Calendar = () => {
 
   useEffect(() => {
     getdata();
-  }, [togleBtn, modal_state, modify_state]);
+  }, [togleBtn, modal_state, modify_state, refresh]);
 
   //업데이트 API호출
   const updatePlan = (plan) => {
@@ -106,15 +107,35 @@ const Calendar = () => {
     setPlanStatus(clickInfo.event);
   };
 
+  //비밀번호 체크
+  const passwordCheck = (password) => {
+    const pwCheck = prompt("비밀번호를 입력하세요.");
+    if(pwCheck === password) {
+      return true;
+    }else if(pwCheck === null){           //취소버튼 눌렀을 경우
+      return false;
+    } else {
+      alert("비밀번호가 일치하지 않습니다.")
+      return false;
+    }
+  }
+
   //드래깅 드랍 완료
   const dragAnddrop = (dropInfo) => {
-    updatePlan(dropInfo.event);
+    if(passwordCheck(dropInfo.event.extendedProps.password)){
+      updatePlan(dropInfo.event);
+    } else {
+      setRefresh(!refresh) 
+    }
   };
 
   //이벤트 사이즈 조절
   const eventSizing = (dragInfo) => {
-    console.log(dragInfo.event.start);
-    updatePlan(dragInfo.event);
+    if(passwordCheck(dragInfo.event.extendedProps.password)){
+      updatePlan(dragInfo.event);
+    } else {
+      setRefresh(!refresh) 
+    }   
   };
 
   return (
@@ -153,13 +174,14 @@ const Calendar = () => {
         plan={planData}
         start={startStr}
         end={endStr}
+        pwCheck = {passwordCheck}
       />
 
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin, googleCalendarPlugin]}
         googleCalendarApiKey={'AIzaSyDuIfK2-Xqvji3V8FC8q9mlXVdX5kYmNEo'}
         locale='ko'
-        businessHours={true} // 주말 색깔 블러 처리
+        businessHours={false} // 주말 색깔 블러 처리
         headerToolbar={{
           left: 'prev',
           center: 'title',
@@ -195,8 +217,14 @@ const Calendar = () => {
         select={handleDateSelect}
         selectable={true} //드래그 가능 여부
         selectMirror={true}
+
+        slotMinTime = {'07:00:00'}  //시간 범위 설정
+        slotMaxTime = {'20:00:00'}  
+
         dayMaxEvents={6}
         weekends={false}
+        eventOverlap={false}  //이벤트 겹쳐지기 막음
+        selectOverlap={false} //등록시에도 겹쳐지지 않음
         dayMaxEventRows={true}
         //------------드래깅으로 수정--------------
         editable={true} // 수정 가능

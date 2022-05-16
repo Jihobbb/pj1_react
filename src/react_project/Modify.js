@@ -6,9 +6,7 @@ import './InputInfo.css';
 import './Calendar.css';
 
 import Button from 'react-bootstrap/Button';
-import Feedback from 'react-bootstrap/Feedback';
-import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col';
+
 
 function Modify(props) {
   const [updateData, setData] = useState({
@@ -28,19 +26,6 @@ function Modify(props) {
   useEffect(() => {
     setDefaultData();
   }, [props]);
-
-  //비밀번호 체크
-  const passwordCheck = () => {
-    const pwCheck = prompt("비밀번호를 입력하세요.");
-    if(pwCheck === props.plan.password) {
-      return true;
-    }else if(pwCheck === null){           //취소버튼 눌렀을 경우
-      return false;
-    } else {
-      alert("비밀번호가 일치하지 않습니다.")
-      return false;
-    }
-  }
 
   //DB에 수정 데이터 반영
   const planUpdateApi = () => {
@@ -165,14 +150,14 @@ function Modify(props) {
           <div className='formbutton'>
             <Button type='button' variant='primary' 
             onClick={()=>{
-              if(passwordCheck()){
+              if(props.pwCheck(props.plan.password)){
                 planUpdateApi();
               }
               }}>수정</Button>
 
             <Button type='button' variant='danger' 
              onClick={()=>{
-              if(passwordCheck()){
+              if(props.pwCheck(props.plan.password)){
               delete_btn();
               }
               }}>삭제</Button>
