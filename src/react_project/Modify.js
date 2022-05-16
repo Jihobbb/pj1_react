@@ -6,6 +6,10 @@ import './InputInfo.css';
 import './Calendar.css';
 
 import Button from 'react-bootstrap/Button';
+import Feedback from 'react-bootstrap/Feedback';
+import Form from 'react-bootstrap/Form';
+import Col from 'react-bootstrap/Col';
+
 function Modify(props) {
   const [updateData, setData] = useState({
     title: '',
@@ -140,6 +144,18 @@ function Modify(props) {
           </div>
 
           <br />
+
+          <Form.Group as={Col} md='4' controlId='va' className='formPassword'>
+            <Form.Control
+              required
+              type='password'
+              placeholder='비밀번호'
+              // defaultValue='비밀번호'
+            />
+            <Form.Control.Feedback type='invalid'>
+              Looks good!
+            </Form.Control.Feedback>
+          </Form.Group>
 
           <div className='formbutton'>
             <Button type='button' variant='primary' onClick={planUpdateApi}>

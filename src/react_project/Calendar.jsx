@@ -6,6 +6,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
 import InputInfo from './InputInfo';
+import googleCalendarPlugin from '@fullcalendar/google-calendar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Calendar.css';
 import Modify from './Modify';
@@ -153,7 +154,8 @@ const Calendar = () => {
       />
 
       <FullCalendar
-        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
+        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin, googleCalendarPlugin]}
+        googleCalendarApiKey={'AIzaSyDuIfK2-Xqvji3V8FC8q9mlXVdX5kYmNEo'}
         locale='ko'
         businessHours={true} // 주말 색깔 블러 처리
         headerToolbar={{
@@ -163,7 +165,13 @@ const Calendar = () => {
         }}
         initialView='timeGridWeek'
         //------------이벤트 리스트 정의---------------
-        events={planList.map((planList) => ({
+        events={
+//** 
+          {
+            googleCalendarId: 'ko.south_korea#holiday@group.v.calendar.google.com',
+          }
+/*/
+          planList.map((planList) => ({
           id: planList.id,
           title: planList.title,
           start: planList.start_time,
@@ -175,7 +183,9 @@ const Calendar = () => {
             content: planList.content,
             floor: planList.floor,
           },
-        }))}
+        }))
+//*/
+      }
         //------------설정 값 정리---------------
         eventClick={handleEventClick}
         select={handleDateSelect}

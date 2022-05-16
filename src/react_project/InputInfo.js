@@ -5,6 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './InputInfo.css';
 import './Calendar.css';
 import Button from 'react-bootstrap/Button';
+import Feedback from 'react-bootstrap/Feedback';
+import Form from 'react-bootstrap/Form';
+import Col from 'react-bootstrap/Col';
 
 function InputInfo(props) {
   const [inputData, setData] = useState({
@@ -13,6 +16,7 @@ function InputInfo(props) {
     content: '',
     bgcolor: '',
     colorname: '',
+    password: '',
   });
 
   //모달창이 켜지거나 꺼질 떄마다 Inpudata초기화
@@ -90,6 +94,7 @@ function InputInfo(props) {
         content: inputData.content,
         bgcolor: inputData.bgcolor,
         floor: props.floorStatus,
+        password: inputData.password,
       })
       .then(props.onChange);
   };
@@ -180,6 +185,23 @@ function InputInfo(props) {
           </div>
 
           <br />
+          <Form.Group as={Col} md='4' controlId='va' className='formPassword'>
+            <Form.Control
+              required
+              type='password'
+              placeholder='비밀번호'
+              // defaultValue='비밀번호'
+              onChange={(e) =>
+                setData({
+                  ...inputData,
+                  password: e.target.value,
+                })
+              }
+            />
+            <Form.Control.Feedback type='invalid'>
+              Looks good!
+            </Form.Control.Feedback>
+          </Form.Group>
 
           <div className='formbutton'>
             <Button variant='primary' type='button' onClick={planSaveApi}>
