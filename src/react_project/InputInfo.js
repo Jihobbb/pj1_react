@@ -80,7 +80,7 @@ function InputInfo(props) {
       content: '',
       bgcolor: '',
       colorname: '',
-      password:null
+      password: null,
     });
   };
 
@@ -98,8 +98,8 @@ function InputInfo(props) {
         password: inputData.password,
       })
       .then(props.onChange)
-      .catch(error => {
-        alert("비밀번호를 입력하세요")
+      .catch((error) => {
+        alert('비밀번호를 입력하세요');
       });
   };
 
@@ -138,7 +138,58 @@ function InputInfo(props) {
       >
         <form className='info_form'>
           <div>
-            <SelectColor colorList={color_list}></SelectColor>
+            {/* <SelectColor colorList={color_list}></SelectColor> */}
+            <div className='select'>
+              <ul className='menubox'>
+                <li>
+                  <a href='#'>
+                    <span>선택 ▼</span>
+                  </a>
+                  <ul className='select'>
+                    <li>
+                      <a href='#'>
+                        <span className='colorList1' value='CL1'>
+                          ●
+                        </span>
+                        그레이
+                      </a>
+                    </li>
+                    <li>
+                      <a href='#'>
+                        <span className='colorList2' value='CL2'>
+                          ●
+                        </span>
+                        핑크
+                      </a>
+                    </li>
+                    <li>
+                      <a href='#'>
+                        <span className='colorList3' value='CL3'>
+                          ●
+                        </span>
+                        그린
+                      </a>
+                    </li>
+                    <li>
+                      <a href='#'>
+                        <span className='colorList4' value='CL4'>
+                          ●
+                        </span>
+                        블루
+                      </a>
+                    </li>
+                    <li>
+                      <a href='#'>
+                        <span className='colorList5' value='CL5'>
+                          ●
+                        </span>
+                        옐로우
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
             <input
               type='text'
               placeholder='제목'
