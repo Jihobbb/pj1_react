@@ -34,6 +34,8 @@ function Modify(props) {
     const pwCheck = prompt("비밀번호를 입력하세요.");
     if(pwCheck === props.plan.password) {
       return true;
+    }else if(pwCheck === null){           //취소버튼 눌렀을 경우
+      return false;
     } else {
       alert("비밀번호가 일치하지 않습니다.")
       return false;
@@ -158,18 +160,7 @@ function Modify(props) {
             />
           </div>
 
-          <br />
-
-          <Form.Group as={Col} md='4' controlId='va' className='formPassword'>
-            <Form.Control
-              required
-              type='password'
-              placeholder='비밀번호'
-            />
-            <Form.Control.Feedback type='invalid'>
-              Looks good!
-            </Form.Control.Feedback>
-          </Form.Group>
+          <br/>
 
           <div className='formbutton'>
             <Button type='button' variant='primary' 
