@@ -150,7 +150,6 @@ function Modify(props) {
               required
               type='password'
               placeholder='비밀번호'
-              // defaultValue='비밀번호'
             />
             <Form.Control.Feedback type='invalid'>
               Looks good!

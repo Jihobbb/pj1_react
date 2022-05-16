@@ -166,9 +166,10 @@ const Calendar = () => {
         initialView='timeGridWeek'
         //------------이벤트 리스트 정의---------------
         events={
-//** 
+/** 
           {
             googleCalendarId: 'ko.south_korea#holiday@group.v.calendar.google.com',
+            color: 'red'
           }
 /*/
           planList.map((planList) => ({

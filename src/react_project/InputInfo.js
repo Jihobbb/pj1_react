@@ -80,6 +80,7 @@ function InputInfo(props) {
       content: '',
       bgcolor: '',
       colorname: '',
+      password:null
     });
   };
 
@@ -96,7 +97,10 @@ function InputInfo(props) {
         floor: props.floorStatus,
         password: inputData.password,
       })
-      .then(props.onChange);
+      .then(props.onChange)
+      .catch(error => {
+        alert("비밀번호를 입력하세요")
+      });
   };
 
   const modalStyle = {
