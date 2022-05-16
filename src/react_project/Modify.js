@@ -29,6 +29,20 @@ function Modify(props) {
     setDefaultData();
   }, [props]);
 
+  //비밀번호 체크
+  const passwordCheck = () => {
+    const pwCheck = prompt("비밀번호를 입력하세요.");
+    if(pwCheck === props.plan.password) {
+      return true;
+    }else if(pwCheck === null){           //취소버튼 눌렀을 경우
+      return false;
+    } else {
+      alert("비밀번호가 일치하지 않습니다.")
+      return false;
+    }
+  }
+
+  //DB에 수정 데이터 반영
   const planUpdateApi = () => {
     axios
       .put('http://localhost:8081/api/planUpdate', {
@@ -40,10 +54,12 @@ function Modify(props) {
         content: updateData.content,
         bgcolor: props.plan.bgcolor,
         floor: props.plan.floor,
+        password: props.plan.password
       })
       .then(props.onChange);
   };
 
+  //삭제 버튼 클릭
   const delete_btn = (e) => {
     if (window.confirm(`삭제 '${props.plan.title}'`)) {
       axios
@@ -58,6 +74,7 @@ function Modify(props) {
     e.calendar.render();
   };
 
+  //모달 창 디자인
   const modalStyle = {
     overlay: {
       position: 'fixed',
@@ -143,27 +160,23 @@ function Modify(props) {
             />
           </div>
 
-          <br />
-
-          <Form.Group as={Col} md='4' controlId='va' className='formPassword'>
-            <Form.Control
-              required
-              type='password'
-              placeholder='비밀번호'
-              // defaultValue='비밀번호'
-            />
-            <Form.Control.Feedback type='invalid'>
-              Looks good!
-            </Form.Control.Feedback>
-          </Form.Group>
+          <br/>
 
           <div className='formbutton'>
-            <Button type='button' variant='primary' onClick={planUpdateApi}>
-              수정
-            </Button>
-            <Button type='button' variant='danger' onClick={delete_btn}>
-              삭제
-            </Button>
+            <Button type='button' variant='primary' 
+            onClick={()=>{
+              if(passwordCheck()){
+                planUpdateApi();
+              }
+              }}>수정</Button>
+
+            <Button type='button' variant='danger' 
+             onClick={()=>{
+              if(passwordCheck()){
+              delete_btn();
+              }
+              }}>삭제</Button>
+
             <Button
               type='button'
               variant='outline-secondary'
