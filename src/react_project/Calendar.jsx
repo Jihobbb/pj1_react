@@ -13,6 +13,7 @@ import Modify from './Modify';
 
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import { click } from '@testing-library/user-event/dist/click';
 
 const Calendar = () => {
   const [modal_state, setModal_state] = useState(false);
@@ -140,24 +141,6 @@ const Calendar = () => {
 
   return (
     <div>
-      <ButtonGroup className='toggleBtnGroup'>
-        {radios.map((radio, idx) => (
-          <ToggleButton
-            className='toggleBtn'
-            key={idx}
-            id={`radio-${idx}`}
-            type='radio'
-            variant={idx % 2 ? 'outline-dark' : 'outline-dark'}
-            name='radio'
-            value={radio.value}
-            checked={togleBtn === radio.value}
-            onChange={(e) => setTogleBtn(e.currentTarget.value)}
-          >
-            {radio.name}
-          </ToggleButton>
-        ))}
-      </ButtonGroup>
-
       {/* 입력폼 Props */}
       <InputInfo
         modal_state={modal_state}
@@ -181,19 +164,35 @@ const Calendar = () => {
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin, googleCalendarPlugin]}
         googleCalendarApiKey={'AIzaSyDuIfK2-Xqvji3V8FC8q9mlXVdX5kYmNEo'}
         locale='ko'
-        businessHours={false} // 주말 색깔 블러 처리
+        //CustomButtons
+        customButtons={{
+          floor2F:{
+            text: '2층',
+            click: function() {
+              setTogleBtn('2')
+            }
+          },
+          floor3F:{
+            text: '3층',
+            click: function() {
+              setTogleBtn('3')
+            }
+          }
+        }}
+
         headerToolbar={{
-          left: 'prev',
+          left: 'prev floor2F,floor3F next',
           center: 'title',
-          right: 'today dayGridMonth timeGridWeek listWeek next',
+          right: 'today dayGridMonth timeGridWeek listWeek',
         }}
         initialView='timeGridWeek'
         //------------이벤트 리스트 정의---------------
         events={
-/** 
+//** 
           {
             googleCalendarId: 'ko.south_korea#holiday@group.v.calendar.google.com',
-            color: 'red'
+            display: 'background',
+            textColor:'white'
           }
 /*/
           planList.map((planList) => ({
@@ -212,6 +211,7 @@ const Calendar = () => {
         }))
 //*/
       }
+      
         //------------설정 값 정리---------------
         eventClick={handleEventClick}
         select={handleDateSelect}
@@ -220,6 +220,7 @@ const Calendar = () => {
 
         slotMinTime = {'07:00:00'}  //시간 범위 설정
         slotMaxTime = {'20:00:00'}  
+        expandRows={true}
 
         dayMaxEvents={6}
         weekends={false}
