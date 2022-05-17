@@ -7,6 +7,7 @@ import './Calendar.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
+import { DaySeriesModel } from 'fullcalendar';
 
 function InputInfo(props) {
   const [inputData, setData] = useState({
@@ -18,6 +19,7 @@ function InputInfo(props) {
   });
 
   const [selectedColor, setSelectedColor] = useState('선택 ▼');
+  const [selectedRgb, setSelectedRgb] = useState('');
   const [iActive, setActive] = useState(false);
 
   //컬러 선택하는 리스트 출력 여부
@@ -25,11 +27,13 @@ function InputInfo(props) {
     setActive(!iActive);
   };
 
+  console.log(selectedRgb);
+  console.log(selectedColor);
+
   //모달창이 켜지거나 꺼질 떄마다 Inpudata초기화
   useEffect(() => {
     inputDataRefresh();
   }, [props.modal_state]);
-
 
   //일정 컬러 목록
   const color_list = [
@@ -43,7 +47,6 @@ function InputInfo(props) {
 
   //컬러 선택
   const SelectColor = (props) => {
-
     //리스트에서 컬러 클릭시
     const onSelect = () => {
       setData({
@@ -66,6 +69,7 @@ function InputInfo(props) {
     return (
       <div>
         <ul className='selectul' onClick={active}>
+          <span style={{ color: selectedRgb, paddingRight: '15px' }}>●</span>
           {selectedColor}
           {iActive &&
             props.colorList.map((c) => (
@@ -73,6 +77,8 @@ function InputInfo(props) {
                 className='selectli'
                 onClick={() => {
                   setSelectedColor(c.color);
+                  setSelectedRgb(c.value);
+                  console.log('asd', selectedColor);
                   onSelect();
                 }}
                 key={c.value}
@@ -96,7 +102,7 @@ function InputInfo(props) {
       bgcolor: '',
       password: null,
     });
-    setSelectedColor('선택 ▼')
+    setSelectedColor('선택 ▼');
   };
 
   const planSaveApi = () => {
