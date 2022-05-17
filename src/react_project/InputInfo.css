@@ -4,11 +4,14 @@
   width: 18%;
 } */
 /* form 공용 */
+.info_form {
+  background-color: white;
+}
 .formSelect {
   height: 35px;
   width: 20%;
 }
-.info_partic {
+.modinfo_partic {
   height: 30px;
   width: 77%;
 }
@@ -21,49 +24,92 @@
 .formbutton > Button {
   margin: 3px;
 }
-/* inputinfo */
-.info_form {
+
+/* select */
+.Sel_input_Box {
+  display: flex;
+}
+.selectul {
+  width: 100%;
+  height: 39px;
+  padding: 0;
+  text-align: center;
+  line-height: 2.3;
+  border: 1px solid black;
+}
+
+.selectli {
+  list-style: none;
+  text-align: left;
+  padding-left: 5px;
+  border: 1px solid black;
   background-color: white;
 }
+.selectli::after {
+}
+
+.selectBox {
+  width: 25%;
+  height: 45px;
+  z-index: 99;
+}
+
+/* inputinfo */
+
 .input_head_text {
   height: 41px;
   width: 100%;
   margin-left: 2%;
 }
-.input_body_text {
-  display: inline;
-  height: 41px;
-  width: 20%;
-  background-color: aqua;
+.inputBox {
+  width: 77.3%;
+}
 
-  padding-right: 7.2%;
+/* 참여자 */
+.inputinfo_body {
+  display: flex;
+  width: 100%;
+}
+
+.input_body_text {
+  width: 25%;
+  font-size: 20px;
+  text-align: center;
+}
+.inputBox2 {
+  width: 77.3%;
 }
 
 .input_partic {
-  height: 35px;
-  width: 77%;
+  height: 41px;
+  width: 100%;
   margin-left: 2%;
 }
+
 .formPassword {
   display: inline-block;
 }
 /* modify */
+.modifyhead {
+  display: flex;
+}
 .modify_info_head_text {
-  display: inline;
+  width: 25%;
+  font-size: 20px;
   text-align: center;
-  margin-right: 8.2%;
-  padding-left: 16px;
 }
 .modify_info_body_text {
   height: 30px;
   width: 77%;
 }
+
+.info_body {
+  display: flex;
+}
 .info_body_text {
-  display: inline;
-  margin-right: 5.2%;
+  width: 25%;
+  font-size: 20px;
   text-align: center;
-  padding-left: 16px;
-  font-size: large;
 }
 
 .formPassword2 {
@@ -81,30 +127,3 @@ a {
   text-decoration: none;
   color: #333;
 } */
-
-.selectul {
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  text-align: center;
-  border: 1px solid black;
-}
-
-.Sel_input_Box {
-  display: flex;
-}
-
-.selectli {
-  list-style: none;
-  border-bottom: 1px solid;
-}
-.selectli::after {
-}
-
-.selectBox {
-  width: 25%;
-  height: 100%;
-}
-.inputBox {
-  width: 77.3%;
-}

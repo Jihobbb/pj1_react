@@ -7,7 +7,6 @@ import './Calendar.css';
 
 import Button from 'react-bootstrap/Button';
 
-
 function Modify(props) {
   const [updateData, setData] = useState({
     title: '',
@@ -39,7 +38,7 @@ function Modify(props) {
         content: updateData.content,
         bgcolor: props.plan.bgcolor,
         floor: props.plan.floor,
-        password: props.plan.password
+        password: props.plan.password,
       })
       .then(props.onChange);
   };
@@ -79,6 +78,7 @@ function Modify(props) {
       borderRadius: '20px',
       margin: '0 auto',
       width: '60%',
+
       height: '50%',
 
       zIndex: 10,
@@ -94,8 +94,8 @@ function Modify(props) {
         ariaHideApp={false}
       >
         <form className='info_form'>
-          <div>
-            <h5 className='modify_info_head_text'>제목</h5>
+          <div className='modifyhead'>
+            <div className='modify_info_head_text'>제목</div>
             <input
               type='text'
               value={updateData.title}
@@ -112,11 +112,11 @@ function Modify(props) {
           <br />
 
           <div className='info_body'>
-            <h4 className='info_body_text'>참여자</h4>
+            <div className='info_body_text'>참여자</div>
             <input
               type='text'
               value={updateData.people}
-              className='info_partic'
+              className='modinfo_partic'
               onChange={(e) => {
                 setData({
                   ...updateData,
@@ -145,22 +145,32 @@ function Modify(props) {
             />
           </div>
 
-          <br/>
+          <br />
 
           <div className='formbutton'>
-            <Button type='button' variant='primary' 
-            onClick={()=>{
-              if(props.pwCheck(props.plan.password)){
-                planUpdateApi();
-              }
-              }}>수정</Button>
+            <Button
+              type='button'
+              variant='primary'
+              onClick={() => {
+                if (props.pwCheck(props.plan.password)) {
+                  planUpdateApi();
+                }
+              }}
+            >
+              수정
+            </Button>
 
-            <Button type='button' variant='danger' 
-             onClick={()=>{
-              if(props.pwCheck(props.plan.password)){
-              delete_btn();
-              }
-              }}>삭제</Button>
+            <Button
+              type='button'
+              variant='danger'
+              onClick={() => {
+                if (props.pwCheck(props.plan.password)) {
+                  delete_btn();
+                }
+              }}
+            >
+              삭제
+            </Button>
 
             <Button
               type='button'

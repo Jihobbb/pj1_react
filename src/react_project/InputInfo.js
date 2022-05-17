@@ -21,7 +21,7 @@ function InputInfo(props) {
   const [iActive, setActive] = useState(false);
 
   const active = () => {
-    setActive(! iActive)
+    setActive(!iActive);
   };
 
   //모달창이 켜지거나 꺼질 떄마다 Inpudata초기화
@@ -58,10 +58,7 @@ function InputInfo(props) {
 
     return (
       <div>
-        <ul
-          className='selectul'
-          onClick={active}
-        >
+        <ul className='selectul' onClick={active}>
           {selectedColor}
           {iActive &&
             props.colorList.map((c) => (
@@ -69,11 +66,11 @@ function InputInfo(props) {
                 className='selectli'
                 onClick={() => {
                   setSelectedColor(c.color);
-                  onSelect();                 
-                }}               
+                  onSelect();
+                }}
                 key={c.value}
-              >               
-                <span style={{ color: c.value }}>●</span>
+              >
+                <span style={{ color: c.value, paddingRight: '15px' }}>●</span>
                 {c.color}
               </li>
             ))}
@@ -165,22 +162,23 @@ function InputInfo(props) {
               />
             </div>
           </div>
-
           <br />
 
-          <div className='info_body'>
-            <h5 className='input_body_text'>참여자</h5>
-            <input
-              type='text'
-              placeholder='참여자'
-              className='input_partic'
-              onChange={(e) =>
-                setData({
-                  ...inputData,
-                  people: e.target.value,
-                })
-              }
-            />
+          <div className='inputinfo_body'>
+            <div className='input_body_text'>참여자</div>
+            <div className='inputBox2'>
+              <input
+                type='text'
+                placeholder='참여자'
+                className='input_partic'
+                onChange={(e) =>
+                  setData({
+                    ...inputData,
+                    people: e.target.value,
+                  })
+                }
+              />
+            </div>
           </div>
 
           <br />
