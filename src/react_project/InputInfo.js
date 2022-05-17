@@ -5,7 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './InputInfo.css';
 import './Calendar.css';
 import Button from 'react-bootstrap/Button';
-import Feedback from 'react-bootstrap/Feedback';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 
@@ -15,17 +14,14 @@ function InputInfo(props) {
     people: '',
     content: '',
     bgcolor: '',
-    colorname: '',
     password: '',
   });
-  const [seitem, setSeItem] = useState('선택 ▼');
+
+  const [selectedColor, setSelectedColor] = useState('선택 ▼');
   const [iActive, setActive] = useState(false);
+
   const active = () => {
-    if (iActive === false) {
-      setActive(true);
-    } else if (iActive === true) {
-      setActive(false);
-    }
+    setActive(! iActive)
   };
 
   //모달창이 켜지거나 꺼질 떄마다 Inpudata초기화
@@ -43,13 +39,11 @@ function InputInfo(props) {
   ];
 
   const SelectColor = (props) => {
-    const onSelect = (e) => {
+    const onSelect = () => {
       setData({
         ...inputData,
-        bgcolor: findColorByName(e.target.value),
-        colorname: e.target.value,
+        bgcolor: findColorByName(selectedColor),
       });
-      console.log('ss2', inputData.colorname);
     };
 
     const findColorByName = (color) => {
@@ -67,21 +61,18 @@ function InputInfo(props) {
         <ul
           className='selectul'
           onClick={active}
-          onChange={onSelect}
-          value={inputData.colorname}
         >
-          {seitem}
+          {selectedColor}
           {iActive &&
             props.colorList.map((c) => (
               <li
                 className='selectli'
-                onClick={(e) => {
-                  setSeItem(c.color);
-                  console.log('ss', c.color);
-                  console.log('ss2', seitem);
-                }}
+                onClick={() => {
+                  setSelectedColor(c.color);
+                  onSelect();                 
+                }}               
                 key={c.value}
-              >
+              >               
                 <span style={{ color: c.value }}>●</span>
                 {c.color}
               </li>
@@ -99,7 +90,6 @@ function InputInfo(props) {
       people: '',
       content: '',
       bgcolor: '',
-      colorname: '',
       password: null,
     });
   };
