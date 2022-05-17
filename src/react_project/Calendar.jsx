@@ -11,10 +11,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Calendar.css';
 import Modify from './Modify';
 
-import ToggleButton from 'react-bootstrap/ToggleButton';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import { click } from '@testing-library/user-event/dist/click';
-
 const Calendar = () => {
   const [modal_state, setModal_state] = useState(false);
   const [modify_state, setModify_state] = useState(false);
@@ -40,6 +36,7 @@ const Calendar = () => {
     { name: '3층', value: '3' },
   ];
 
+
   //전체 일정 GET
   const getdata = async () => {
     const response = await axios.get('http://localhost:8081/api/planList');
@@ -53,6 +50,25 @@ const Calendar = () => {
   useEffect(() => {
     getdata();
   }, [togleBtn, modal_state, modify_state, refresh]);
+
+  //PlanList매핑
+  const planListMapping = (planList) => {
+    const dataList = planList.map((planList) => ({
+      id: planList.id,
+      title: planList.title,
+      start: planList.start_time,
+      end: planList.end_time,
+      backgroundColor: planList.bgcolor,
+      borderColor: planList.bgcolor,
+      extendedProps: {
+        people: planList.people,
+        content: planList.content,
+        floor: planList.floor,
+        password: planList.password
+      },
+    }));
+    return dataList
+  };
 
   //업데이트 API호출
   const updatePlan = (plan) => {
@@ -183,34 +199,18 @@ const Calendar = () => {
         headerToolbar={{
           left: 'prev floor2F,floor3F next',
           center: 'title',
-          right: 'today dayGridMonth timeGridWeek listWeek',
+          right: 'today dayGridMonth timeGridWeek listWeek'
         }}
         initialView='timeGridWeek'
         //------------이벤트 리스트 정의---------------
-        events={
-//** 
+
+        eventSources={[
+          planListMapping(planList),
           {
-            googleCalendarId: 'ko.south_korea#holiday@group.v.calendar.google.com',
-            display: 'background',
-            textColor:'white'
+              googleCalendarId: 'qduatr3seur835pk4aolok2900@group.calendar.google.com',
+              display: 'background',  
           }
-/*/
-          planList.map((planList) => ({
-          id: planList.id,
-          title: planList.title,
-          start: planList.start_time,
-          end: planList.end_time,
-          backgroundColor: planList.bgcolor,
-          borderColor: planList.bgcolor,
-          extendedProps: {
-            people: planList.people,
-            content: planList.content,
-            floor: planList.floor,
-            password: planList.password
-          },
-        }))
-//*/
-      }
+        ]}
       
         //------------설정 값 정리---------------
         eventClick={handleEventClick}
@@ -222,6 +222,7 @@ const Calendar = () => {
         slotMaxTime = {'20:00:00'}  
         expandRows={true}
 
+        
         dayMaxEvents={6}
         weekends={false}
         eventOverlap={false}  //이벤트 겹쳐지기 막음
