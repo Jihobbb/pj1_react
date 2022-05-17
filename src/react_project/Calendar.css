@@ -12,3 +12,9 @@ a {
   top: 45px;
   left: 200px;
 }
+
+.holiday {
+  background-color: #fff3f3 !important;
+  color: #ff0707;
+  opacity: 1 !important;
+}
