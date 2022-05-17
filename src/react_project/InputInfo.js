@@ -18,8 +18,8 @@ function InputInfo(props) {
     password: '',
   });
 
-  const [selectedColor, setSelectedColor] = useState('선택 ▼');
-  const [selectedRgb, setSelectedRgb] = useState('');
+  const [selectedColor, setSelectedColor] = useState('선택 ▼'); //컬러 이름 만 담은거
+  const [selectedRgb, setSelectedRgb] = useState(''); //  컬러 코드
   const [iActive, setActive] = useState(false);
 
   //컬러 선택하는 리스트 출력 여부
@@ -27,6 +27,7 @@ function InputInfo(props) {
     setActive(!iActive);
   };
 
+  // 지우기
   console.log(selectedRgb);
   console.log(selectedColor);
 
@@ -51,7 +52,7 @@ function InputInfo(props) {
     const onSelect = () => {
       setData({
         ...inputData,
-        bgcolor: findColorByName(selectedColor),
+        bgcolor: findColorByName(selectedRgb),
       });
     };
 
@@ -59,7 +60,7 @@ function InputInfo(props) {
     const findColorByName = (color) => {
       let selectedColorValue;
       props.colorList.map((c) => {
-        if (c.color === color) {
+        if (c.value === color) {
           selectedColorValue = c.value;
         }
       });
@@ -76,9 +77,8 @@ function InputInfo(props) {
               <li
                 className='selectli'
                 onClick={() => {
-                  setSelectedColor(c.color);
-                  setSelectedRgb(c.value);
-                  console.log('asd', selectedColor);
+                  setSelectedColor(c.color); // 이름을 담은거
+                  setSelectedRgb(c.value); // 색상코드 담은거
                   onSelect();
                 }}
                 key={c.value}
