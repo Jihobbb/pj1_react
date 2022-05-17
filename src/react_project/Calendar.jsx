@@ -209,6 +209,7 @@ const Calendar = () => {
           {
               googleCalendarId: 'qduatr3seur835pk4aolok2900@group.calendar.google.com',
               display: 'background',  
+              className:'holiday'
           }
         ]}
       
@@ -222,7 +223,6 @@ const Calendar = () => {
         slotMaxTime = {'20:00:00'}  
         expandRows={true}
 
-        
         dayMaxEvents={6}
         weekends={false}
         eventOverlap={false}  //이벤트 겹쳐지기 막음

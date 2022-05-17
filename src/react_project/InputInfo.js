@@ -20,6 +20,7 @@ function InputInfo(props) {
   const [selectedColor, setSelectedColor] = useState('선택 ▼');
   const [iActive, setActive] = useState(false);
 
+  //컬러 선택하는 리스트 출력 여부
   const active = () => {
     setActive(!iActive);
   };
@@ -29,6 +30,8 @@ function InputInfo(props) {
     inputDataRefresh();
   }, [props.modal_state]);
 
+
+  //일정 컬러 목록
   const color_list = [
     { value: 'none', color: 'none' },
     { value: '#BEC5CB', color: '그레이' },
@@ -38,7 +41,10 @@ function InputInfo(props) {
     { value: '#F3E3AD', color: '옐로우' },
   ];
 
+  //컬러 선택
   const SelectColor = (props) => {
+
+    //리스트에서 컬러 클릭시
     const onSelect = () => {
       setData({
         ...inputData,
@@ -46,6 +52,7 @@ function InputInfo(props) {
       });
     };
 
+    //컬러 이름으로 알맞는 코드를 매칭시켜 리턴
     const findColorByName = (color) => {
       let selectedColorValue;
       props.colorList.map((c) => {
@@ -89,6 +96,7 @@ function InputInfo(props) {
       bgcolor: '',
       password: null,
     });
+    setSelectedColor('선택 ▼')
   };
 
   const planSaveApi = () => {
