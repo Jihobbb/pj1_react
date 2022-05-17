@@ -18,6 +18,15 @@ function InputInfo(props) {
     colorname: '',
     password: '',
   });
+  const [seitem, setSeItem] = useState('선택 ▼');
+  const [iActive, setActive] = useState(false);
+  const active = () => {
+    if (iActive === false) {
+      setActive(true);
+    } else if (iActive === true) {
+      setActive(false);
+    }
+  };
 
   //모달창이 켜지거나 꺼질 떄마다 Inpudata초기화
   useEffect(() => {
@@ -25,7 +34,7 @@ function InputInfo(props) {
   }, [props.modal_state]);
 
   const color_list = [
-    { value: 'none', color: 'Choose' },
+    { value: 'none', color: 'none' },
     { value: '#BEC5CB', color: '그레이' },
     { value: '#F6D8D8', color: '핑크' },
     { value: '#D0D4B2', color: '그린' },
@@ -40,6 +49,7 @@ function InputInfo(props) {
         bgcolor: findColorByName(e.target.value),
         colorname: e.target.value,
       });
+      console.log('ss2', inputData.colorname);
     };
 
     const findColorByName = (color) => {
@@ -53,21 +63,31 @@ function InputInfo(props) {
     };
 
     return (
-      <select
-        className='formSelect'
-        onChange={onSelect}
-        value={inputData.colorname}
-      >
-        {props.colorList.map((c) => (
-          <option
-            key={c.value}
-            disabled={c.color === '==Color==' ? true : false}
-            defaultValue={c.color === '==Color==' ? true : false}
-          >
-            {c.color}
-          </option>
-        ))}
-      </select>
+      <div>
+        <ul
+          className='selectul'
+          onClick={active}
+          onChange={onSelect}
+          value={inputData.colorname}
+        >
+          {seitem}
+          {iActive &&
+            props.colorList.map((c) => (
+              <li
+                className='selectli'
+                onClick={(e) => {
+                  setSeItem(c.color);
+                  console.log('ss', c.color);
+                  console.log('ss2', seitem);
+                }}
+                key={c.value}
+              >
+                <span style={{ color: c.value }}>●</span>
+                {c.color}
+              </li>
+            ))}
+        </ul>
+      </div>
     );
   };
 
@@ -137,70 +157,23 @@ function InputInfo(props) {
         ariaHideApp={false}
       >
         <form className='info_form'>
-          <div>
-            {/* <SelectColor colorList={color_list}></SelectColor> */}
-            <div className='select'>
-              <ul className='menubox'>
-                <li>
-                  <a href='#'>
-                    <span>선택 ▼</span>
-                  </a>
-                  <ul className='select'>
-                    <li>
-                      <a href='#'>
-                        <span className='colorList1' value='CL1'>
-                          ●
-                        </span>
-                        그레이
-                      </a>
-                    </li>
-                    <li>
-                      <a href='#'>
-                        <span className='colorList2' value='CL2'>
-                          ●
-                        </span>
-                        핑크
-                      </a>
-                    </li>
-                    <li>
-                      <a href='#'>
-                        <span className='colorList3' value='CL3'>
-                          ●
-                        </span>
-                        그린
-                      </a>
-                    </li>
-                    <li>
-                      <a href='#'>
-                        <span className='colorList4' value='CL4'>
-                          ●
-                        </span>
-                        블루
-                      </a>
-                    </li>
-                    <li>
-                      <a href='#'>
-                        <span className='colorList5' value='CL5'>
-                          ●
-                        </span>
-                        옐로우
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
+          <div className='Sel_input_Box'>
+            <div className='selectBox'>
+              <SelectColor colorList={color_list}></SelectColor>
             </div>
-            <input
-              type='text'
-              placeholder='제목'
-              className='input_head_text'
-              onChange={(e) =>
-                setData({
-                  ...inputData,
-                  title: e.target.value,
-                })
-              }
-            />
+            <div className='inputBox'>
+              <input
+                type='text'
+                placeholder='제목'
+                className='input_head_text'
+                onChange={(e) =>
+                  setData({
+                    ...inputData,
+                    title: e.target.value,
+                  })
+                }
+              />
+            </div>
           </div>
 
           <br />
