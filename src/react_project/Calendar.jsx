@@ -5,14 +5,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Calendar.css';
 import Modify from './Modify';
 import Planner from './Planner';
-import { propTypes } from 'react-bootstrap/esm/Image';
 
 const Calendar = () => {
   const [modal_state, setModal_state] = useState(false);
   const [modify_state, setModify_state] = useState(false);
+
   const [startStr, setStartStr] = useState('');
   const [endStr, setEndStr] = useState('');
-  const [refresh, setRefresh] = useState(true); // 작업에 실패했는데도 화면에 남아있는 결과값을 새로고침
+  const [refresh, setRefresh] = useState('true')
 
   const [planList, setPlanList] = useState([]);
   const [planData, setData] = useState({
@@ -31,35 +31,17 @@ const Calendar = () => {
   //전체 일정 GET
   const getdata = async () => {
     const response = await axios.get('http://localhost:8081/api/planList');
-    const plans = response.data.filter(function (element) {
-      //층으로 필터링
-      return element.floor === togleBtn;
-    });
-    setPlanList(plans);
+    // const plans = response.data.filter(function (element) {
+    //   //층으로 필터링
+    //   return element.floor === togleBtn;
+    // });
+    setPlanList(response.data);
   };
 
   useEffect(() => {
     getdata();
-  }, [togleBtn, refresh]);
+  }, []);
 
-  //PlanList매핑
-  const planListMapping = (planList) => {
-    const dataList = planList.map((planList) => ({
-      id: planList.id,
-      title: planList.title,
-      start: planList.start_time,
-      end: planList.end_time,
-      backgroundColor: planList.bgcolor,
-      borderColor: planList.bgcolor,
-      extendedProps: {
-        people: planList.people,
-        content: planList.content,
-        floor: planList.floor,
-        password: planList.password
-      },
-    }));
-    return dataList
-  };
 
   //업데이트 API호출
   const updatePlan = (plan) => {
@@ -74,7 +56,7 @@ const Calendar = () => {
         bgcolor: plan.backgroundColor,
         floor: plan.extendedProps.floor,
       })
-      .then((res) => console.log(res));
+      .then();
   };
 
   //일정 state 변경
@@ -102,51 +84,20 @@ const Calendar = () => {
     setModify_state(!modify_state);
   };
 
-  //드래그해서 기간설정
-  const handleDateSelect = (selectInfo) => {
-    setModal_state(!modal_state);
-    setStartStr(selectInfo.startStr);
-    setEndStr(selectInfo.endStr);
-  };
-
-  //일정 클릭
-  const handleEventClick = (clickInfo) => {
-    setModify_state(!modal_state);
-    setPlanStatus(clickInfo.event);
-  };
-
   //비밀번호 체크
   const passwordCheck = (password) => {
     const pwCheck = prompt("비밀번호를 입력하세요.");
     if(pwCheck === password) {
       return true;
-    }else if(pwCheck === null){           //취소버튼 눌렀을 경우
+    }else if(pwCheck === null){   
+      setRefresh(!refresh)        //취소버튼 눌렀을 경우
       return false;
     } else {
       alert("비밀번호가 일치하지 않습니다.")
-      return false;
+      setRefresh(!refresh)
+      return false;    
     }
   }
-
-  //드래깅 드랍 완료
-  const dragAnddrop = (dropInfo) => {
-    if(passwordCheck(dropInfo.event.extendedProps.password)){
-      updatePlan(dropInfo.event);
-    } else {
-      setRefresh(!refresh) 
-    }
-  };
-
-  //이벤트 사이즈 조절
-  const eventSizing = (dragInfo) => {
-    if(passwordCheck(dragInfo.event.extendedProps.password)){
-      updatePlan(dragInfo.event);
-    } else {
-      setRefresh(!refresh) 
-    }   
-  };
-
-  console.log(111111111)
 
   return (
     <div>
@@ -170,13 +121,14 @@ const Calendar = () => {
       />
 
       <Planner
-        floorChange ={setTogleBtn}
         planList = {planList}
-        planListMapping = {planListMapping}
-        handleEventClick = {handleEventClick}
-        handleDateSelect = {handleDateSelect}
-        dragAnddrop = {dragAnddrop}
-        eventSizing = {eventSizing}
+        inputForm={inputFormControl}
+        updateForm={updateFormControl}
+        setStartStr={setStartStr}
+        setEndStr={setEndStr}
+        setPlanStatus={setPlanStatus}
+        update = {updatePlan}
+        passwordCheck = {passwordCheck}
       ></Planner>
     </div>
   );

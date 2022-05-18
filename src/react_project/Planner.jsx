@@ -8,6 +8,55 @@ import googleCalendarPlugin from '@fullcalendar/google-calendar';
 
 
 const Planner = (props) => {
+
+
+    //드래그해서 기간설정
+  const handleDateSelect = (selectInfo) => {
+    props.inputForm();
+    props.setStartStr(selectInfo.startStr);
+    props.setEndStr(selectInfo.endStr);
+  };
+
+  //일정 클릭
+  const handleEventClick = (clickInfo) => {
+    props.updateForm();
+    props.setPlanStatus(clickInfo.event);
+  };
+
+  //드래깅 드랍 완료
+  const dragAnddrop = (dropInfo) => {
+    if(props.passwordCheck(dropInfo.event.extendedProps.password)){
+      props.update(dropInfo.event);
+    } 
+  };
+
+  //이벤트 사이즈 조절
+  const eventSizing = (dragInfo) => {
+    if(props.passwordCheck(dragInfo.event.extendedProps.password)){
+      props.update(dragInfo.event);
+    }    
+  };
+
+  //PlanList매핑
+  const planListMapping = () => {
+    console.log('props.planList', props.planList)
+    const dataList = props.planList.map((planList) => ({
+      id: planList.id,
+      title: planList.title,
+      start: planList.start_time,
+      end: planList.end_time,
+      backgroundColor: planList.bgcolor,
+      borderColor: planList.bgcolor,
+      extendedProps: {
+        people: planList.people,
+        content: planList.content,
+        floor: planList.floor,
+        password: planList.password
+      },
+    }));
+    return dataList
+  };
+
     return (
     <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin, googleCalendarPlugin]}
@@ -38,7 +87,7 @@ const Planner = (props) => {
         //------------이벤트 리스트 정의---------------
 
         eventSources={[
-          props.planListMapping(props.planList),
+          planListMapping(),
           {
               googleCalendarId: 'qduatr3seur835pk4aolok2900@group.calendar.google.com',
               display: 'background',  
@@ -47,8 +96,8 @@ const Planner = (props) => {
         ]}
       
         //------------설정 값 정리---------------
-        eventClick={props.handleEventClick}
-        select={props.handleDateSelect}
+        eventClick={handleEventClick}
+        select={handleDateSelect}
         selectable={true} //드래그 가능 여부
         selectMirror={true}
 
@@ -66,8 +115,8 @@ const Planner = (props) => {
         eventStartEditable={true}
         eventResizableFromStart={true}
         droppable={true}
-        eventDrop={props.dragAnddrop} //일정 옮겨서 떨어뜨릴 때 발생
-        eventResize={props.eventSizing} //일정을 크기조절하여 기간 변경 시 발생
+       eventDrop={dragAnddrop} //일정 옮겨서 떨어뜨릴 때 발생
+       eventResize={eventSizing} //일정을 크기조절하여 기간 변경 시 발생
       />
     )
 };
