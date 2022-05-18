@@ -12,6 +12,9 @@ a {
   top: 45px;
   left: 200px;
 }
-.fc-bg-event.fc-event.fc-event-start.fc-event-end.fc-event-past {
-  background-color: coral;
+
+.holiday {
+  background-color: #fff3f3 !important;
+  color: #ff0707;
+  opacity: 1 !important;
 }

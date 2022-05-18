@@ -5,9 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './InputInfo.css';
 import './Calendar.css';
 import Button from 'react-bootstrap/Button';
-import Feedback from 'react-bootstrap/Feedback';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
+import { DaySeriesModel } from 'fullcalendar';
 
 function InputInfo(props) {
   const [inputData, setData] = useState({
@@ -15,17 +15,30 @@ function InputInfo(props) {
     people: '',
     content: '',
     bgcolor: '',
-    colorname: '',
     password: '',
   });
+
+  const [selectedColor, setSelectedColor] = useState('선택 ▼'); //컬러 이름 만 담은거
+  const [selectedRgb, setSelectedRgb] = useState(''); //  컬러 코드
+  const [iActive, setActive] = useState(false);
+
+  //컬러 선택하는 리스트 출력 여부
+  const active = () => {
+    setActive(!iActive);
+  };
+
+  // 지우기
+  console.log(selectedRgb);
+  console.log(selectedColor);
 
   //모달창이 켜지거나 꺼질 떄마다 Inpudata초기화
   useEffect(() => {
     inputDataRefresh();
   }, [props.modal_state]);
 
+  //일정 컬러 목록
   const color_list = [
-    { value: 'none', color: 'Choose' },
+    { value: 'none', color: 'none' },
     { value: '#BEC5CB', color: '그레이' },
     { value: '#F6D8D8', color: '핑크' },
     { value: '#D0D4B2', color: '그린' },
@@ -33,19 +46,21 @@ function InputInfo(props) {
     { value: '#F3E3AD', color: '옐로우' },
   ];
 
+  //컬러 선택
   const SelectColor = (props) => {
-    const onSelect = (e) => {
+    //리스트에서 컬러 클릭시
+    const onSelect = () => {
       setData({
         ...inputData,
-        bgcolor: findColorByName(e.target.value),
-        colorname: e.target.value,
+        bgcolor: findColorByName(selectedRgb),
       });
     };
 
+    //컬러 이름으로 알맞는 코드를 매칭시켜 리턴
     const findColorByName = (color) => {
       let selectedColorValue;
       props.colorList.map((c) => {
-        if (c.color === color) {
+        if (c.value === color) {
           selectedColorValue = c.value;
         }
       });
@@ -53,21 +68,27 @@ function InputInfo(props) {
     };
 
     return (
-      <select
-        className='formSelect'
-        onChange={onSelect}
-        value={inputData.colorname}
-      >
-        {props.colorList.map((c) => (
-          <option
-            key={c.value}
-            disabled={c.color === '==Color==' ? true : false}
-            defaultValue={c.color === '==Color==' ? true : false}
-          >
-            {c.color}
-          </option>
-        ))}
-      </select>
+      <div>
+        <ul className='selectul' onClick={active}>
+          <span style={{ color: selectedRgb, paddingRight: '15px' }}>●</span>
+          {selectedColor}
+          {iActive &&
+            props.colorList.map((c) => (
+              <li
+                className='selectli'
+                onClick={() => {
+                  setSelectedColor(c.color); // 이름을 담은거
+                  setSelectedRgb(c.value); // 색상코드 담은거
+                  onSelect();
+                }}
+                key={c.value}
+              >
+                <span style={{ color: c.value, paddingRight: '15px' }}>●</span>
+                {c.color}
+              </li>
+            ))}
+        </ul>
+      </div>
     );
   };
 
@@ -79,9 +100,9 @@ function InputInfo(props) {
       people: '',
       content: '',
       bgcolor: '',
-      colorname: '',
-      password:null
+      password: null,
     });
+    setSelectedColor('선택 ▼');
   };
 
   const planSaveApi = () => {
@@ -98,8 +119,8 @@ function InputInfo(props) {
         password: inputData.password,
       })
       .then(props.onChange)
-      .catch(error => {
-        alert("비밀번호를 입력하세요")
+      .catch((error) => {
+        alert('비밀번호를 입력하세요');
       });
   };
 
@@ -137,36 +158,41 @@ function InputInfo(props) {
         ariaHideApp={false}
       >
         <form className='info_form'>
-          <div>
-            <SelectColor colorList={color_list}></SelectColor>
-            <input
-              type='text'
-              placeholder='제목'
-              className='input_head_text'
-              onChange={(e) =>
-                setData({
-                  ...inputData,
-                  title: e.target.value,
-                })
-              }
-            />
+          <div className='Sel_input_Box'>
+            <div className='selectBox'>
+              <SelectColor colorList={color_list}></SelectColor>
+            </div>
+            <div className='inputBox'>
+              <input
+                type='text'
+                placeholder='제목'
+                className='input_head_text'
+                onChange={(e) =>
+                  setData({
+                    ...inputData,
+                    title: e.target.value,
+                  })
+                }
+              />
+            </div>
           </div>
-
           <br />
 
-          <div className='info_body'>
-            <h5 className='input_body_text'>참여자</h5>
-            <input
-              type='text'
-              placeholder='참여자'
-              className='input_partic'
-              onChange={(e) =>
-                setData({
-                  ...inputData,
-                  people: e.target.value,
-                })
-              }
-            />
+          <div className='inputinfo_body'>
+            <div className='input_body_text'>참여자</div>
+            <div className='inputBox2'>
+              <input
+                type='text'
+                placeholder='참여자'
+                className='input_partic'
+                onChange={(e) =>
+                  setData({
+                    ...inputData,
+                    people: e.target.value,
+                  })
+                }
+              />
+            </div>
           </div>
 
           <br />
