@@ -12,7 +12,6 @@ const Calendar = () => {
 
   const [startStr, setStartStr] = useState('');
   const [endStr, setEndStr] = useState('');
-  const [refresh, setRefresh] = useState('true')
 
   const [planList, setPlanList] = useState([]);
   const [planData, setData] = useState({
@@ -90,11 +89,11 @@ const Calendar = () => {
     if(pwCheck === password) {
       return true;
     }else if(pwCheck === null){   
-      setRefresh(!refresh)        //취소버튼 눌렀을 경우
+      getdata()        //취소버튼 눌렀을 경우
       return false;
     } else {
       alert("비밀번호가 일치하지 않습니다.")
-      setRefresh(!refresh)
+      getdata()
       return false;    
     }
   }
