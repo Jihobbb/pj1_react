@@ -106,6 +106,7 @@ const Calendar = () => {
         start={startStr}
         end={endStr}
         floorStatus={togleBtn}
+        refresh={getdata}
         onChange={inputFormControl}
       />
 
@@ -116,6 +117,7 @@ const Calendar = () => {
         plan={planData}
         start={startStr}
         end={endStr}
+        refresh={getdata}
         pwCheck = {passwordCheck}
       />
 
@@ -128,6 +130,8 @@ const Calendar = () => {
         setPlanStatus={setPlanStatus}
         update = {updatePlan}
         passwordCheck = {passwordCheck}
+        floorStatus = {togleBtn}
+        floorChange = {setTogleBtn}
       ></Planner>
     </div>
   );

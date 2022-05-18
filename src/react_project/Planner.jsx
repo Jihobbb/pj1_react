@@ -39,7 +39,6 @@ const Planner = (props) => {
 
   //PlanList매핑
   const planListMapping = () => {
-    console.log('props.planList', props.planList)
     const dataList = props.planList.map((planList) => ({
       id: planList.id,
       title: planList.title,
@@ -56,6 +55,8 @@ const Planner = (props) => {
     }));
     return dataList
   };
+
+
 
     return (
     <FullCalendar

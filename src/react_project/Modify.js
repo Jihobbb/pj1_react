@@ -40,7 +40,10 @@ function Modify(props) {
         floor: props.plan.floor,
         password: props.plan.password,
       })
-      .then(props.onChange);
+      .then(()=>{
+        props.onChange();
+        props.refresh();
+      });
   };
 
   //삭제 버튼 클릭
@@ -50,6 +53,7 @@ function Modify(props) {
         .delete(`http://localhost:8081/api/planDelete/${props.plan.id}`)
         .then(function () {
           props.onChange();
+          props.refresh();
         })
         .catch(function (error) {
           console.log('delErr', error);
