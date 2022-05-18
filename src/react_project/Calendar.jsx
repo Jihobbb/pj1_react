@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import FullCalendar, { formatDate } from '@fullcalendar/react'; // must go before plugins
-import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
-import timeGridPlugin from '@fullcalendar/timegrid';
-import interactionPlugin from '@fullcalendar/interaction';
-import listPlugin from '@fullcalendar/list';
 import InputInfo from './InputInfo';
-import googleCalendarPlugin from '@fullcalendar/google-calendar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Calendar.css';
 import Modify from './Modify';
+import Planner from './Planner';
+import { propTypes } from 'react-bootstrap/esm/Image';
 
 const Calendar = () => {
   const [modal_state, setModal_state] = useState(false);
@@ -31,11 +27,6 @@ const Calendar = () => {
 
   const [togleBtn, setTogleBtn] = useState('2'); //층 상태
 
-  const radios = [
-    { name: '2층', value: '2' },
-    { name: '3층', value: '3' },
-  ];
-
 
   //전체 일정 GET
   const getdata = async () => {
@@ -49,7 +40,7 @@ const Calendar = () => {
 
   useEffect(() => {
     getdata();
-  }, [togleBtn, modal_state, modify_state, refresh]);
+  }, [togleBtn, refresh]);
 
   //PlanList매핑
   const planListMapping = (planList) => {
@@ -155,6 +146,8 @@ const Calendar = () => {
     }   
   };
 
+  console.log(111111111)
+
   return (
     <div>
       {/* 입력폼 Props */}
@@ -176,66 +169,15 @@ const Calendar = () => {
         pwCheck = {passwordCheck}
       />
 
-      <FullCalendar
-        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin, googleCalendarPlugin]}
-        googleCalendarApiKey={'AIzaSyDuIfK2-Xqvji3V8FC8q9mlXVdX5kYmNEo'}
-        locale='ko'
-        //CustomButtons
-        customButtons={{
-          floor2F:{
-            text: '2층',
-            click: function() {
-              setTogleBtn('2')
-            }
-          },
-          floor3F:{
-            text: '3층',
-            click: function() {
-              setTogleBtn('3')
-            }
-          }
-        }}
-
-        headerToolbar={{
-          left: 'prev floor2F,floor3F next',
-          center: 'title',
-          right: 'today dayGridMonth timeGridWeek listWeek'
-        }}
-        initialView='timeGridWeek'
-        //------------이벤트 리스트 정의---------------
-
-        eventSources={[
-          planListMapping(planList),
-          {
-              googleCalendarId: 'qduatr3seur835pk4aolok2900@group.calendar.google.com',
-              display: 'background',  
-              className:'holiday'
-          }
-        ]}
-      
-        //------------설정 값 정리---------------
-        eventClick={handleEventClick}
-        select={handleDateSelect}
-        selectable={true} //드래그 가능 여부
-        selectMirror={true}
-
-        slotMinTime = {'07:00:00'}  //시간 범위 설정
-        slotMaxTime = {'20:00:00'}  
-        expandRows={true}
-
-        dayMaxEvents={6}
-        weekends={false}
-        eventOverlap={false}  //이벤트 겹쳐지기 막음
-        selectOverlap={false} //등록시에도 겹쳐지지 않음
-        dayMaxEventRows={true}
-        //------------드래깅으로 수정--------------
-        editable={true} // 수정 가능
-        eventStartEditable={true}
-        eventResizableFromStart={true}
-        droppable={true}
-        eventDrop={dragAnddrop} //일정 옮겨서 떨어뜨릴 때 발생
-        eventResize={eventSizing} //일정을 크기조절하여 기간 변경 시 발생
-      />
+      <Planner
+        floorChange ={setTogleBtn}
+        planList = {planList}
+        planListMapping = {planListMapping}
+        handleEventClick = {handleEventClick}
+        handleDateSelect = {handleDateSelect}
+        dragAnddrop = {dragAnddrop}
+        eventSizing = {eventSizing}
+      ></Planner>
     </div>
   );
 };
