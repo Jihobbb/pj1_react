@@ -7,7 +7,6 @@ import './Calendar.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
-import { DaySeriesModel } from 'fullcalendar';
 
 function InputInfo(props) {
   const [inputData, setData] = useState({

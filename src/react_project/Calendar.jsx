@@ -14,6 +14,7 @@ const Calendar = () => {
   const [endStr, setEndStr] = useState('');
 
   const [planList, setPlanList] = useState([]);
+  const [holidayList,setHolidayList] = useState([]);
   const [planData, setData] = useState({
     id: '',
     title: '',
@@ -30,11 +31,9 @@ const Calendar = () => {
   //전체 일정 GET
   const getdata = async () => {
     const response = await axios.get('http://localhost:8081/api/planList');
-    // const plans = response.data.filter(function (element) {
-    //   //층으로 필터링
-    //   return element.floor === togleBtn;
-    // });
+    const response2 = await axios.get('http://localhost:8081/api/HolidayList')
     setPlanList(response.data);
+    setHolidayList(response2.data);
   };
 
   useEffect(() => {
@@ -123,14 +122,17 @@ const Calendar = () => {
 
       <Planner
         planList = {planList}
+        holidayList = {holidayList}
         inputForm={inputFormControl}
         updateForm={updateFormControl}
         setStartStr={setStartStr}
         setEndStr={setEndStr}
+
+        refresh={getdata}
+        
         setPlanStatus={setPlanStatus}
         update = {updatePlan}
         passwordCheck = {passwordCheck}
-        floorStatus = {togleBtn}
         floorChange = {setTogleBtn}
       ></Planner>
     </div>
