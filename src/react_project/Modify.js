@@ -1,10 +1,5 @@
 import axios from 'axios';
-import React, {
-  useEffect,
-  useState,
-  forwardRef,
-  useImperativeHandle,
-} from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './InputInfo.css';
@@ -12,16 +7,7 @@ import './Calendar.css';
 
 import Button from 'react-bootstrap/Button';
 
-const Modify = forwardRef((props, ref) => {
-  useImperativeHandle(ref, () => ({
-    showAlert() {
-      alert('hi');
-    },
-  }));
-  const [modifyModal, setModifyModal] = useState(false);
-  const asd = () => {
-    setModifyModal(!modifyModal);
-  };
+function Modify(props) {
   const [updateData, setData] = useState({
     title: '',
     people: '',
@@ -54,7 +40,7 @@ const Modify = forwardRef((props, ref) => {
         floor: props.plan.floor,
         password: props.plan.password,
       })
-      .then(() => {
+      .then(()=>{
         props.onChange();
         props.refresh();
       });
@@ -106,9 +92,7 @@ const Modify = forwardRef((props, ref) => {
   return (
     <div>
       <Modal
-        isOpen={modifyModal}
-        //{modal_state} //true시 모달이 나옴 버튼 클릭시 false에서 트루로?
-        // modify_state
+        isOpen={props.modify_state} //{modal_state} //true시 모달이 나옴 버튼 클릭시 false에서 트루로?
         style={modalStyle} //모달창 스타일
         //onRequestClose={false} // 오버레이나 esc를 누르면 isopen값이 false 닫힘
         ariaHideApp={false}
@@ -192,7 +176,11 @@ const Modify = forwardRef((props, ref) => {
               삭제
             </Button>
 
-            <Button type='button' variant='outline-secondary' onClick={asd}>
+            <Button
+              type='button'
+              variant='outline-secondary'
+              onClick={props.onChange}
+            >
               취소
             </Button>
           </div>
@@ -200,7 +188,7 @@ const Modify = forwardRef((props, ref) => {
       </Modal>
     </div>
   );
-});
+}
 Modal.setAppElement('#root');
 
 export default Modify;

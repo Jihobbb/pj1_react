@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import InputInfo from './InputInfo';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -21,10 +21,11 @@ const Calendar = () => {
     content: '',
     bgcolor: '',
     floor: '',
-    password: '',
+    password:'',
   });
 
   const [togleBtn, setTogleBtn] = useState('2'); //층 상태
+
 
   //전체 일정 GET
   const getdata = async () => {
@@ -39,6 +40,7 @@ const Calendar = () => {
   useEffect(() => {
     getdata();
   }, []);
+
 
   //업데이트 API호출
   const updatePlan = (plan) => {
@@ -65,7 +67,7 @@ const Calendar = () => {
       content: Info.extendedProps.content,
       bgcolor: Info.backgroundColor,
       floor: Info.extendedProps.floor,
-      password: Info.extendedProps.password,
+      password: Info.extendedProps.password
     });
     setStartStr(Info.start);
     setEndStr(Info.end);
@@ -77,25 +79,24 @@ const Calendar = () => {
   };
 
   //수정 폼 온오프
-
   const updateFormControl = () => {
     setModify_state(!modify_state);
   };
 
   //비밀번호 체크
   const passwordCheck = (password) => {
-    const pwCheck = prompt('비밀번호를 입력하세요.');
-    if (pwCheck === password) {
+    const pwCheck = prompt("비밀번호를 입력하세요.");
+    if(pwCheck === password) {
       return true;
-    } else if (pwCheck === null) {
-      getdata(); //취소버튼 눌렀을 경우
+    }else if(pwCheck === null){   
+      getdata()        //취소버튼 눌렀을 경우
       return false;
     } else {
-      alert('비밀번호가 일치하지 않습니다.');
-      getdata();
-      return false;
+      alert("비밀번호가 일치하지 않습니다.")
+      getdata()
+      return false;    
     }
-  };
+  }
 
   return (
     <div>
@@ -117,20 +118,20 @@ const Calendar = () => {
         start={startStr}
         end={endStr}
         refresh={getdata}
-        pwCheck={passwordCheck}
+        pwCheck = {passwordCheck}
       />
 
       <Planner
-        planList={planList}
+        planList = {planList}
         inputForm={inputFormControl}
         updateForm={updateFormControl}
-        setPlanStatus={setPlanStatus}
         setStartStr={setStartStr}
         setEndStr={setEndStr}
-        update={updatePlan}
-        passwordCheck={passwordCheck}
-        floorStatus={togleBtn}
-        floorChange={setTogleBtn}
+        setPlanStatus={setPlanStatus}
+        update = {updatePlan}
+        passwordCheck = {passwordCheck}
+        floorStatus = {togleBtn}
+        floorChange = {setTogleBtn}
       ></Planner>
     </div>
   );
