@@ -1,9 +1,86 @@
-@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 100;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.otf) format('opentype');} @font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 300;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.otf) format('opentype');} @font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 400;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf) format('opentype');} @font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 500;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.otf) format('opentype');} @font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 700;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.otf) format('opentype');} @font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 900;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.otf) format('opentype');} body, h1, h2, h3, h4, h5, h6, input, textarea, select { font-family: 'Noto Sans KR', sans-serif; }
+@font-face {
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 100;
+  src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff2)
+      format('woff2'),
+    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff)
+      format('woff'),
+    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.otf)
+      format('opentype');
+}
+@font-face {
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 300;
+  src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff2)
+      format('woff2'),
+    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff)
+      format('woff'),
+    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.otf)
+      format('opentype');
+}
+@font-face {
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff2)
+      format('woff2'),
+    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff)
+      format('woff'),
+    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf)
+      format('opentype');
+}
+@font-face {
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff2)
+      format('woff2'),
+    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff)
+      format('woff'),
+    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.otf)
+      format('opentype');
+}
+@font-face {
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff2)
+      format('woff2'),
+    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff)
+      format('woff'),
+    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.otf)
+      format('opentype');
+}
+@font-face {
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 900;
+  src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.woff2)
+      format('woff2'),
+    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.woff)
+      format('woff'),
+    url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.otf)
+      format('opentype');
+}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea,
+select {
+  font-family: 'Noto Sans KR', sans-serif;
+}
 
 a {
   text-decoration-line: none !important;
   color: black !important;
-  font-weight:midium;
+  font-weight: midium;
   font-family: NotoSansKR !important;
 }
 
@@ -24,14 +101,14 @@ a {
 
 /* --------------------------------------디자인 내려온 것 커스텀 CSS 입히는 중--------------------------------------------------------------- */
 /* header tool bar 제목 */
-.fc-toolbar-title{
+.fc-toolbar-title {
   font-family: NotoSansKR !important;
   font-weight: bold;
   font-size: 36px !important;
 }
 
 /* Prev, Next 버튼 이미지 */
-.fc-icon{
+.fc-icon {
   width: 14px;
   height: 21px;
   flex-grow: 0;
@@ -48,7 +125,8 @@ a {
 }
 
 /* Prev, Next 버튼 */
-.fc-prev-button, .fc-next-button{
+.fc-prev-button,
+.fc-next-button {
   width: 52px;
   height: 49px;
   flex-grow: 0;
@@ -65,7 +143,7 @@ a {
 }
 
 /* header tool bar */
-.fc-header-toolbar.fc-toolbar.fc-toolbar-ltr{
+.fc-header-toolbar.fc-toolbar.fc-toolbar-ltr {
   height: 120px;
   align-self: stretch;
   flex-grow: 0;
@@ -78,8 +156,13 @@ a {
   background-color: #fff;
 }
 
+/* buttn All */
+.fc-direction-ltr .fc-button-group > .fc-button:not(:last-child) {
+  margin-right: 3px;
+}
+
 /* 2층 버튼 */
-.fc-floor2F-button.fc-button.fc-button-primary{
+.fc-floor2F-button.fc-button.fc-button-primary {
   width: 160px;
   height: 52px;
   flex-grow: 0;
@@ -89,11 +172,27 @@ a {
   align-items: center;
   padding: 10px 24px;
   border: solid 1px #00c3cf;
+  background-color: white;
+  color: #00c3cf;
+}
+.fc-floor2F-button.fc-button.fc-button-primary:hover {
+  background-color: rgba(0, 195, 207, 0.5);
+  border: solid 1px #00c3cf;
+}
+
+.fc-floor2F-button.fc-button.fc-button-primary:active,
+.fc-floor2F-button.fc-button.fc-button-primary:visited {
+  background-color: #00c3cf !important;
+  border: none !important;
+  color: white;
+}
+.fc-floor2F-button.fc-button.fc-button-primary:focus {
   background-color: #00c3cf;
+  color: white;
 }
 
 /* 3층 버튼 */
-.fc-floor3F-button.fc-button.fc-button-primary{
+.fc-floor3F-button.fc-button.fc-button-primary {
   width: 160px;
   height: 52px;
   flex-grow: 0;
@@ -102,13 +201,26 @@ a {
   justify-content: center;
   align-items: center;
   padding: 10px 24px;
-  border: solid 2px #00c3cf;
+  border: solid 1px #00c3cf;
   background-color: #fff;
   color: #00c3cf;
 }
+.fc-floor3F-button.fc-button.fc-button-primary:hover {
+  background-color: rgba(0, 195, 207, 0.5);
+  border: solid 1px #00c3cf;
+}
 
+.fc-floor3F-button.fc-button.fc-button-primary:active {
+  background-color: #00c3cf !important;
+  border: none !important;
+  color: white;
+}
+.fc-floor3F-button.fc-button.fc-button-primary:focus {
+  background-color: #00c3cf;
+  color: white;
+}
 /* today 버튼 */
-.fc-today-button.fc-button.fc-button-primary{
+.fc-today-button.fc-button.fc-button-primary {
   width: 98px;
   height: 49px;
   flex-grow: 0;
@@ -125,7 +237,7 @@ a {
 }
 
 /* 라벨(label, 고정시간 적혀져 있는 곳) 가로 구분선 제거 */
-.fc-timegrid-slot.fc-timegrid-slot-label{
+.fc-timegrid-slot.fc-timegrid-slot-label {
   border-top-width: 0px;
   border-right-width: 0px;
 
@@ -145,13 +257,13 @@ a {
 }
 
 /* 레인(lane, 일정 드래그하는 곳) 30분 단위 점선 제거 */
-.fc-timegrid-slot.fc-timegrid-slot-lane.fc-timegrid-slot-minor{
+.fc-timegrid-slot.fc-timegrid-slot-lane.fc-timegrid-slot-minor {
   border-top-width: 0px;
   border-left-width: 0px;
 }
 
 /* 월/주간창의 월/일/요일 padding 및 cell 선 제거 */
-.fc-col-header-cell.fc-day{
+.fc-col-header-cell.fc-day {
   height: 52px;
   padding: 14.7px 104.5px 14.3px 101px;
   border-left-width: 0px;
@@ -160,12 +272,12 @@ a {
 }
 
 /* 월/일/요일 창 왼쪽 공백 병합(cell 선 제거) */
-.fc-timegrid-axis{
+.fc-timegrid-axis {
   border-right-width: 0px !important;
 }
 
 /* allDay 셀*/
-.fc-timegrid-axis-cushion.fc-scrollgrid-shrink-cushion.fc-scrollgrid-sync-inner{
+.fc-timegrid-axis-cushion.fc-scrollgrid-shrink-cushion.fc-scrollgrid-sync-inner {
   width: 45.2px;
   height: 16.6px;
   flex-grow: 0;
@@ -182,12 +294,12 @@ a {
 }
 
 /* allDay 하단의 구분선 */
-.fc-timegrid-divider.fc-cell-shaded{
+.fc-timegrid-divider.fc-cell-shaded {
   border-width: 0px;
 }
 
 /* 월 버튼 */
-.fc-dayGridMonth-button.fc-button.fc-button-primary{
+.fc-dayGridMonth-button.fc-button.fc-button-primary {
   width: 80px;
   height: 52px;
   flex-grow: 0;
@@ -196,13 +308,15 @@ a {
   justify-content: center;
   align-items: center;
   padding: 10px 24px;
-  border: solid 2px #FF2E63 !important;
-  background-color: #FF2E63 !important;
+  /* border: solid 2px #ff2e63 !important; */
+  /* background-color: #ff2e63 !important; */
+  border: solid 2px #00c3cf !important;
+  background-color: #00c3cf !important;
   color: black;
 }
 
 /* 주 버튼 */
-.fc-timeGridWeek-button.fc-button.fc-button-primary{
+.fc-timeGridWeek-button.fc-button.fc-button-primary {
   width: 80px;
   height: 52px;
   flex-grow: 0;
@@ -211,12 +325,16 @@ a {
   justify-content: center;
   align-items: center;
   padding: 10px 24px;
-  border: solid 2px #252A34 !important;
-  background-color: #252A34 !important;
-  color: #FF2E63;
+  /* border: solid 2px #252a34 !important; */
+  /* background-color: #252a34 !important; */
+  border: solid 2px #00c3cf !important;
+  background-color: #00c3cf !important;
+  color: black;
 }
+/* .fc-timeGridWeek-button.fc-button.fc-button-primary:hover {
+} */
 /* 리스트 버튼 */
-.fc-listWeek-button.fc-button.fc-button-primary{
+.fc-listWeek-button.fc-button.fc-button-primary {
   width: 80px;
   height: 52px;
   flex-grow: 0;
