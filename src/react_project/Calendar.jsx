@@ -111,7 +111,7 @@ const Calendar = () => {
 
       {/* 수정폼 Props */}
       <Modify
-        modify_state={modify_state}
+        modifyModal={modify_state}
         onChange={updateFormControl}
         plan={planData}
         start={startStr}

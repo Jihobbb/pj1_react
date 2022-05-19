@@ -9,7 +9,7 @@ import googleCalendarPlugin from '@fullcalendar/google-calendar';
 const Planner = (props) => {
   //드래그해서 기간설정
   const handleDateSelect = (selectInfo) => {
-    props.setModify_state(true);
+    props.inputForm();
     props.setStartStr(selectInfo.startStr);
     props.setEndStr(selectInfo.endStr);
   };

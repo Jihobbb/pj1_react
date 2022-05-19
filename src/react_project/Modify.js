@@ -13,21 +13,24 @@ import './Calendar.css';
 import Button from 'react-bootstrap/Button';
 
 const Modify = forwardRef((props, ref) => {
-  useImperativeHandle(ref, () => ({
-    showAlert() {
-      alert('hi');
-    },
-  }));
   const [modifyModal, setModifyModal] = useState(false);
-  const asd = () => {
-    setModifyModal(!modifyModal);
-  };
   const [updateData, setData] = useState({
     title: '',
     people: '',
     content: '',
   });
 
+  //
+  useImperativeHandle(ref, () => ({
+    fn() {
+      asd();
+    },
+  }));
+  const asd = () => {
+    setModifyModal(!modifyModal);
+    console.log(modifyModal);
+  };
+  //
   const setDefaultData = () => {
     setData({
       title: props.plan.title,
@@ -106,7 +109,7 @@ const Modify = forwardRef((props, ref) => {
   return (
     <div>
       <Modal
-        isOpen={modifyModal}
+        isOpen={props.modifyModal}
         //{modal_state} //true시 모달이 나옴 버튼 클릭시 false에서 트루로?
         // modify_state
         style={modalStyle} //모달창 스타일
@@ -192,7 +195,11 @@ const Modify = forwardRef((props, ref) => {
               삭제
             </Button>
 
-            <Button type='button' variant='outline-secondary' onClick={asd}>
+            <Button
+              type='button'
+              variant='outline-secondary'
+              onClick={props.onChange}
+            >
               취소
             </Button>
           </div>
