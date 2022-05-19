@@ -28,8 +28,6 @@ function InputInfo(props) {
   };
 
   // 지우기
-  console.log(selectedRgb);
-  console.log(selectedColor);
 
   //모달창이 켜지거나 꺼질 떄마다 Inpudata초기화
   useEffect(() => {
@@ -49,23 +47,23 @@ function InputInfo(props) {
   //컬러 선택
   const SelectColor = (props) => {
     //리스트에서 컬러 클릭시
-    const onSelect = () => {
-      setData({
-        ...inputData,
-        bgcolor: findColorByName(selectedRgb),
-      });
-    };
+    // const onSelect = () => {
+    //   setData({
+    //     ...inputData,
+    //     bgcolor: findColorByName(selectedColor),
+    //   });
+    // };
 
-    //컬러 이름으로 알맞는 코드를 매칭시켜 리턴
-    const findColorByName = (color) => {
-      let selectedColorValue;
-      props.colorList.map((c) => {
-        if (c.value === color) {
-          selectedColorValue = c.value;
-        }
-      });
-      return selectedColorValue;
-    };
+    // //컬러 이름으로 알맞는 코드를 매칭시켜 리턴
+    // const findColorByName = (color) => {
+    //   let selectedColorValue;
+    //   props.colorList.map((c) => {
+    //     if (c.value === color) {
+    //       selectedColorValue = c.value;
+    //     }
+    //   });
+    //   return selectedColorValue;
+    // };
 
     return (
       <div>
@@ -79,7 +77,7 @@ function InputInfo(props) {
                 onClick={() => {
                   setSelectedColor(c.color); // 이름을 담은거
                   setSelectedRgb(c.value); // 색상코드 담은거
-                  onSelect();
+                  // onSelect();
                 }}
                 key={c.value}
               >
@@ -103,6 +101,7 @@ function InputInfo(props) {
       password: null,
     });
     setSelectedColor('선택 ▼');
+    setSelectedRgb('');
   };
 
   const planSaveApi = () => {
@@ -114,11 +113,14 @@ function InputInfo(props) {
         end_time: props.end,
         people: inputData.people,
         content: inputData.content,
-        bgcolor: inputData.bgcolor,
+        bgcolor: selectedRgb,
         floor: props.floorStatus,
         password: inputData.password,
       })
-      .then(props.onChange)
+      .then(() => {
+        props.onChange();
+        props.refresh();
+      })
       .catch((error) => {
         alert('비밀번호를 입력하세요');
       });
