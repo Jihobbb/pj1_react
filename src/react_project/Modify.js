@@ -1,5 +1,10 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, {
+  useEffect,
+  useState,
+  forwardRef,
+  useImperativeHandle,
+} from 'react';
 import Modal from 'react-modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './InputInfo.css';
@@ -7,7 +12,16 @@ import './Calendar.css';
 
 import Button from 'react-bootstrap/Button';
 
-function Modify(props) {
+const Modify = forwardRef((props, ref) => {
+  useImperativeHandle(ref, () => ({
+    showAlert() {
+      alert('hi');
+    },
+  }));
+  const [modifyModal, setModifyModal] = useState(false);
+  const asd = () => {
+    setModifyModal(!modifyModal);
+  };
   const [updateData, setData] = useState({
     title: '',
     people: '',
@@ -40,7 +54,7 @@ function Modify(props) {
         floor: props.plan.floor,
         password: props.plan.password,
       })
-      .then(()=>{
+      .then(() => {
         props.onChange();
         props.refresh();
       });
@@ -92,7 +106,9 @@ function Modify(props) {
   return (
     <div>
       <Modal
-        isOpen={props.modify_state} //{modal_state} //true시 모달이 나옴 버튼 클릭시 false에서 트루로?
+        isOpen={modifyModal}
+        //{modal_state} //true시 모달이 나옴 버튼 클릭시 false에서 트루로?
+        // modify_state
         style={modalStyle} //모달창 스타일
         //onRequestClose={false} // 오버레이나 esc를 누르면 isopen값이 false 닫힘
         ariaHideApp={false}
@@ -176,11 +192,7 @@ function Modify(props) {
               삭제
             </Button>
 
-            <Button
-              type='button'
-              variant='outline-secondary'
-              onClick={props.onChange}
-            >
+            <Button type='button' variant='outline-secondary' onClick={asd}>
               취소
             </Button>
           </div>
@@ -188,7 +200,7 @@ function Modify(props) {
       </Modal>
     </div>
   );
-}
+});
 Modal.setAppElement('#root');
 
 export default Modify;
