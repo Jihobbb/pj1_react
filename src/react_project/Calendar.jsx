@@ -101,6 +101,13 @@ const Calendar = () => {
 
   return (
     <div>
+      {/* <button
+        onClick={() => {
+          childRef.current.testFn();
+        }}
+      >
+        버튼
+      </button> */}
       {/* 입력폼 Props */}
       <InputInfo
         modal_state={modal_state}
@@ -110,7 +117,6 @@ const Calendar = () => {
         refresh={getdata}
         onChange={inputFormControl}
       />
-
       {/* 수정폼 Props */}
       <Modify
         modifyModal={modify_state}
@@ -121,7 +127,6 @@ const Calendar = () => {
         refresh={getdata}
         pwCheck={passwordCheck}
       />
-
       <Planner
         planList={planList}
         inputForm={inputFormControl}

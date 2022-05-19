@@ -29,6 +29,7 @@ const Modify = forwardRef((props, ref) => {
   const asd = () => {
     // setModifyModal(!modifyModal);
     // console.log(modifyModal);
+    alert('hi');
     console.log('Modify');
   };
   //
