@@ -15,7 +15,7 @@ const Calendar = () => {
   const [endStr, setEndStr] = useState('');
 
   const [planList, setPlanList] = useState([]);
-  const [holidayList,setHolidayList] = useState([]);
+  const [holidayList, setHolidayList] = useState([]);
   const [planData, setData] = useState({
     id: '',
     title: '',
@@ -31,7 +31,7 @@ const Calendar = () => {
   //전체 일정 GET
   const getdata = async () => {
     const response = await axios.get('http://localhost:8081/api/planList');
-    const response2 = await axios.get('http://localhost:8081/api/HolidayList')
+    const response2 = await axios.get('http://localhost:8081/api/HolidayList');
     setPlanList(response.data);
     setHolidayList(response2.data);
   };
@@ -112,7 +112,7 @@ const Calendar = () => {
         버튼
       </button> */}
       {/* 입력폼 Props */}
-
+      <button className='asd'></button>
       <InputInfo
         modal_state={modal_state}
         start={startStr}
@@ -132,20 +132,18 @@ const Calendar = () => {
         pwCheck={passwordCheck}
       />
       <Planner
-        planList = {planList}
-        holidayList = {holidayList}
+        planList={planList}
+        holidayList={holidayList}
         inputForm={inputFormControl}
         updateForm={updateFormControl}
         setPlanStatus={setPlanStatus}
         setStartStr={setStartStr}
         setEndStr={setEndStr}
-
         refresh={getdata}
-        
         setPlanStatus={setPlanStatus}
-        update = {updatePlan}
-        passwordCheck = {passwordCheck}
-        floorChange = {setTogleBtn}
+        update={updatePlan}
+        passwordCheck={passwordCheck}
+        floorChange={setTogleBtn}
       ></Planner>
     </div>
   );
