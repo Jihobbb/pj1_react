@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import FullCalendar, { formatDate } from '@fullcalendar/react'; // must go before plugins
+import React from 'react';
+import FullCalendar, { formatDate, useRef } from '@fullcalendar/react'; // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
@@ -14,9 +14,7 @@ const Planner = (props) => {
     props.setEndStr(selectInfo.endStr);
   };
   //일정 클릭
-  // const childRef = useRef();
-  // childRef.current.testfn();
-  // <Modify ref={childRef}></Modify>;
+
   const handleEventClick = (clickInfo) => {
     props.updateForm();
     props.setPlanStatus(clickInfo.event);
@@ -83,9 +81,9 @@ const Planner = (props) => {
         },
       }}
       headerToolbar={{
-        left: 'prev floor2F,floor3F next',
+        left: 'prev today next',
         center: 'title',
-        right: 'today dayGridMonth timeGridWeek listWeek',
+        right: 'floor2F,floor3F dayGridMonth,timeGridWeek,listWeek',
       }}
       initialView='dayGridMonth'
       // timeGridWeek
