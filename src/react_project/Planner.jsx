@@ -6,7 +6,6 @@ import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
 import googleCalendarPlugin from '@fullcalendar/google-calendar';
 
-
 const Planner = (props) => {
 
   const [floorStatus, setFloorStatus] = useState('2') 
@@ -17,25 +16,26 @@ const Planner = (props) => {
     props.setStartStr(selectInfo.startStr);
     props.setEndStr(selectInfo.endStr);
   };
-
   //일정 클릭
+
   const handleEventClick = (clickInfo) => {
     props.updateForm();
     props.setPlanStatus(clickInfo.event);
+    console.log(clickInfo.event);
   };
 
   //드래깅 드랍 완료
   const dragAnddrop = (dropInfo) => {
-    if(props.passwordCheck(dropInfo.event.extendedProps.password)){
+    if (props.passwordCheck(dropInfo.event.extendedProps.password)) {
       props.update(dropInfo.event);
-    } 
+    }
   };
 
   //이벤트 사이즈 조절
   const eventSizing = (dragInfo) => {
-    if(props.passwordCheck(dragInfo.event.extendedProps.password)){
+    if (props.passwordCheck(dragInfo.event.extendedProps.password)) {
       props.update(dragInfo.event);
-    }    
+    }
   };
 
   //PlanList매핑
@@ -56,10 +56,10 @@ const Planner = (props) => {
         people: planList.people,
         content: planList.content,
         floor: planList.floor,
-        password: planList.password
+        password: planList.password,
       },
     }));
-    return dataList
+    return dataList;
   };
 
   //공휴일 리스트 매핑

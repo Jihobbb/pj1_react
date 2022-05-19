@@ -27,8 +27,6 @@ function InputInfo(props) {
   };
 
   // 지우기
-  console.log(selectedRgb);
-  console.log(selectedColor);
 
   //모달창이 켜지거나 꺼질 떄마다 Inpudata초기화
   useEffect(() => {
@@ -118,7 +116,7 @@ function InputInfo(props) {
         floor: props.floorStatus,
         password: inputData.password,
       })
-      .then(()=>{
+      .then(() => {
         props.onChange();
         props.refresh();
       })
