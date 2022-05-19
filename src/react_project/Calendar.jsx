@@ -77,7 +77,9 @@ const Calendar = () => {
   };
 
   //수정 폼 온오프
-
+  // const childRef = useRef();
+  // childRef.current.testfn();
+  // <Modify ref={childRef}></Modify>;
   const updateFormControl = () => {
     setModify_state(!modify_state);
   };

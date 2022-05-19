@@ -22,13 +22,14 @@ const Modify = forwardRef((props, ref) => {
 
   //
   useImperativeHandle(ref, () => ({
-    fn() {
+    testFn() {
       asd();
     },
   }));
   const asd = () => {
-    setModifyModal(!modifyModal);
-    console.log(modifyModal);
+    // setModifyModal(!modifyModal);
+    // console.log(modifyModal);
+    console.log('Modify');
   };
   //
   const setDefaultData = () => {
