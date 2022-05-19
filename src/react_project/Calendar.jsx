@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Calendar.css';
 import Modify from './Modify';
 import Planner from './Planner';
+import CalDatePicker from './CalDatePicker';
 
 const Calendar = () => {
   const [modal_state, setModal_state] = useState(false);
@@ -101,6 +102,9 @@ const Calendar = () => {
 
   return (
     <div>
+      <div>
+        <CalDatePicker></CalDatePicker>
+      </div>
       {/* <button
         onClick={() => {
           childRef.current.testFn();
@@ -109,6 +113,7 @@ const Calendar = () => {
         버튼
       </button> */}
       {/* 입력폼 Props */}
+
       <InputInfo
         modal_state={modal_state}
         start={startStr}
