@@ -254,6 +254,7 @@ a {
   letter-spacing: normal;
   text-align: right;
   color: #909090;
+  padding-left: 20px;
 }
 
 /* 레인(lane, 일정 드래그하는 곳) 30분 단위 점선 제거 */
@@ -331,8 +332,7 @@ a {
   background-color: #00c3cf !important;
   color: black;
 }
-/* .fc-timeGridWeek-button.fc-button.fc-button-primary:hover {
-} */
+
 /* 리스트 버튼 */
 .fc-listWeek-button.fc-button.fc-button-primary {
   width: 80px;
@@ -348,4 +348,60 @@ a {
   color: black;
 }
 
+/* 리스트 페이지 */
+
+/* 리스트 타이틀 셀 */
+.fc-list-event-title{
+  width: 849.2px;
+  height: 52px;
+  margin: 0 295.4px 0 0;
+  padding: 14.7px 323.2px 14.3px 320px !important;
+  border-left-width: 1px !important;
+}
+
+/* 리스트 날짜셀 */
+.fc-list-event-time{
+  width: 480px;
+  height: 52px;
+  padding: 14.7px 146.6px 14.3px 144.4px !important;
+  border: solid 1px #e8e8e8;
+  border-right-width: 2px !important;
+  text-align: center;
+  border-collapse: collapse !important;
+}
+
+/* 리스트 일정색 셀 */
+.fc-list-event-graphic{
+  width: 295.4px;
+  height: 52px;
+  padding: 14.7px 140.9px 14.3px 138.5px !important;
+  border-left-width: 2px !important;
+  border: solid 1px #e8e8e8;
+}
+
+/* 리스트 yyyy mm dd */
+.fc-direction-ltr .fc-list-day-side-text{
+  float: left !important;
+  padding-left: 150px;
+}
+
+/* 리스트 요일 */
+.fc-list-day-text{
+  float: none !important;
+  /* padding-right: 1520px; */
+  display: inline !important;
+  font-size: 13px;
+
+}
+
+
+
+/* @media (pointer:coarse) {
+  .td{
+    color: red;
+  }
+} */
+
+
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
+
