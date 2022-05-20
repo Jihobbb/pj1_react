@@ -101,7 +101,7 @@ const Calendar = () => {
 
   return (
     <div>
-      <label className='asd'>
+      <label className='pickerIcon'>
         <CalDatePicker></CalDatePicker>
       </label>
 

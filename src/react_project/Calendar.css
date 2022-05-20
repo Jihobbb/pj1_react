@@ -408,10 +408,11 @@ a {
 } */
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* datepicker */
 .react-datepicker__input-container {
   display: none !important;
 }
-.asd {
+.pickerIcon {
   background-image: url('./icon/ic_arrow.png');
   background-size: contain;
   border: none;
