@@ -5,13 +5,22 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
 import googleCalendarPlugin from '@fullcalendar/google-calendar';
-import { Calendar } from 'fullcalendar';
+import CalDatePicker from './CalDatePicker'
 
 const Planner = (props) => {
   const [floorStatus, setFloorStatus] = useState('2');
   const [weekendActive, setWeekendActive] = useState(false);
-  const [moveDate, setMoveDate] = useState('');
+  const [isDatePickerOpen, setisDatePickerOpen] = useState(false);
   const calendarComponentRef = useRef();
+
+  //데이트피커 함수
+  const handlePickerChange = (e) => {
+    setisDatePickerOpen(!isDatePickerOpen);
+  }
+
+  const handlePickerClick = (e) => {
+    setisDatePickerOpen(!isDatePickerOpen);
+  }
 
 
   //드래그해서 기간설정
@@ -79,6 +88,10 @@ const Planner = (props) => {
   };
 
   return (
+  <div>
+    {isDatePickerOpen && <CalDatePicker
+      calendarRef = {calendarComponentRef}
+    />}
     <FullCalendar
       plugins={[
         dayGridPlugin,
@@ -117,8 +130,7 @@ const Planner = (props) => {
         moveDate: {
           text: '선택',
           click() {
-            const calendarApi = calendarComponentRef.current.getApi();
-            calendarApi.gotoDate('2018-06-01T12:30:00-05:00');
+            handlePickerClick();
           }
         }
       }}
@@ -145,9 +157,6 @@ const Planner = (props) => {
       selectOverlap={false} //등록시에도 겹쳐지지 않음
       dayMaxEventRows={true}
 
-      //------------날짜이동---------------------
-      goToDate={moveDate}
-
       //------------드래깅으로 수정--------------
       editable={true} // 수정 가능
       eventStartEditable={true}
@@ -156,7 +165,8 @@ const Planner = (props) => {
       eventDrop={dragAnddrop} //일정 옮겨서 떨어뜨릴 때 발생
       eventResize={eventSizing} //일정을 크기조절하여 기간 변경 시 발생
     />
+  </div>
   );
 };
 
-export default React.memo(Planner);
+export default Planner;

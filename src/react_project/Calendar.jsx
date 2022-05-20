@@ -5,7 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Calendar.css';
 import Modify from './Modify';
 import Planner from './Planner';
-import CalDatePicker from './CalDatePicker';
 
 const Calendar = () => {
   const [modal_state, setModal_state] = useState(false);
@@ -77,9 +76,6 @@ const Calendar = () => {
   };
 
   //수정 폼 온오프
-  // const childRef = useRef();
-  // childRef.current.testfn();
-  // <Modify ref={childRef}></Modify>;
   const updateFormControl = () => {
     setModify_state(!modify_state);
   };
@@ -100,11 +96,7 @@ const Calendar = () => {
   };
 
   return (
-    <div>
-      <div>
-        <CalDatePicker></CalDatePicker>
-      </div>
-      
+    <div>      
       {/* 입력폼 Props */}
       <button className='asd'></button>
       <InputInfo
