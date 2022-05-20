@@ -53,7 +53,7 @@ const Calendar = () => {
         bgcolor: plan.backgroundColor,
         floor: plan.extendedProps.floor,
       })
-      .then();
+      .then(getdata);
   };
 
   //일정 state 변경
@@ -104,13 +104,7 @@ const Calendar = () => {
       <div>
         <CalDatePicker></CalDatePicker>
       </div>
-      {/* <button
-        onClick={() => {
-          childRef.current.testFn();
-        }}
-      >
-        버튼
-      </button> */}
+      
       {/* 입력폼 Props */}
       <button className='asd'></button>
       <InputInfo
@@ -140,7 +134,6 @@ const Calendar = () => {
         setStartStr={setStartStr}
         setEndStr={setEndStr}
         refresh={getdata}
-        setPlanStatus={setPlanStatus}
         update={updatePlan}
         passwordCheck={passwordCheck}
         floorChange={setTogleBtn}

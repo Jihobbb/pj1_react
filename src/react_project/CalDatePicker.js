@@ -1,22 +1,17 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
-import setHours from 'date-fns/setHours';
-import setMinutes from 'date-fns/setMinutes';
 import 'react-datepicker/dist/react-datepicker.css';
+import {ko} from 'date-fns/esm/locale'
 
 const CalDatePicker = () => {
-  const [startDate, setStartDate] = useState(
-    setHours(setMinutes(new Date(), 0), 17)
-  );
+  const [startDate, setStartDate] = useState(new Date());
 
   return (
     <DatePicker
       selected={startDate}
       onChange={(date) => setStartDate(date)}
-      showTimeSelect
-      minTime={setHours(setMinutes(new Date(), 0), 7)}
-      maxTime={setHours(setMinutes(new Date(), 0), 19)}
-      dateFormat='MMMM d, yyyy h:mm aa'
+      dateFormat='yyyy-MM-dd'  
+      locale={ko}  
     />
   );
 };

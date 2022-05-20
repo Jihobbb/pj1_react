@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
-import FullCalendar, { formatDate } from '@fullcalendar/react'; // must go before plugins
+import React, { useRef, useState } from 'react';
+import FullCalendar, { CalendarApi, formatDate } from '@fullcalendar/react'; // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
 import googleCalendarPlugin from '@fullcalendar/google-calendar';
+import { Calendar } from 'fullcalendar';
 
 const Planner = (props) => {
   const [floorStatus, setFloorStatus] = useState('2');
+  const [weekendActive, setWeekendActive] = useState(false);
+  const [moveDate, setMoveDate] = useState('');
+  const calendarComponentRef = useRef();
+
 
   //드래그해서 기간설정
   const handleDateSelect = (selectInfo) => {
@@ -82,6 +87,7 @@ const Planner = (props) => {
         listPlugin,
         googleCalendarPlugin,
       ]}
+      ref={calendarComponentRef}
       googleCalendarApiKey={'AIzaSyDuIfK2-Xqvji3V8FC8q9mlXVdX5kYmNEo'}
       locale='ko'
       CustomButtons
@@ -102,16 +108,29 @@ const Planner = (props) => {
             props.refresh();
           },
         },
+        togleWeekend: {
+          text: '주말보기',
+          click() {
+            setWeekendActive(!weekendActive);
+          }
+        },
+        moveDate: {
+          text: '선택',
+          click() {
+            const calendarApi = calendarComponentRef.current.getApi();
+            calendarApi.gotoDate('2018-06-01T12:30:00-05:00');
+          }
+        }
       }}
       headerToolbar={{
-        left: 'prev today next',
+        left: 'prev today next togleWeekend moveDate',
         center: 'title',
         right: 'floor2F,floor3F dayGridMonth,timeGridWeek,listWeek',
       }}
       initialView='timeGridWeek'
       //------------이벤트 리스트 정의---------------
-
       eventSources={[planListMapping(), holidayListMapping()]}
+
       //------------설정 값 정리---------------
       eventClick={handleEventClick}
       select={handleDateSelect}
@@ -121,10 +140,14 @@ const Planner = (props) => {
       slotMaxTime={'20:00:00'}
       expandRows={true}
       dayMaxEvents={6}
-      weekends={true}
+      weekends={weekendActive}
       eventOverlap={false} //이벤트 겹쳐지기 막음
       selectOverlap={false} //등록시에도 겹쳐지지 않음
       dayMaxEventRows={true}
+
+      //------------날짜이동---------------------
+      goToDate={moveDate}
+
       //------------드래깅으로 수정--------------
       editable={true} // 수정 가능
       eventStartEditable={true}
