@@ -82,7 +82,6 @@ a {
   color: black !important;
   font-weight: midium;
   font-family: NotoSansKR !important;
-  font-size: 14px;
 }
 
 .toggleBtn {
@@ -107,7 +106,9 @@ a {
   font-weight: bold;
   font-size: 36px !important;
 }
-
+.fc-col-header-cell-cushion {
+  font-size: 14px;
+}
 /* Prev, Next 버튼 이미지 */
 .fc-icon {
   width: 14px;
