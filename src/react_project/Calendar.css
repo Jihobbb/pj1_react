@@ -351,7 +351,7 @@ a {
 /* 리스트 페이지 */
 
 /* 리스트 타이틀 셀 */
-.fc-list-event-title{
+.fc-list-event-title {
   width: 849.2px;
   height: 52px;
   margin: 0 295.4px 0 0;
@@ -360,7 +360,7 @@ a {
 }
 
 /* 리스트 날짜셀 */
-.fc-list-event-time{
+.fc-list-event-time {
   width: 480px;
   height: 52px;
   padding: 14.7px 146.6px 14.3px 144.4px !important;
@@ -371,7 +371,7 @@ a {
 }
 
 /* 리스트 일정색 셀 */
-.fc-list-event-graphic{
+.fc-list-event-graphic {
   width: 295.4px;
   height: 52px;
   padding: 14.7px 140.9px 14.3px 138.5px !important;
@@ -380,21 +380,27 @@ a {
 }
 
 /* 리스트 yyyy mm dd */
-.fc-direction-ltr .fc-list-day-side-text{
+.fc-direction-ltr .fc-list-day-side-text {
   float: left !important;
   padding-left: 150px;
 }
 
 /* 리스트 요일 */
-.fc-list-day-text{
+.fc-list-day-text {
   float: none !important;
   /* padding-right: 1520px; */
   display: inline !important;
   font-size: 13px;
-
+  /* background-color: #00c3cf; */
+  margin-right: 75%;
 }
-
-
+.fc-list-event-time {
+  /* background-color: #00c3cf; */
+  border-right: 1px solid !important;
+}
+.fc-list-event-graphic {
+  border-right: 1px solid !important;
+}
 
 /* @media (pointer:coarse) {
   .td{
@@ -402,6 +408,4 @@ a {
   }
 } */
 
-
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
-
