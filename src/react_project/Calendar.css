@@ -188,10 +188,10 @@ a {
 .fc-floor2F-button.fc-button.fc-button-primary:hover {
   background-color: rgba(0, 195, 207, 0.5);
   border: solid 1px #00c3cf;
+  box-shadow: none;
 }
 
-.fc-floor2F-button.fc-button.fc-button-primary:active,
-.fc-floor2F-button.fc-button.fc-button-primary:visited {
+.fc-floor2F-button.fc-button.fc-button-primary:active {
   background-color: #00c3cf !important;
   border: none !important;
   color: white;
@@ -199,6 +199,7 @@ a {
 .fc-floor2F-button.fc-button.fc-button-primary:focus {
   background-color: #00c3cf;
   color: white;
+  box-shadow: none;
 }
 
 /* 3층 버튼 */
@@ -218,6 +219,7 @@ a {
 .fc-floor3F-button.fc-button.fc-button-primary:hover {
   background-color: rgba(0, 195, 207, 0.5);
   border: solid 1px #00c3cf;
+  box-shadow: none;
 }
 
 .fc-floor3F-button.fc-button.fc-button-primary:active {
@@ -228,8 +230,10 @@ a {
 .fc-floor3F-button.fc-button.fc-button-primary:focus {
   background-color: #00c3cf;
   color: white;
+  box-shadow: none;
 }
 /* today 버튼 */
+
 .fc-today-button.fc-button.fc-button-primary {
   width: 98px;
   height: 49px;
@@ -241,8 +245,8 @@ a {
   gap: 8px;
   /* padding: 11px 32px 12px; */
   border-radius: 8px;
-  border: solid 1px #00c3cf;
-  background-color: #00c3cf;
+  border: solid 1px #00c3cf !important;
+  background-color: #00c3cf !important;
   color: #ffffff;
 }
 
@@ -308,6 +312,13 @@ a {
   border-width: 0px;
 }
 
+/* 월 주 리스트 공통 */
+.fc .fc-button-primary:not(:disabled).fc-button-active:focus {
+  box-shadow: none !important;
+}
+.fc .fc-button-primary:not(:disabled):active {
+  box-shadow: none !important;
+}
 /* 월 버튼 */
 .fc-dayGridMonth-button.fc-button.fc-button-primary {
   width: 80px;
@@ -320,9 +331,14 @@ a {
   padding: 10px 24px;
   /* border: solid 2px #ff2e63 !important; */
   /* background-color: #ff2e63 !important; */
-  border: solid 2px #00c3cf !important;
+  border: solid 2px rgb(0, 195, 207, 0.2) !important;
+  background-color: rgb(0, 195, 207, 0.6) !important;
+  color: white;
+}
+
+.fc-dayGridMonth-button.fc-button.fc-button-primary:focus,
+.fc-dayGridMonth-button.fc-button.fc-button-primary:hover {
   background-color: #00c3cf !important;
-  color: black;
 }
 
 /* 주 버튼 */
@@ -337,9 +353,13 @@ a {
   padding: 10px 24px;
   /* border: solid 2px #252a34 !important; */
   /* background-color: #252a34 !important; */
-  border: solid 2px #00c3cf !important;
+  border: solid 2px rgb(0, 195, 207, 0.2) !important;
+  background-color: rgb(0, 195, 207, 0.6) !important;
+  color: white;
+}
+.fc-timeGridWeek-button.fc-button.fc-button-primary:focus,
+.fc-timeGridWeek-button.fc-button.fc-button-primary:hover {
   background-color: #00c3cf !important;
-  color: black;
 }
 
 /* 리스트 버튼 */
@@ -352,9 +372,13 @@ a {
   justify-content: center;
   align-items: center;
   padding: 10px 24px;
-  border: solid 2px #00c3cf !important;
+  border: solid 2px rgb(0, 195, 207, 0.2) !important;
+  background-color: rgb(0, 195, 207, 0.6) !important;
+  color: white;
+}
+.fc-listWeek-button.fc-button.fc-button-primary:focus,
+.fc-listWeek-button.fc-button.fc-button-primary:hover {
   background-color: #00c3cf !important;
-  color: black;
 }
 
 /* 리스트 페이지 */
