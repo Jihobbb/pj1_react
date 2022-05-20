@@ -435,3 +435,28 @@ a {
 .datepickerBox {
   height: 0;
 }
+
+@media (max-width: 1462px) {
+  .react-datepicker {
+    top: 120px;
+    left: 0px;
+  }
+}
+@media (max-width: 1175px) {
+  .react-datepicker {
+    top: 120px;
+    left: 60px;
+  }
+}
+@media (max-width: 1175px) {
+  .react-datepicker {
+    top: 140px;
+    left: 0px;
+  }
+}
+@media (max-width: 723px) {
+  .react-datepicker {
+    top: 165px;
+    left: 0px;
+  }
+}
