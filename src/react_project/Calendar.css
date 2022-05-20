@@ -93,6 +93,15 @@ a {
   left: 200px;
 }
 
+
+/*--------------------------------------날짜별 디자인---------------------------------------------------------------------------------------- */
+.fc-day-sat {
+  background-color: #fff3f3;
+}
+.fc-day-sun {
+  background-color: #fff3f3;
+}
+
 .holiday {
   background-color: #fff3f3 !important;
   color: #ff0707;
@@ -448,22 +457,15 @@ a {
     left: 60px;
   }
 }
-
-@media (max-width: 854px) {
+@media (max-width: 1175px) {
   .react-datepicker {
     top: 140px;
     left: 0px;
   }
 }
-@media (max-width: 724px) {
+@media (max-width: 723px) {
   .react-datepicker {
     top: 165px;
-    left: 0px;
-  }
-}
-@media (max-width: 716px) {
-  .react-datepicker {
-    top: 185px;
     left: 0px;
   }
 }

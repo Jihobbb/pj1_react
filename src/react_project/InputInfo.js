@@ -195,7 +195,6 @@ function InputInfo(props) {
               />
             </div>
           </div>
-
           <br />
 
           <br />
