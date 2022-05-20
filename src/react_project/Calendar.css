@@ -448,15 +448,22 @@ a {
     left: 60px;
   }
 }
-@media (max-width: 1175px) {
+
+@media (max-width: 854px) {
   .react-datepicker {
     top: 140px;
     left: 0px;
   }
 }
-@media (max-width: 723px) {
+@media (max-width: 724px) {
   .react-datepicker {
     top: 165px;
+    left: 0px;
+  }
+}
+@media (max-width: 716px) {
+  .react-datepicker {
+    top: 185px;
     left: 0px;
   }
 }
