@@ -292,7 +292,6 @@ a {
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
-  text-align: right;
   color: #909090;
 }
 
@@ -392,13 +391,14 @@ a {
   float: none !important;
   display: inline !important;
   font-size: 13px;
-
   margin-right: 81%;
 }
+
 .fc-list-event-time {
   /* background-color: #00c3cf; */
   border-right: 1px solid rgb(0, 0, 0, 0.2) !important;
 }
+
 .fc-list-event-graphic {
   border-right: 1px solid rgb(0, 0, 0, 0.2) !important;
 }
