@@ -93,7 +93,6 @@ a {
   left: 200px;
 }
 
-
 /*--------------------------------------날짜별 디자인---------------------------------------------------------------------------------------- */
 .fc-day-sat {
   background-color: #fff3f3;
@@ -417,6 +416,34 @@ a {
     color: red;
   }
 } */
+/* 선택 버튼 */
+.fc-moveDate-button {
+  width: 80px;
+  height: 52px;
+  flex-grow: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 24px;
+  border: solid 2px #00c3cf !important;
+  background-color: #00c3cf !important;
+  color: black;
+  text-align: center !important;
+}
+
+/* 주말보기 버튼 */
+.fc-togleWeekend-button {
+  width: 90px;
+  height: 52px;
+  flex-grow: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 24px;
+  border: solid 2px #00c3cf !important;
+  background-color: #00c3cf !important;
+  color: black;
+}
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
 /* datepicker */
