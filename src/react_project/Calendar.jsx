@@ -98,7 +98,7 @@ const Calendar = () => {
   return (
     <div>      
       {/* 입력폼 Props */}
-      <button className='asd'></button>
+
       <InputInfo
         modal_state={modal_state}
         start={startStr}
