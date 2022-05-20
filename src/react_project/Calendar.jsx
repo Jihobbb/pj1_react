@@ -101,12 +101,12 @@ const Calendar = () => {
 
   return (
     <div>
-      <div>
+      <label className='asd'>
         <CalDatePicker></CalDatePicker>
-      </div>
-      
+      </label>
+
       {/* 입력폼 Props */}
-      <button className='asd'></button>
+
       <InputInfo
         modal_state={modal_state}
         start={startStr}

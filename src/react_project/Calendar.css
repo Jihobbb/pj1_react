@@ -396,10 +396,10 @@ a {
 }
 .fc-list-event-time {
   /* background-color: #00c3cf; */
-  border-right: 1px solid !important;
+  border-right: 1px solid rgb(0, 0, 0, 0.2) !important;
 }
 .fc-list-event-graphic {
-  border-right: 1px solid !important;
+  border-right: 1px solid rgb(0, 0, 0, 0.2) !important;
 }
 
 /* @media (pointer:coarse) {
@@ -409,3 +409,13 @@ a {
 } */
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
+.react-datepicker__input-container {
+  display: none !important;
+}
+.asd {
+  background-image: url('./icon/ic_arrow.png');
+  background-size: contain;
+  border: none;
+  width: 35px;
+  height: 35px;
+}
