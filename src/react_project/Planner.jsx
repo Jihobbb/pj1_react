@@ -13,11 +13,7 @@ const Planner = (props) => {
   const [isDatePickerOpen, setisDatePickerOpen] = useState(false);
   const calendarComponentRef = useRef();
 
-  //데이트피커 함수
-  const handlePickerChange = (e) => {
-    setisDatePickerOpen(!isDatePickerOpen);
-  }
-
+  //datepicker 온오프
   const handlePickerClick = (e) => {
     setisDatePickerOpen(!isDatePickerOpen);
   }
@@ -91,6 +87,7 @@ const Planner = (props) => {
   <div>
     {isDatePickerOpen && <CalDatePicker
       calendarRef = {calendarComponentRef}
+      isopen = {handlePickerClick}
     />}
     <FullCalendar
       plugins={[
@@ -128,7 +125,7 @@ const Planner = (props) => {
           }
         },
         moveDate: {
-          text: '선택',
+          text: '선택 ∇',
           click() {
             handlePickerClick();
           }
