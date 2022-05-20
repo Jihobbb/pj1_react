@@ -82,6 +82,7 @@ a {
   color: black !important;
   font-weight: midium;
   font-family: NotoSansKR !important;
+  font-size: 14px;
 }
 
 .toggleBtn {
