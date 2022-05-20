@@ -421,3 +421,17 @@ a {
   width: 35px;
   height: 35px;
 }
+
+.react-datepicker__month-container {
+  /* top: 100px !important; */
+}
+
+.react-datepicker {
+  z-index: 99;
+  top: 100px;
+  left: 300px;
+}
+
+.datepickerBox {
+  height: 0;
+}
