@@ -388,11 +388,10 @@ a {
 /* 리스트 요일 */
 .fc-list-day-text {
   float: none !important;
-  /* padding-right: 1520px; */
   display: inline !important;
   font-size: 13px;
-  /* background-color: #00c3cf; */
-  margin-right: 75%;
+
+  margin-right: 81%;
 }
 .fc-list-event-time {
   /* background-color: #00c3cf; */
