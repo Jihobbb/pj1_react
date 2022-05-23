@@ -125,8 +125,8 @@ function InputInfo(props) {
       background: 'white',
       borderRadius: '20px',
       margin: '0 auto',
-      width: '60%',
-      height: '50%',
+      width: '45%',
+      height: '75%',
 
       zIndex: 10,
     },
