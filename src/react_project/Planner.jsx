@@ -71,6 +71,7 @@ const Planner = (props) => {
         content: planList.content,
         floor: planList.floor,
         password: planList.password,
+        writer: planList.writer
       },
     }));
     return dataList;

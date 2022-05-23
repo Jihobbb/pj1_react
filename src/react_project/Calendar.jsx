@@ -50,6 +50,7 @@ const Calendar = () => {
         people: plan.extendedProps.people,
         content: plan.extendedProps.content,
         bgcolor: plan.backgroundColor,
+        writer: plan.extendedProps.writer,
         floor: plan.extendedProps.floor,
       })
       .then(getdata);
