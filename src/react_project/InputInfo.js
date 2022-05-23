@@ -123,7 +123,7 @@ function InputInfo(props) {
       background: 'white',
       borderRadius: '20px',
       margin: '0 auto',
-      width: '30%',
+      width: '45%',
       height: '80%',
 
       zIndex: 10,
@@ -165,7 +165,7 @@ function InputInfo(props) {
           </div>
           {/* 날짜 */}
           <div className='asd'>
-            <label className='titleIcon modalIcon'></label>
+            <label className='calenadrIcon modalIcon'></label>
             <input type='text' className='formDate1 formDate' disabled />
             <input
               type='text'
@@ -231,11 +231,11 @@ function InputInfo(props) {
           <br />
           <hr></hr>
           <div className='passwordBox'>
-            <label className='lockIcon'></label>
+            <label className='lockIcon modalIcon'></label>
             <input
               required
               type='password'
-              className='passwordBox'
+              className='passwordInput'
               placeholder='비밀번호'
               // defaultValue='비밀번호'
               onChange={(e) =>
@@ -246,18 +246,14 @@ function InputInfo(props) {
               }
             />
             <div className='invalid-feedback'>*작성자를 입력해주세요</div>
-            <div className='formbutton'>
-              <Button variant='primary' type='button' onClick={planSaveApi}>
-                저장
-              </Button>
-              <Button
-                variant='secondary'
-                type='button'
-                onClick={props.onChange}
-              >
-                취소
-              </Button>
-            </div>
+            {/* <div className='formbutton'> */}
+            <Button variant='primary' type='button' onClick={planSaveApi}>
+              저장
+            </Button>
+            <Button variant='secondary' type='button' onClick={props.onChange}>
+              취소
+            </Button>
+            {/* </div> */}
           </div>
         </form>
       </Modal>
