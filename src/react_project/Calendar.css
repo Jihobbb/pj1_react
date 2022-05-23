@@ -192,15 +192,9 @@ a {
   box-shadow: none;
 }
 
-/* .fc-floor2F-button.fc-button.fc-button-primary:active {
+.fc-floor2F-button.fc-button-active {
   background-color: #00c3cf !important;
-  border: none !important;
-  color: white;
-} */
-.fc-floor2F-button.fc-button.fc-button-primary:focus {
-  background-color: #00c3cf;
-  color: white;
-  box-shadow: none;
+  border: solid 1px #00c3cf !important;
 }
 
 /* 3층 버튼 */
@@ -223,16 +217,34 @@ a {
   box-shadow: none;
 }
 
-.fc-floor3F-button.fc-button.fc-button-primary:active {
+.fc-floor3F-button.fc-button-active {
   background-color: #00c3cf !important;
-  border: none !important;
-  color: white;
+  border: solid 1px #00c3cf !important;
 }
-.fc-floor3F-button.fc-button.fc-button-primary:focus {
-  background-color: #00c3cf;
-  color: white;
-  box-shadow: none;
+
+
+
+/* 주말보기 버튼 */
+.fc-togleWeekend-button {
+  width: 84px;
+  height: 52px;
+  flex-grow: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 24px;
+  border: solid 2px #00c3cf !important;
+  background-color: white !important;
+  color: #00c3cf !important;
 }
+.fc-togleWeekend-button.fc-button.fc-button-primary.fc-button-active {
+  background-color: #00c3cf !important;
+  color: white !important;
+}
+.fc .fc-button-primary:focus {
+  box-shadow: none !important;
+}
+
 /* today 버튼 */
 
 .fc-today-button.fc-button.fc-button-primary {
@@ -332,8 +344,6 @@ a {
   justify-content: center;
   align-items: center;
   padding: 10px 24px;
-  /* border: solid 2px #ff2e63 !important; */
-  /* background-color: #ff2e63 !important; */
   border: solid 2px rgb(0, 195, 207, 0.2) !important;
   background-color: rgb(0, 195, 207, 0.6) !important;
   color: white;
@@ -451,24 +461,6 @@ a {
   background-color: #00c3cf !important;
   color: black;
   text-align: center !important;
-}
-
-/* 주말보기 버튼 */
-.fc-togleWeekend-button {
-  width: 84px;
-  height: 52px;
-  flex-grow: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 24px;
-  border: solid 2px #00c3cf !important;
-  background-color: #00c3cf !important;
-  opacity: 0.6;
-  color: black;
-}
-.fc-togleWeekend-button.fc-button-active {
-  opacity: 1;
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */

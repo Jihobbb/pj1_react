@@ -13,7 +13,6 @@ const Planner = (props) => {
   const [isDatePickerOpen, setisDatePickerOpen] = useState(false);
   const calendarComponentRef = useRef();
 
-
   useEffect(() => {
     document.querySelector('.fc-floor2F-button').classList.add('fc-button-active')
   }, []);
@@ -116,6 +115,10 @@ const Planner = (props) => {
               setFloorStatus('2');
               props.floorChange('2');
               props.refresh();
+              if(!document.querySelector('.fc-floor2F-button').classList.contains('fc-button-active')) {
+                document.querySelector('.fc-floor2F-button').classList.add('fc-button-active')
+              }
+              document.querySelector('.fc-floor3F-button').classList.remove('fc-button-active')
             },
           },
           floor3F: {
@@ -124,6 +127,10 @@ const Planner = (props) => {
               setFloorStatus('3');
               props.floorChange('3');
               props.refresh();
+              if(!document.querySelector('.fc-floor3F-button').classList.contains('fc-button-active')) {
+                document.querySelector('.fc-floor3F-button').classList.add('fc-button-active')
+              }
+              document.querySelector('.fc-floor2F-button').classList.remove('fc-button-active')
             },
           },
           togleWeekend: {
