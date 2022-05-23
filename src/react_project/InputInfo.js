@@ -10,6 +10,7 @@ import moment from 'moment';
 function InputInfo(props) {
   const [inputData, setData] = useState({
     title: '',
+    writer: '',
     people: '',
     content: '',
     bgcolor: '',
@@ -74,14 +75,16 @@ function InputInfo(props) {
   const inputDataRefresh = () => {
     setData({
       ...inputData,
-      title: '',
+      title: null,
       people: '',
       content: '',
       bgcolor: '',
       password: null,
+      writer: null
     });
     setSelectedColor('선택');
-    setSelectedRgb('');
+    setSelectedRgb('#3788d8');
+    setActive(false);
   };
 
   const planSaveApi = () => {
@@ -89,6 +92,7 @@ function InputInfo(props) {
       .post('http://localhost:8081/api/planSave', {
         // id : createEventId(),
         title: inputData.title,
+        writer: inputData.writer,
         start_time: props.start,
         end_time: props.end,
         people: inputData.people,
@@ -102,7 +106,8 @@ function InputInfo(props) {
         props.refresh();
       })
       .catch((error) => {
-        alert('비밀번호를 입력하세요');
+        document.querySelector('.validation-form')
+        .classList.add('was-validated');
       });
   };
 
@@ -124,7 +129,7 @@ function InputInfo(props) {
       background: 'white',
       borderRadius: '20px',
       margin: '0 auto',
-      width: '45%',
+      width: '30%',
       height: '80%',
 
       zIndex: 10,
@@ -139,7 +144,7 @@ function InputInfo(props) {
         //onRequestClose={false} // 오버레이나 esc를 누르면 isopen값이 false 닫힘
         ariaHideApp={false}
       >
-        <form className='validation-form was-validated'>
+        <form className='validation-form'>
           <span className='formHead'>일정</span>
           <div className='formClose' onClick={props.onChange}></div>
           <hr />
@@ -151,7 +156,7 @@ function InputInfo(props) {
             <div className='inputBox'>
               <input
                 type='text'
-                placeholder='제목'
+                placeholder='제목 (필수)'
                 className='input_head_text'
                 required
                 onChange={(e) =>
@@ -165,10 +170,12 @@ function InputInfo(props) {
             </div>
           </div>
           {/* 날짜 */}
-          <div>
-            <input type='text' value={moment(props.start).format('YYYY년 MM월 DD일')} className='input_head_text' disabled/>
-            <input type='text' value={moment(props.start).format('A h시 mm분')} className='input_head_text' disabled/>-
-            <input type='text' value={moment(props.end).format('A h시 mm분')} className='input_head_text' disabled/>
+          <div className='asd'>
+            <label className='titleIcon modalIcon'></label>
+            <input type='text' value={moment(props.start).format('YYYY년 MM월 DD일')} className='formDate1 formDate' disabled/>
+            <input type='text' value={moment(props.start).format('A h시 mm분')} className='formDate2 formDate' disabled/>
+            <span className='dateText'>~</span>
+            <input type='text' value={moment(props.end).format('A h시 mm분')} className='formDate3 formDate' disabled/>
           </div>
           <br />
           <div className='inputinfo_body'>
@@ -176,13 +183,13 @@ function InputInfo(props) {
             <div className='inputBox2'>
               <input
                 type='text'
-                placeholder='작성자'
+                placeholder='작성자 (필수)'
                 className='input_partic'
                 required
                 onChange={(e) =>
                   setData({
                     ...inputData,
-                    people: e.target.value,
+                    writer: e.target.value,
                   })
                 }
               />
@@ -217,16 +224,15 @@ function InputInfo(props) {
               }
             />
           </div>
-          <br/>
+          <br />
           <hr></hr>
           <div className='passwordBox'>
-          <label className='lockIcon'></label>
+            <label className='lockIcon'></label>
             <input
               required
               type='password'
               className='passwordBox'
-              placeholder='비밀번호'
-              // defaultValue='비밀번호'
+              placeholder='비밀번호 (필수)'
               onChange={(e) =>
                 setData({
                   ...inputData,
@@ -234,14 +240,19 @@ function InputInfo(props) {
                 })
               }
             />
-            <div className='invalid-feedback'>*작성자를 입력해주세요</div>
+            <div className='invalid-feedback'>*비밀번호 입력해주세요</div>
             <div className='formbutton'>
-              <Button variant='primary' type='button' onClick={planSaveApi}>
-                저장
-              </Button>
-              <Button variant='secondary' type='button' onClick={props.onChange}>
-                취소
-              </Button>
+              <Button 
+                variant='primary' 
+                type='button' 
+                onClick={planSaveApi}
+              >저장</Button>
+              
+              <Button
+                variant='secondary'
+                type='button'
+                onClick={props.onChange}
+              >취소</Button>
             </div>
           </div>
         </form>
