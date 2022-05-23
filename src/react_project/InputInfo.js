@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './InputInfo.css';
 import './Calendar.css';
 import Button from 'react-bootstrap/Button';
+import moment from 'moment';
 
 function InputInfo(props) {
   const [inputData, setData] = useState({
@@ -15,7 +16,7 @@ function InputInfo(props) {
     password: '',
   });
 
-  const [selectedColor, setSelectedColor] = useState('선택'); //컬러 이름 만 담은거
+  const [selectedColor, setSelectedColor] = useState('선택'); //컬러 이름만 담은거
   const [selectedRgb, setSelectedRgb] = useState('#3788d8'); //  컬러 코드
   const [iActive, setActive] = useState(false);
 
@@ -124,7 +125,7 @@ function InputInfo(props) {
       borderRadius: '20px',
       margin: '0 auto',
       width: '45%',
-      height: '75%',
+      height: '80%',
 
       zIndex: 10,
     },
@@ -138,11 +139,10 @@ function InputInfo(props) {
         //onRequestClose={false} // 오버레이나 esc를 누르면 isopen값이 false 닫힘
         ariaHideApp={false}
       >
-        <form className='info_form'>
+        <form className='validation-form was-validated'>
           <span className='formHead'>일정</span>
           <div className='formClose' onClick={props.onChange}></div>
           <hr />
-        <form className='validation-form was-validated'>
           <div className='Sel_input_Box'>
             <label className='titleIcon modalIcon'></label>
             <div className='selectBox'>
@@ -166,9 +166,9 @@ function InputInfo(props) {
           </div>
           {/* 날짜 */}
           <div>
-            <input type='text' className='input_head_text' disabled/>
-            <input type='text' value={props.start} className='input_head_text' disabled/>-
-            <input type='text' value={props.end} className='input_head_text' disabled/>
+            <input type='text' value={moment(props.start).format('YYYY년 MM월 DD일')} className='input_head_text' disabled/>
+            <input type='text' value={moment(props.start).format('A h시 mm분')} className='input_head_text' disabled/>-
+            <input type='text' value={moment(props.end).format('A h시 mm분')} className='input_head_text' disabled/>
           </div>
           <br />
           <div className='inputinfo_body'>
