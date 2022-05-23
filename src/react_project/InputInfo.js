@@ -17,7 +17,7 @@ function InputInfo(props) {
     password: '',
   });
 
-  const [selectedColor, setSelectedColor] = useState('선택 ▼'); //컬러 이름 만 담은거
+  const [selectedColor, setSelectedColor] = useState('선택'); //컬러 이름 만 담은거
   const [selectedRgb, setSelectedRgb] = useState(''); //  컬러 코드
   const [iActive, setActive] = useState(false);
 
@@ -69,6 +69,7 @@ function InputInfo(props) {
         <ul className='selectul' onClick={active}>
           <span style={{ color: selectedRgb, paddingRight: '15px' }}>●</span>
           {selectedColor}
+          <label className='selectArrow'></label>
           {iActive &&
             props.colorList.map((c) => (
               <li
@@ -99,7 +100,7 @@ function InputInfo(props) {
       bgcolor: '',
       password: null,
     });
-    setSelectedColor('선택 ▼');
+    setSelectedColor('선택');
     setSelectedRgb('');
   };
 
@@ -160,6 +161,7 @@ function InputInfo(props) {
       >
         <form className='info_form'>
           <div className='Sel_input_Box'>
+            <label className='titleIcon modalIcon'></label>
             <div className='selectBox'>
               <SelectColor colorList={color_list}></SelectColor>
             </div>
@@ -180,6 +182,7 @@ function InputInfo(props) {
           <br />
 
           <div className='inputinfo_body'>
+            <label className='particIcon modalIcon'></label>
             <div className='input_body_text'>참여자</div>
             <div className='inputBox2'>
               <input
@@ -198,8 +201,8 @@ function InputInfo(props) {
           <br />
 
           <br />
-
-          <div>
+          <div className='contentBox'>
+            <label className='contentIcon modalIcon'></label>
             <textarea
               rows='5'
               cols='60'
@@ -215,10 +218,13 @@ function InputInfo(props) {
           </div>
 
           <br />
+          <hr></hr>
+          <label className='lockIcon'></label>
           <Form.Group as={Col} md='4' controlId='va' className='formPassword'>
             <Form.Control
               required
               type='password'
+              className='passwordBox'
               placeholder='비밀번호'
               // defaultValue='비밀번호'
               onChange={(e) =>

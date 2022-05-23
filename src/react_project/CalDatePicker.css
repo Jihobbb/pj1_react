@@ -5,3 +5,39 @@
   li.react-datepicker__time-list-item--disabled {
   display: none !important;
 } */
+
+.react-datepicker__header {
+  background-color: white;
+  border-bottom: none;
+}
+
+.react-datepicker__current-month {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #00c3cf;
+}
+
+.react-datepicker__day-name {
+  font-family: NotoSansKR;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  color: #7b827e;
+}
+.react-datepicker__navigation {
+  top: 10px;
+}
+.react-datepicker__day {
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  font-size: 14px;
+  color: #0a1811;
+}

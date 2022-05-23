@@ -106,7 +106,7 @@ a {
   color: #ff0707;
   opacity: 1 !important;
 }
- 
+
 /* --------------------------------------디자인 내려온 것 커스텀 CSS 입히는 중--------------------------------------------------------------- */
 /* header tool bar 제목 */
 .fc-toolbar-title {
@@ -454,6 +454,9 @@ a {
   color: black;
   text-align: center !important;
 }
+.fc-moveDate-button fc-button fc-button-primary {
+  z-index: 10;
+}
 
 /* 주말보기 버튼 */
 .fc-togleWeekend-button {
@@ -521,34 +524,45 @@ a {
   }
 }
 
-@media (max-width : 1500px){
+@media (max-width: 1500px) {
   /* 공통부분(HeaderToolBar) Start*/
-  .fc-floor3F-button.fc-button.fc-button-primary, .fc-floor2F-button.fc-button.fc-button-primary{ /* 2층 3층 버튼 */
+  .fc-floor3F-button.fc-button.fc-button-primary,
+  .fc-floor2F-button.fc-button.fc-button-primary {
+    /* 2층 3층 버튼 */
     width: 100px !important;
     height: 40px !important;
   }
-  
-  .fc-moveDate-button, .fc-dayGridMonth-button.fc-button.fc-button-primary, .fc-timeGridWeek-button.fc-button.fc-button-primary, .fc-listWeek-button.fc-button.fc-button-primary{ /* 선택, 월/주/리스트 버튼 */
+
+  .fc-moveDate-button,
+  .fc-dayGridMonth-button.fc-button.fc-button-primary,
+  .fc-timeGridWeek-button.fc-button.fc-button-primary,
+  .fc-listWeek-button.fc-button.fc-button-primary {
+    /* 선택, 월/주/리스트 버튼 */
     width: 60px;
     height: 40px;
     font: 10px;
   }
 
-  .fc-prev-button, .fc-next-button { /* prev, next 버튼 */
+  .fc-prev-button,
+  .fc-next-button {
+    /* prev, next 버튼 */
     width: 45px;
     height: 40px;
   }
 
-  .fc-togleWeekend-button { /* 주말보기 버튼 */
+  .fc-togleWeekend-button {
+    /* 주말보기 버튼 */
     width: 84px;
     height: 40px;
   }
 
-  .fc-toolbar-title { /* headtollbar 타이틀 텍스트 */
+  .fc-toolbar-title {
+    /* headtollbar 타이틀 텍스트 */
     font-size: 26px !important;
   }
 
-  .fc-today-button.fc-button.fc-button-primary { /* today 버튼 */
+  .fc-today-button.fc-button.fc-button-primary {
+    /* today 버튼 */
     width: 80px;
     height: 40px;
   }
@@ -563,61 +577,72 @@ a {
   } */
 }
 
-@media (max-width : 680px){
-
+@media (max-width: 680px) {
   /* 공통부분(HeaderToolBar) Start */
-  .fc-floor3F-button.fc-button.fc-button-primary, .fc-floor2F-button.fc-button.fc-button-primary{ /* 2층 3층 버튼 */
+  .fc-floor3F-button.fc-button.fc-button-primary,
+  .fc-floor2F-button.fc-button.fc-button-primary {
+    /* 2층 3층 버튼 */
     width: 70px !important;
     height: 30px !important;
     font-size: 12px;
   }
-  
-  .fc-moveDate-button, .fc-dayGridMonth-button.fc-button.fc-button-primary, .fc-timeGridWeek-button.fc-button.fc-button-primary, .fc-listWeek-button.fc-button.fc-button-primary{ /* 선택, 월/주/리스트 버튼 */
+
+  .fc-moveDate-button,
+  .fc-dayGridMonth-button.fc-button.fc-button-primary,
+  .fc-timeGridWeek-button.fc-button.fc-button-primary,
+  .fc-listWeek-button.fc-button.fc-button-primary {
+    /* 선택, 월/주/리스트 버튼 */
     width: 50px;
     height: 30px;
     font-size: 11px !important;
   }
 
-  .fc-prev-button, .fc-next-button { /* prev, next 버튼 */
+  .fc-prev-button,
+  .fc-next-button {
+    /* prev, next 버튼 */
     width: 35px;
     height: 30px;
     gap: 1px;
   }
 
-  .fc-togleWeekend-button { /* 주말보기 버튼 */
+  .fc-togleWeekend-button {
+    /* 주말보기 버튼 */
     width: 59px;
     height: 30px;
     font-size: 11px !important;
   }
 
-  .fc-toolbar-title { /* headtollbar 타이틀 텍스트 */
+  .fc-toolbar-title {
+    /* headtollbar 타이틀 텍스트 */
     font-size: 13px !important;
   }
 
-  .fc-today-button.fc-button.fc-button-primary { /* today 버튼 */
+  .fc-today-button.fc-button.fc-button-primary {
+    /* today 버튼 */
     width: 60px;
     height: 30px;
-    font-size: 12px
+    font-size: 12px;
   }
 
-  .fc-icon { /* prev, next 버튼 아이콘 */
+  .fc-icon {
+    /* prev, next 버튼 아이콘 */
     width: 1px !important;
     height: 30px !important;
     font-size: 15px !important;
   }
 
-  .fc-moveDate-button{ /* 선택 버튼 (폰트 사이즈 개별 조절) */
+  .fc-moveDate-button {
+    /* 선택 버튼 (폰트 사이즈 개별 조절) */
     font-size: 10px !important;
   }
   /* 공통부분(HeaderToolBar) End */
-  
 }
 
-@media (max-width: 1360px){
+@media (max-width: 1360px) {
   .fc-col-header-cell-cushion {
     font-size: 13px !important;
   }
-  .fc-col-header-cell.fc-day{
+  .fc-col-header-cell.fc-day {
     height: 52px;
     padding: 10px 90px 10px 28px;
     border-left-width: 0px;

@@ -96,7 +96,7 @@ const Calendar = () => {
   };
 
   return (
-    <div>      
+    <div>
       {/* 입력폼 Props */}
 
       <InputInfo
