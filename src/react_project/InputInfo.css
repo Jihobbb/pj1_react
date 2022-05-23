@@ -12,11 +12,6 @@
   height: 100% !important; */
 }
 
-.formbutton {
-  float: right;
-  padding-bottom: 0px;
-}
-
 .formbutton > Button {
   margin: 3px;
 }
@@ -38,36 +33,31 @@
   background: url('./icon/ic_title.png') no-repeat;
   background-size: contain;
   border: none;
-  width: 35px;
-  height: 35px;
-}
-.particIcon {
-  background: url('./icon/ic_user.png') no-repeat;
-  background-size: contain;
-  border: none;
-  width: 35px;
-  height: 35px;
-}
-.contentIcon {
-  background: url('./icon/ic_text.png') no-repeat;
-  background-size: contain;
-  border: none;
-  width: 35px;
-  height: 35px;
-}
-.lockIcon {
-  background: url('./icon/ic_lock.png') no-repeat;
-  background-size: contain;
-  border: none;
-  width: 35px;
-  height: 35px;
+  padding: 15px;
 }
 .calenadrIcon {
   background: url('./icon/ic_calenadr.png') no-repeat;
   background-size: contain;
   border: none;
-  width: 35px;
-  height: 35px;
+  padding: 15px;
+}
+.particIcon {
+  background: url('./icon/ic_user.png') no-repeat;
+  background-size: contain;
+  border: none;
+  padding: 15px;
+}
+.contentIcon {
+  background: url('./icon/ic_text.png') no-repeat;
+  background-size: contain;
+  border: none;
+  padding: 15px;
+}
+.lockIcon {
+  background: url('./icon/ic_lock.png') no-repeat;
+  background-size: contain;
+  border: none;
+  padding: 15px;
 }
 /* select */
 .Sel_input_Box {
@@ -260,16 +250,26 @@
   border: none;
   background-color: #f5f5f5;
   padding-left: 15px; */
-  display: flex;
-  background-color: antiquewhite;
+  /* display: flex; */
 }
 .passwordInput {
+  position: relative;
+  top: -7px;
   height: 35px;
-
   border-radius: 5px;
   border: none;
   background-color: #f5f5f5;
   padding-left: 15px;
+}
+.psfeed {
+  padding-left: 45px;
+  /* background-color: aqua; */
+}
+.formbutton {
+  position: relative;
+  top: -70px;
+  float: right;
+  padding-bottom: 0px;
 }
 
 * {

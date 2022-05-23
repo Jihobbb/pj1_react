@@ -172,7 +172,7 @@ function InputInfo(props) {
           </div>
           {/* 날짜 */}
           <div className='asd'>
-            <label className='titleIcon modalIcon'></label>
+            <label className='calenadrIcon modalIcon'></label>
             <input
               type='text'
               value={moment(props.start).format('YYYY년 MM월 DD일')}
@@ -244,10 +244,11 @@ function InputInfo(props) {
           <hr></hr>
           <div className='passwordBox'>
             <label className='lockIcon modalIcon'></label>
+
             <input
               required
               type='password'
-              className='passwordBox'
+              className='passwordInput'
               placeholder='비밀번호 (필수)'
               onChange={(e) =>
                 setData({
@@ -256,20 +257,18 @@ function InputInfo(props) {
                 })
               }
             />
-            <div className='invalid-feedback'>*비밀번호 입력해주세요</div>
-            <div className='formbutton'>
-              <Button variant='primary' type='button' onClick={planSaveApi}>
-                저장
-              </Button>
-
-              <Button
-                variant='secondary'
-                type='button'
-                onClick={props.onChange}
-              >
-                취소
-              </Button>
+            <div className='invalid-feedback psfeed'>
+              *비밀번호 입력해주세요
             </div>
+          </div>
+          <div className='formbutton'>
+            <Button variant='primary' type='button' onClick={planSaveApi}>
+              저장
+            </Button>
+
+            <Button variant='secondary' type='button' onClick={props.onChange}>
+              취소
+            </Button>
           </div>
         </form>
       </Modal>
