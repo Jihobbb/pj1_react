@@ -171,6 +171,16 @@ a {
 .fc-direction-ltr .fc-button-group > .fc-button:not(:last-child) {
   margin-right: 3px;
 }
+.fc-button-active {
+  background-color: #00c3cf !important;
+  border: solid 1px #00c3cf !important;
+}
+
+.fc-floor2F-button:active,
+.fc-floor3F-button:active {
+  background-color: #00c3cf !important;
+  border: solid 1px #00c3cf !important;
+}
 
 /* 2층 버튼 */
 .fc-floor2F-button.fc-button.fc-button-primary {
@@ -192,11 +202,6 @@ a {
   box-shadow: none;
 }
 
-.fc-floor2F-button.fc-button-active {
-  background-color: #00c3cf !important;
-  border: solid 1px #00c3cf !important;
-}
-
 /* 3층 버튼 */
 .fc-floor3F-button.fc-button.fc-button-primary {
   width: 160px;
@@ -216,13 +221,6 @@ a {
   border: solid 1px #00c3cf;
   box-shadow: none;
 }
-
-.fc-floor3F-button.fc-button-active {
-  background-color: #00c3cf !important;
-  border: solid 1px #00c3cf !important;
-}
-
-
 
 /* 주말보기 버튼 */
 .fc-togleWeekend-button {
@@ -333,7 +331,6 @@ a {
   box-shadow: none !important;
 }
 
-
 /* 월 버튼 */
 .fc-dayGridMonth-button.fc-button.fc-button-primary {
   width: 80px;
@@ -409,9 +406,9 @@ a {
 .fc-list-event-time {
   width: 480px;
   height: 52px;
-  padding: 14.7px 146.6px 14.3px 144.4px !important;
+  padding: 14.7px 140.9px 14.3px 138.5px !important;
   border: solid 1px #e8e8e8;
-  border-right-width: 2px !important;
+  border-left-width: 2px !important;
   text-align: center;
   border-collapse: collapse !important;
 }
@@ -428,7 +425,7 @@ a {
 /* 리스트 yyyy mm dd */
 .fc-direction-ltr .fc-list-day-side-text {
   float: left !important;
-  padding-left: 150px;
+  margin-left: 9%;
 }
 
 /* 리스트 요일 */
@@ -493,28 +490,22 @@ a {
   height: 0;
 }
 
-@media (max-width: 1462px) {
+@media (max-width: 1500px) {
   .react-datepicker {
-    top: 120px;
-    left: 0px;
+    top: 95px;
+    left: 250px;
   }
 }
-@media (max-width: 1175px) {
+@media (max-width: 1143px) {
   .react-datepicker {
-    top: 120px;
-    left: 60px;
+    top: 120px !important;
+    left: 10px !important;
   }
 }
-@media (max-width: 1175px) {
+@media (max-width: 678px) {
   .react-datepicker {
-    top: 140px;
-    left: 0px;
-  }
-}
-@media (max-width: 723px) {
-  .react-datepicker {
-    top: 165px;
-    left: 0px;
+    top: 110px !important;
+    left: 20px !important;
   }
 }
 
@@ -561,14 +552,6 @@ a {
     height: 40px;
   }
   /* 공통부분(HeaderToolBar) End */
-
-  /* .fc-col-header-cell.fc-day{
-    height: 52px;
-    padding: 10px 90px 10px 60px;
-    border-left-width: 0px;
-    border-right-width: 0px;
-    border-top-width: 2px !important;
-  } */
 }
 
 @media (max-width: 680px) {
@@ -627,7 +610,7 @@ a {
 
   .fc-moveDate-button {
     /* 선택 버튼 (폰트 사이즈 개별 조절) */
-    font-size: 10px !important;
+    font-size: 12px !important;
   }
   /* 공통부분(HeaderToolBar) End */
 }
@@ -635,10 +618,11 @@ a {
 @media (max-width: 1360px) {
   .fc-col-header-cell-cushion {
     font-size: 13px !important;
+    white-space: nowrap;
   }
   .fc-col-header-cell.fc-day {
     height: 52px;
-    padding: 10px 90px 10px 28px;
+    padding: 10px 20px 10px 14px;
     border-left-width: 0px;
     border-right-width: 0px;
     border-top-width: 2px !important;
