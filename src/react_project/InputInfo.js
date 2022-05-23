@@ -123,8 +123,8 @@ function InputInfo(props) {
       background: 'white',
       borderRadius: '20px',
       margin: '0 auto',
-      width: '45%',
-      height: '75%',
+      width: '30%',
+      height: '80%',
 
       zIndex: 10,
     },
@@ -138,11 +138,10 @@ function InputInfo(props) {
         //onRequestClose={false} // 오버레이나 esc를 누르면 isopen값이 false 닫힘
         ariaHideApp={false}
       >
-        <form className='info_form'>
+        <form className='validation-form was-validated'>
           <span className='formHead'>일정</span>
           <div className='formClose' onClick={props.onChange}></div>
           <hr />
-        <form className='validation-form was-validated'>
           <div className='Sel_input_Box'>
             <label className='titleIcon modalIcon'></label>
             <div className='selectBox'>
@@ -165,10 +164,22 @@ function InputInfo(props) {
             </div>
           </div>
           {/* 날짜 */}
-          <div>
-            <input type='text' className='input_head_text' disabled/>
-            <input type='text' value={props.start} className='input_head_text' disabled/>-
-            <input type='text' value={props.end} className='input_head_text' disabled/>
+          <div className='asd'>
+            <label className='titleIcon modalIcon'></label>
+            <input type='text' className='formDate1 formDate' disabled />
+            <input
+              type='text'
+              value={props.start}
+              className='formDate2 formDate'
+              disabled
+            />
+            <span className='dateText'>~</span>
+            <input
+              type='text'
+              value={props.end}
+              className='formDate3 formDate'
+              disabled
+            />
           </div>
           <br />
           <div className='inputinfo_body'>
@@ -217,10 +228,10 @@ function InputInfo(props) {
               }
             />
           </div>
-          <br/>
+          <br />
           <hr></hr>
           <div className='passwordBox'>
-          <label className='lockIcon'></label>
+            <label className='lockIcon'></label>
             <input
               required
               type='password'
@@ -239,7 +250,11 @@ function InputInfo(props) {
               <Button variant='primary' type='button' onClick={planSaveApi}>
                 저장
               </Button>
-              <Button variant='secondary' type='button' onClick={props.onChange}>
+              <Button
+                variant='secondary'
+                type='button'
+                onClick={props.onChange}
+              >
                 취소
               </Button>
             </div>

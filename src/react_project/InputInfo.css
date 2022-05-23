@@ -187,11 +187,32 @@
   padding-left: 15px;
 }
 
-.passwordBox {
+/* 날짜 */
+.asd {
+  display: flex;
+  /* justify-content: space-between; */
+  /* background-color: aqua; */
+}
+.formDate {
+  height: 40px;
   border-radius: 5px;
   border: none;
   background-color: #f5f5f5;
   padding-left: 15px;
+  /* width: 20%; */
+}
+.formDate1 {
+  width: 30%;
+  margin-right: 3%;
+}
+.formDate2 {
+  width: 25%;
+}
+.formDate3 {
+  width: 25%;
+}
+.dateText {
+  font-size: 30px;
 }
 /* modify */
 .modifyhead {
@@ -223,6 +244,13 @@
   height: 30px;
   width: 77%;
 
+  border-radius: 5px;
+  border: none;
+  background-color: #f5f5f5;
+  padding-left: 15px;
+}
+
+.passwordBox {
   border-radius: 5px;
   border: none;
   background-color: #f5f5f5;
