@@ -105,6 +105,7 @@ a {
   background-color: #fff3f3 !important;
   color: #ff0707;
   opacity: 1 !important;
+  pointer-events: none;
 }
 
 /* --------------------------------------디자인 내려온 것 커스텀 CSS 입히는 중--------------------------------------------------------------- */
@@ -191,11 +192,11 @@ a {
   box-shadow: none;
 }
 
-.fc-floor2F-button.fc-button.fc-button-primary:active {
+/* .fc-floor2F-button.fc-button.fc-button-primary:active {
   background-color: #00c3cf !important;
   border: none !important;
   color: white;
-}
+} */
 .fc-floor2F-button.fc-button.fc-button-primary:focus {
   background-color: #00c3cf;
   color: white;
@@ -319,6 +320,8 @@ a {
 .fc .fc-button-primary:not(:disabled):active {
   box-shadow: none !important;
 }
+
+
 /* 월 버튼 */
 .fc-dayGridMonth-button.fc-button.fc-button-primary {
   width: 80px;
@@ -435,11 +438,6 @@ a {
   border-right: 1px solid rgb(0, 0, 0, 0.2) !important;
 }
 
-/* @media (pointer:coarse) {
-  .td{
-    color: red;
-  }
-} */
 /* 선택 버튼 */
 .fc-moveDate-button {
   width: 80px;
@@ -466,7 +464,11 @@ a {
   padding: 10px 24px;
   border: solid 2px #00c3cf !important;
   background-color: #00c3cf !important;
+  opacity: 0.6;
   color: black;
+}
+.fc-togleWeekend-button.fc-button-active {
+  opacity: 1;
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */

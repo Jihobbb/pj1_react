@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import FullCalendar, { CalendarApi, formatDate } from '@fullcalendar/react'; // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -12,6 +12,11 @@ const Planner = (props) => {
   const [weekendActive, setWeekendActive] = useState(false);
   const [isDatePickerOpen, setisDatePickerOpen] = useState(false);
   const calendarComponentRef = useRef();
+
+
+  useEffect(() => {
+    document.querySelector('.fc-floor2F-button').classList.add('fc-button-active')
+  }, []);
 
   //datepicker 온오프
   const handlePickerClick = (e) => {
@@ -125,6 +130,11 @@ const Planner = (props) => {
             text: '주말보기',
             click() {
               setWeekendActive(!weekendActive);
+              if(!weekendActive) {
+                this.className += " fc-button-active";
+              } else {
+                this.className = this.className.replace(" fc-button-active","")
+              }
             },
           },
           moveDate: {
