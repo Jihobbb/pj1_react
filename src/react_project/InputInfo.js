@@ -142,7 +142,7 @@ function InputInfo(props) {
       >
         <form className='info_form'>
           <span className='formHead'>일정</span>
-          <span className='formHead'></span>
+          <div className='formClose' onClick={props.onChange}></div>
           <hr />
           <div className='Sel_input_Box'>
             <label className='titleIcon modalIcon'></label>
