@@ -160,12 +160,60 @@ function InputInfo(props) {
               />
             </div>
           </div>
+          {/* 날짜 */}
+          <div>
+            <input
+              type='text'
+              placeholder='날짜'
+              className='input_head_text'
+              onChange={(e) =>
+                setData({
+                  ...inputData,
+                  title: e.target.value,
+                })
+              }
+            />
+            <input
+              type='text'
+              placeholder='날짜'
+              className='input_head_text'
+              onChange={(e) =>
+                setData({
+                  ...inputData,
+                  title: e.target.value,
+                })
+              }
+            />
+            ~
+            <input
+              type='text'
+              placeholder='날짜'
+              className='input_head_text'
+              onChange={(e) =>
+                setData({
+                  ...inputData,
+                  title: e.target.value,
+                })
+              }
+            />
+          </div>
+          {/*  */}
           <br />
-
           <div className='inputinfo_body'>
             <label className='particIcon modalIcon'></label>
             <div className='input_body_text'>참여자</div>
             <div className='inputBox2'>
+              <input
+                type='text'
+                placeholder='작성자'
+                className='input_partic'
+                onChange={(e) =>
+                  setData({
+                    ...inputData,
+                    people: e.target.value,
+                  })
+                }
+              />
               <input
                 type='text'
                 placeholder='참여자'
@@ -180,7 +228,6 @@ function InputInfo(props) {
             </div>
           </div>
           <br />
-
           <br />
           <div className='contentBox'>
             <label className='contentIcon modalIcon'></label>
@@ -197,7 +244,6 @@ function InputInfo(props) {
               }
             />
           </div>
-
           <br />
           <hr></hr>
           <label className='lockIcon'></label>
@@ -219,7 +265,6 @@ function InputInfo(props) {
               Looks good!
             </Form.Control.Feedback>
           </Form.Group>
-
           <div className='formbutton'>
             <Button variant='primary' type='button' onClick={planSaveApi}>
               저장
