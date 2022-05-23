@@ -141,6 +141,9 @@ function InputInfo(props) {
         ariaHideApp={false}
       >
         <form className='info_form'>
+          <span className='formHead'>일정</span>
+          <span className='formHead'></span>
+          <hr />
           <div className='Sel_input_Box'>
             <label className='titleIcon modalIcon'></label>
             <div className='selectBox'>
@@ -247,24 +250,24 @@ function InputInfo(props) {
           <br />
           <hr></hr>
           <label className='lockIcon'></label>
-          <Form.Group as={Col} md='4' controlId='va' className='formPassword'>
-            <Form.Control
-              required
-              type='password'
-              className='passwordBox'
-              placeholder='비밀번호'
-              // defaultValue='비밀번호'
-              onChange={(e) =>
-                setData({
-                  ...inputData,
-                  password: e.target.value,
-                })
-              }
-            />
-            <Form.Control.Feedback type='invalid'>
-              Looks good!
-            </Form.Control.Feedback>
-          </Form.Group>
+
+          <Form.Control
+            required
+            type='password'
+            className='passwordBox'
+            placeholder='비밀번호'
+            // defaultValue='비밀번호'
+            onChange={(e) =>
+              setData({
+                ...inputData,
+                password: e.target.value,
+              })
+            }
+          />
+          <Form.Control.Feedback type='invalid'>
+            Looks good!
+          </Form.Control.Feedback>
+
           <div className='formbutton'>
             <Button variant='primary' type='button' onClick={planSaveApi}>
               저장

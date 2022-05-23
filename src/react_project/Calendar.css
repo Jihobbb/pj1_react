@@ -171,6 +171,16 @@ a {
 .fc-direction-ltr .fc-button-group > .fc-button:not(:last-child) {
   margin-right: 3px;
 }
+.fc-button-active {
+  background-color: #00c3cf !important;
+  border: solid 1px #00c3cf !important;
+}
+
+.fc-floor2F-button:active,
+.fc-floor3F-button:active {
+  background-color: #00c3cf !important;
+  border: solid 1px #00c3cf !important;
+}
 
 /* 2층 버튼 */
 .fc-floor2F-button.fc-button.fc-button-primary {
@@ -192,11 +202,6 @@ a {
   box-shadow: none;
 }
 
-.fc-floor2F-button.fc-button-active {
-  background-color: #00c3cf !important;
-  border: solid 1px #00c3cf !important;
-}
-
 /* 3층 버튼 */
 .fc-floor3F-button.fc-button.fc-button-primary {
   width: 160px;
@@ -216,13 +221,6 @@ a {
   border: solid 1px #00c3cf;
   box-shadow: none;
 }
-
-.fc-floor3F-button.fc-button-active {
-  background-color: #00c3cf !important;
-  border: solid 1px #00c3cf !important;
-}
-
-
 
 /* 주말보기 버튼 */
 .fc-togleWeekend-button {
@@ -332,7 +330,6 @@ a {
 .fc .fc-button-primary:not(:disabled):active {
   box-shadow: none !important;
 }
-
 
 /* 월 버튼 */
 .fc-dayGridMonth-button.fc-button.fc-button-primary {

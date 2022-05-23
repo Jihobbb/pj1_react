@@ -7,6 +7,7 @@
 
 .info_form {
   background-color: white;
+
   /* width: 100%;
   height: 100% !important; */
 }
@@ -24,6 +25,15 @@
   margin: 3px;
 }
 
+.formHead {
+  width: 111px;
+  height: 20px;
+  margin: 2px 275px 2px 0;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+  color: #000;
+}
 /* 아이콘 */
 .modalIcon {
   margin-right: 15px;
@@ -77,9 +87,6 @@
   text-align: center;
   line-height: 2.3;
   border: none;
-}
-.selectulTitle::after {
-  content: 's';
 }
 
 .selectli {
