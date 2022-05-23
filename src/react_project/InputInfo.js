@@ -5,8 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './InputInfo.css';
 import './Calendar.css';
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col';
 
 function InputInfo(props) {
   const [inputData, setData] = useState({
@@ -144,6 +142,7 @@ function InputInfo(props) {
           <span className='formHead'>일정</span>
           <div className='formClose' onClick={props.onChange}></div>
           <hr />
+        <form className='validation-form was-validated'>
           <div className='Sel_input_Box'>
             <label className='titleIcon modalIcon'></label>
             <div className='selectBox'>
@@ -154,6 +153,7 @@ function InputInfo(props) {
                 type='text'
                 placeholder='제목'
                 className='input_head_text'
+                required
                 onChange={(e) =>
                   setData({
                     ...inputData,
@@ -161,55 +161,24 @@ function InputInfo(props) {
                   })
                 }
               />
+              <div className='invalid-feedback'>*제목을 입력해 주세요</div>
             </div>
           </div>
           {/* 날짜 */}
           <div>
-            <input
-              type='text'
-              placeholder='날짜'
-              className='input_head_text'
-              onChange={(e) =>
-                setData({
-                  ...inputData,
-                  title: e.target.value,
-                })
-              }
-            />
-            <input
-              type='text'
-              placeholder='날짜'
-              className='input_head_text'
-              onChange={(e) =>
-                setData({
-                  ...inputData,
-                  title: e.target.value,
-                })
-              }
-            />
-            ~
-            <input
-              type='text'
-              placeholder='날짜'
-              className='input_head_text'
-              onChange={(e) =>
-                setData({
-                  ...inputData,
-                  title: e.target.value,
-                })
-              }
-            />
+            <input type='text' className='input_head_text' disabled/>
+            <input type='text' value={props.start} className='input_head_text' disabled/>-
+            <input type='text' value={props.end} className='input_head_text' disabled/>
           </div>
-          {/*  */}
           <br />
           <div className='inputinfo_body'>
             <label className='particIcon modalIcon'></label>
-            <div className='input_body_text'>참여자</div>
             <div className='inputBox2'>
               <input
                 type='text'
                 placeholder='작성자'
                 className='input_partic'
+                required
                 onChange={(e) =>
                   setData({
                     ...inputData,
@@ -217,6 +186,7 @@ function InputInfo(props) {
                   })
                 }
               />
+              <div className='invalid-feedback'>*작성자를 입력해주세요</div>
               <input
                 type='text'
                 placeholder='참여자'
@@ -247,34 +217,32 @@ function InputInfo(props) {
               }
             />
           </div>
-          <br />
+          <br/>
           <hr></hr>
+          <div className='passwordBox'>
           <label className='lockIcon'></label>
-
-          <Form.Control
-            required
-            type='password'
-            className='passwordBox'
-            placeholder='비밀번호'
-            // defaultValue='비밀번호'
-            onChange={(e) =>
-              setData({
-                ...inputData,
-                password: e.target.value,
-              })
-            }
-          />
-          <Form.Control.Feedback type='invalid'>
-            Looks good!
-          </Form.Control.Feedback>
-
-          <div className='formbutton'>
-            <Button variant='primary' type='button' onClick={planSaveApi}>
-              저장
-            </Button>
-            <Button variant='secondary' type='button' onClick={props.onChange}>
-              취소
-            </Button>
+            <input
+              required
+              type='password'
+              className='passwordBox'
+              placeholder='비밀번호'
+              // defaultValue='비밀번호'
+              onChange={(e) =>
+                setData({
+                  ...inputData,
+                  password: e.target.value,
+                })
+              }
+            />
+            <div className='invalid-feedback'>*작성자를 입력해주세요</div>
+            <div className='formbutton'>
+              <Button variant='primary' type='button' onClick={planSaveApi}>
+                저장
+              </Button>
+              <Button variant='secondary' type='button' onClick={props.onChange}>
+                취소
+              </Button>
+            </div>
           </div>
         </form>
       </Modal>
