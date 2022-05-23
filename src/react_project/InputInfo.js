@@ -171,7 +171,7 @@ function InputInfo(props) {
             </div>
           </div>
           {/* 날짜 */}
-          <div className='asd'>
+          <div className='formDateBox'>
             <label className='calenadrIcon modalIcon'></label>
             <input
               type='text'

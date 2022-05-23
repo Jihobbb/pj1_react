@@ -179,7 +179,7 @@
 }
 
 /* 날짜 */
-.asd {
+.formDateBox {
   display: flex;
   /* padding-left: 15px; */
   /* justify-content: space-between; */
@@ -210,6 +210,18 @@
   font-size: 30px;
 }
 /* modify */
+.modify_formDate {
+  display: flex;
+  margin-top: 15px;
+  margin-bottom: -25px;
+}
+.modify_formbutton {
+  float: right;
+  margin-top: -15px;
+}
+.modify_formbutton > button {
+  margin: 1px;
+}
 .modifyhead {
   display: flex;
 }
@@ -267,7 +279,7 @@
 }
 .formbutton {
   position: relative;
-  top: -70px;
+  top: -45px;
   float: right;
   padding-bottom: 0px;
 }

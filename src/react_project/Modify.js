@@ -9,7 +9,7 @@ import Modal from 'react-modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './InputInfo.css';
 import './Calendar.css';
-
+import moment from 'moment';
 import Button from 'react-bootstrap/Button';
 
 const Modify = forwardRef((props, ref) => {
@@ -112,6 +112,7 @@ const Modify = forwardRef((props, ref) => {
     <div>
       <Modal
         isOpen={props.modifyModal}
+        // isOpen={true}
         //{modal_state} //true시 모달이 나옴 버튼 클릭시 false에서 트루로?
         // modify_state
         style={modalStyle} //모달창 스타일
@@ -150,6 +151,28 @@ const Modify = forwardRef((props, ref) => {
               }}
             />
           </div>
+          <div className='modify_formDate'>
+            <label className='calenadrIcon modalIcon'></label>
+            <input
+              type='text'
+              value={moment(props.start).format('YYYY년 MM월 DD일')}
+              className='formDate1 formDate'
+              disabled
+            />
+            <input
+              type='text'
+              value={moment(props.start).format('A h시 mm분')}
+              className='formDate2 formDate'
+              disabled
+            />
+            <span className='dateText'>~</span>
+            <input
+              type='text'
+              value={moment(props.end).format('A h시 mm분')}
+              className='formDate3 formDate'
+              disabled
+            />
+          </div>
 
           <br />
 
@@ -172,7 +195,7 @@ const Modify = forwardRef((props, ref) => {
 
           <br />
 
-          <div className='formbutton'>
+          <div className='modify_formbutton'>
             <Button
               type='button'
               variant='primary'
