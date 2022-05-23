@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import FullCalendar, { CalendarApi, formatDate } from '@fullcalendar/react'; // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -12,6 +12,10 @@ const Planner = (props) => {
   const [weekendActive, setWeekendActive] = useState(false);
   const [isDatePickerOpen, setisDatePickerOpen] = useState(false);
   const calendarComponentRef = useRef();
+
+  useEffect(() => {
+    document.querySelector('.fc-floor2F-button').classList.add('fc-button-active')
+  }, []);
 
   //datepicker 온오프
   const handlePickerClick = (e) => {
@@ -111,6 +115,10 @@ const Planner = (props) => {
               setFloorStatus('2');
               props.floorChange('2');
               props.refresh();
+              if(!document.querySelector('.fc-floor2F-button').classList.contains('fc-button-active')) {
+                document.querySelector('.fc-floor2F-button').classList.add('fc-button-active')
+              }
+              document.querySelector('.fc-floor3F-button').classList.remove('fc-button-active')
             },
           },
           floor3F: {
@@ -119,12 +127,21 @@ const Planner = (props) => {
               setFloorStatus('3');
               props.floorChange('3');
               props.refresh();
+              if(!document.querySelector('.fc-floor3F-button').classList.contains('fc-button-active')) {
+                document.querySelector('.fc-floor3F-button').classList.add('fc-button-active')
+              }
+              document.querySelector('.fc-floor2F-button').classList.remove('fc-button-active')
             },
           },
           togleWeekend: {
             text: '주말보기',
             click() {
               setWeekendActive(!weekendActive);
+              if(!weekendActive) {
+                this.className += " fc-button-active";
+              } else {
+                this.className = this.className.replace(" fc-button-active","")
+              }
             },
           },
           moveDate: {

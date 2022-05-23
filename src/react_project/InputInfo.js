@@ -18,7 +18,7 @@ function InputInfo(props) {
   });
 
   const [selectedColor, setSelectedColor] = useState('선택'); //컬러 이름 만 담은거
-  const [selectedRgb, setSelectedRgb] = useState(''); //  컬러 코드
+  const [selectedRgb, setSelectedRgb] = useState('#3788d8'); //  컬러 코드
   const [iActive, setActive] = useState(false);
 
   //컬러 선택하는 리스트 출력 여부
@@ -35,7 +35,7 @@ function InputInfo(props) {
 
   //일정 컬러 목록
   const color_list = [
-    { value: 'none', color: 'none' },
+    { value: '#3788d8', color: 'default' },
     { value: '#BEC5CB', color: '그레이' },
     { value: '#F6D8D8', color: '핑크' },
     { value: '#D0D4B2', color: '그린' },
@@ -45,25 +45,6 @@ function InputInfo(props) {
 
   //컬러 선택
   const SelectColor = (props) => {
-    //리스트에서 컬러 클릭시
-    // const onSelect = () => {
-    //   setData({
-    //     ...inputData,
-    //     bgcolor: findColorByName(selectedColor),
-    //   });
-    // };
-
-    // //컬러 이름으로 알맞는 코드를 매칭시켜 리턴
-    // const findColorByName = (color) => {
-    //   let selectedColorValue;
-    //   props.colorList.map((c) => {
-    //     if (c.value === color) {
-    //       selectedColorValue = c.value;
-    //     }
-    //   });
-    //   return selectedColorValue;
-    // };
-
     return (
       <div>
         <ul className='selectul' onClick={active}>
