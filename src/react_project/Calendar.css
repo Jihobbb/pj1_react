@@ -552,7 +552,6 @@ a {
     height: 40px;
   }
   /* 공통부분(HeaderToolBar) End */
-
 }
 
 @media (max-width: 680px) {
@@ -619,6 +618,7 @@ a {
 @media (max-width: 1360px) {
   .fc-col-header-cell-cushion {
     font-size: 13px !important;
+    white-space: nowrap;
   }
   .fc-col-header-cell.fc-day {
     height: 52px;
