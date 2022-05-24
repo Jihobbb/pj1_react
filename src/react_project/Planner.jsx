@@ -22,7 +22,8 @@ const Planner = (props) => {
     };
   },[]);
   const clickDatePickerOutside = event => {
-    if (isDatePickerOpen && !datePicker.current.contains(event.target)) {
+    if (isDatePickerOpen && !datePicker.current.contains(event.target) || event.target.title !== '선택 ∇') {
+      console.log(event.target.title);
       setisDatePickerOpen(false);
     }
   };
@@ -180,9 +181,7 @@ const Planner = (props) => {
           moveDate: {
             text: '선택 ∇',
             click() {
-              if(!isDatePickerOpen) {
-                setisDatePickerOpen(true)
-              } 
+                setisDatePickerOpen(!isDatePickerOpen)  
             },
           },
         }}
