@@ -41,3 +41,23 @@
   font-size: 14px;
   color: #0a1811;
 }
+.react-datepicker__day--keyboard-selected:hover {
+  background-color: rgba(43, 235, 183);
+}
+
+.react-datepicker__day--keyboard-selected {
+  background-color: rgb(43, 235, 183);
+}
+
+.react-datepicker__day--today {
+  background-color: rgba(207, 255, 229);
+}
+.react-datepicker__day--outside-month {
+  /* background-color: #7b827e; */
+  color: #7b827e;
+}
+
+.react-datepicker__day--weekend {
+  /* background-color: #00c3cf; */
+  color: coral;
+}
