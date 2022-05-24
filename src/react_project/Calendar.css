@@ -117,6 +117,7 @@ a {
 }
 .fc-col-header-cell-cushion {
   font-size: 14px;
+  white-space: nowrap;
 }
 /* Prev, Next 버튼 이미지 */
 .fc-icon {
@@ -614,13 +615,12 @@ a {
     font-size: 12px !important;
   }
   /* 공통부분(HeaderToolBar) End */
+  .fc-col-header-cell-cushion {
+    font-size: 6px !important;
+  }
 }
 
 @media (max-width: 1360px) {
-  .fc-col-header-cell-cushion {
-    font-size: 13px !important;
-    white-space: nowrap;
-  }
   .fc-col-header-cell.fc-day {
     height: 52px;
     padding: 10px 20px 10px 14px;
