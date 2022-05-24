@@ -52,6 +52,7 @@ const Calendar = () => {
         content: plan.extendedProps.content,
         bgcolor: plan.backgroundColor,
         floor: plan.extendedProps.floor,
+        writer: plan.extendedProps.writer
       })
       .then(getdata);
   };
