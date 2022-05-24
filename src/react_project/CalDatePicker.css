@@ -42,19 +42,18 @@
   color: #0a1811;
 }
 .react-datepicker__day--keyboard-selected:hover {
-  background-color: rgba(43, 235, 183);
+  background-color: rgb(0, 195, 207, 0.8);
 }
 
 .react-datepicker__day--keyboard-selected {
-  background-color: rgb(43, 235, 183);
+  background-color: rgb(0, 195, 207, 0.6);
 }
 
 .react-datepicker__day--today {
-  background-color: rgba(207, 255, 229);
+  background-color: #fffadf;
 }
 .react-datepicker__day--outside-month {
-  /* background-color: #7b827e; */
-  color: #7b827e;
+  opacity: 0.5 !important;
 }
 
 .react-datepicker__day--weekend {
