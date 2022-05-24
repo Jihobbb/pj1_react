@@ -249,11 +249,7 @@
 .modifyhead {
   display: flex;
 }
-.modify_info_head_text {
-  width: 25%;
-  font-size: 20px;
-  text-align: center;
-}
+
 .modify_info_body_text {
   height: 30px;
   width: 100%;

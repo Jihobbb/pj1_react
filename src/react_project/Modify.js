@@ -112,7 +112,7 @@ const Modify = forwardRef((props, ref) => {
         <form className='info_form'>
           <div className='modifyhead'>
             <label className='titleIcon modalIcon'></label>
-            <div className='modify_info_head_text'>제목</div>
+
             <input
               type='text'
               value={updateData.title}
