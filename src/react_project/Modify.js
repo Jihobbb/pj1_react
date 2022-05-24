@@ -133,8 +133,8 @@ const Modify = forwardRef((props, ref) => {
             {/* <div className='info_body_text'>참여자</div> */}
             <div className='inputBox2'>
               <input
-                disabled
                 type='text'
+                placeholder='작성자'
                 value={updateData.writer}
                 className='modinfo_partic'
                 onChange={(e) => {
@@ -146,8 +146,8 @@ const Modify = forwardRef((props, ref) => {
               />
 
               <input
-                disabled
                 type='text'
+                placeholder='참여자'
                 value={updateData.people}
                 className='modinfo_partic2'
                 onChange={(e) => {
@@ -191,6 +191,7 @@ const Modify = forwardRef((props, ref) => {
             <textarea
               rows='5'
               cols='60'
+              placeholder='회의내용'
               className='info_content'
               value={updateData.content}
               onChange={(e) => {
