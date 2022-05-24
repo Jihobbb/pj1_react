@@ -628,3 +628,15 @@ a {
     border-top-width: 2px !important;
   }
 }
+
+.fc-timeGridWeek-button.fc-button.fc-button-primary.fc-button-active{
+  background-color: #00c3cf !important;
+}
+
+.fc-dayGridMonth-button.fc-button.fc-button-primary.fc-button-active{
+  background-color: #00c3cf !important;
+}
+
+.fc-listWeek-button.fc-button.fc-button-primary.fc-button-active{
+  background-color: #00c3cf !important;
+}
