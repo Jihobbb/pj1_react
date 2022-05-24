@@ -13,7 +13,6 @@ import moment from 'moment';
 import Button from 'react-bootstrap/Button';
 
 const Modify = forwardRef((props, ref) => {
-  const [modifyModal, setModifyModal] = useState(false);
   const [updateData, setData] = useState({
     title: '',
     people: '',

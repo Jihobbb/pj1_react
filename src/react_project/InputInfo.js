@@ -35,7 +35,7 @@ function InputInfo(props) {
 
   //일정 컬러 목록
   const color_list = [
-    { value: '#3788d8', color: 'default' },
+    { value: '#3788d8', color: '기본' },
     { value: '#BEC5CB', color: '그레이' },
     { value: '#F6D8D8', color: '핑크' },
     { value: '#D0D4B2', color: '그린' },
@@ -132,7 +132,6 @@ function InputInfo(props) {
       margin: '0 auto',
       width: '35%',
       height: '80%',
-
       zIndex: 10,
     },
   };
@@ -140,6 +139,7 @@ function InputInfo(props) {
   return (
     <div>
       <Modal
+        // className='scroolBar'
         isOpen={props.modal_state} //{modal_state} //true시 모달이 나옴 버튼 클릭시 false에서 트루로?
         style={modalStyle} //모달창 스타일
         //onRequestClose={false} // 오버레이나 esc를 누르면 isopen값이 false 닫힘
@@ -148,7 +148,7 @@ function InputInfo(props) {
         <form className='validation-form'>
           <span className='formHead'>일정</span>
           <div className='formClose' onClick={props.onChange}></div>
-          <hr />
+          <hr className='formHeadHr' />
           <div className='Sel_input_Box'>
             <label className='titleIcon modalIcon'></label>
             <div className='selectBox'>
@@ -241,7 +241,7 @@ function InputInfo(props) {
             />
           </div>
           <br />
-          <hr></hr>
+          <hr className='formHeadHr' />
           <div className='passwordBox'>
             <label className='lockIcon modalIcon'></label>
 
