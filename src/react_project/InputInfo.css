@@ -4,7 +4,10 @@
   width: 18%;
 } */
 /* form 공용 */
-
+.validation-form {
+  width: 100%;
+  height: 100%;
+}
 .info_form {
   background-color: white;
 
@@ -176,11 +179,14 @@
   border: none;
   background-color: #f5f5f5;
   padding-left: 15px;
+
+  resize: none;
 }
 
 /* 날짜 */
 .formDateBox {
   display: flex;
+  margin-top: 20px;
   /* padding-left: 15px; */
   /* justify-content: space-between; */
   /* background-color: aqua; */

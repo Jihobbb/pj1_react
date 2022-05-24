@@ -130,7 +130,7 @@ function InputInfo(props) {
       background: 'white',
       borderRadius: '20px',
       margin: '0 auto',
-      width: '45%',
+      width: '35%',
       height: '80%',
 
       zIndex: 10,

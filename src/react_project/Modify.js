@@ -100,8 +100,7 @@ const Modify = forwardRef((props, ref) => {
       background: 'white',
       borderRadius: '20px',
       margin: '0 auto',
-      width: '60%',
-
+      width: '35%',
       height: '50%',
 
       zIndex: 10,
