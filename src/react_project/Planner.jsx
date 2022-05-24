@@ -11,18 +11,28 @@ const Planner = (props) => {
   const [floorStatus, setFloorStatus] = useState('2');
   const [weekendActive, setWeekendActive] = useState(false);
   const [isDatePickerOpen, setisDatePickerOpen] = useState(false);
+  
   const calendarComponentRef = useRef();
+  const datePicker = useRef();
 
+  useEffect(() => {
+    document.addEventListener('mousedown', clickDatePickerOutside);
+    return () => {
+      document.removeEventListener('mousedown', clickDatePickerOutside);
+    };
+  },[]);
+  const clickDatePickerOutside = event => {
+    if (isDatePickerOpen && !datePicker.current.contains(event.target)) {
+      setisDatePickerOpen(false);
+    }
+  };
+
+  // 2층 버튼에 활성화 클래스 아이디를 최초 렌더링시에 부여해서 활성화 상태로 만듬
   useEffect(() => {
     document
       .querySelector('.fc-floor2F-button')
       .classList.add('fc-button-active');
   }, []);
-
-  //datepicker 온오프
-  const handlePickerClick = (e) => {
-    setisDatePickerOpen(!isDatePickerOpen);
-  };
 
   //드래그해서 기간설정
   const handleDateSelect = (selectInfo) => {
@@ -91,11 +101,11 @@ const Planner = (props) => {
 
   return (
     <div>
-      <div className='datepickerBox'>
+      <div className='datepickerBox' ref={datePicker}>
         {isDatePickerOpen && (
           <CalDatePicker
+            datePickerRef={datePicker}
             calendarRef={calendarComponentRef}
-            isopen={handlePickerClick}
           />
         )}
       </div>
@@ -152,6 +162,7 @@ const Planner = (props) => {
                 .classList.remove('fc-button-active');
             },
           },
+
           togleWeekend: {
             text: '주말보기',
             click() {
@@ -169,7 +180,9 @@ const Planner = (props) => {
           moveDate: {
             text: '선택 ∇',
             click() {
-              handlePickerClick();
+              if(!isDatePickerOpen) {
+                setisDatePickerOpen(true)
+              } 
             },
           },
         }}
