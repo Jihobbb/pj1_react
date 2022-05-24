@@ -100,7 +100,7 @@ const Modify = forwardRef((props, ref) => {
       borderRadius: '20px',
       margin: '0 auto',
       width: '35%',
-      height: '50%',
+      height: '55%',
 
       zIndex: 10,
     },
@@ -119,6 +119,7 @@ const Modify = forwardRef((props, ref) => {
       >
         <form className='info_form'>
           <div className='modifyhead'>
+            <label className='titleIcon modalIcon'></label>
             <div className='modify_info_head_text'>제목</div>
             <input
               type='text'
@@ -136,18 +137,35 @@ const Modify = forwardRef((props, ref) => {
           <br />
 
           <div className='info_body'>
-            <div className='info_body_text'>참여자</div>
-            <input
-              type='text'
-              value={updateData.people}
-              className='modinfo_partic'
-              onChange={(e) => {
-                setData({
-                  ...updateData,
-                  people: e.target.value,
-                });
-              }}
-            />
+            <label className='particIcon modalIcon'></label>
+            {/* <div className='info_body_text'>참여자</div> */}
+            <div className='inputBox2'>
+              <input
+                disabled
+                type='text'
+                value={updateData.people}
+                className='modinfo_partic'
+                onChange={(e) => {
+                  setData({
+                    ...updateData,
+                    people: e.target.value,
+                  });
+                }}
+              />
+
+              <input
+                disabled
+                type='text'
+                value={updateData.people}
+                className='modinfo_partic2'
+                onChange={(e) => {
+                  setData({
+                    ...updateData,
+                    people: e.target.value,
+                  });
+                }}
+              />
+            </div>
           </div>
           <div className='modify_formDate'>
             <label className='calenadrIcon modalIcon'></label>
@@ -176,7 +194,8 @@ const Modify = forwardRef((props, ref) => {
 
           <br />
 
-          <div>
+          <div className='contentBox'>
+            <label className='contentIcon modalIcon'></label>
             <textarea
               rows='5'
               cols='60'

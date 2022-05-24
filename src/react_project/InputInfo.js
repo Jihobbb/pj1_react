@@ -80,7 +80,7 @@ function InputInfo(props) {
       content: '',
       bgcolor: '',
       password: null,
-      writer: null,
+      writer: 'null',
     });
     setSelectedColor('선택');
     setSelectedRgb('#3788d8');
@@ -196,7 +196,7 @@ function InputInfo(props) {
           <br />
           <div className='inputinfo_body'>
             <label className='particIcon modalIcon'></label>
-            <div className='inputBox2'>
+            <div className='inputBox'>
               <input
                 type='text'
                 placeholder='작성자 (필수)'

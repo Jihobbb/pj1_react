@@ -116,7 +116,7 @@
   border-radius: 5px;
 }
 .selectli:nth-child(3):hover {
-  background-color: rgba(0, 195, 207, 0.2);
+  background-color: rgb(126, 175, 223);
 }
 .selectli:nth-child(4):hover {
   background-color: rgba(190, 197, 203);
@@ -165,9 +165,6 @@
   width: 25%;
   font-size: 20px;
   text-align: center;
-}
-.inputBox2 {
-  width: 100%;
 }
 
 .input_partic {
@@ -238,6 +235,14 @@
   float: right;
   margin-top: -15px;
 }
+.input_body_text {
+  width: 25%;
+  font-size: 20px;
+  text-align: center;
+}
+.inputBox2 {
+  width: 100%;
+}
 .modify_formbutton > button {
   margin: 1px;
 }
@@ -251,7 +256,7 @@
 }
 .modify_info_body_text {
   height: 30px;
-  width: 77%;
+  width: 100%;
   border-radius: 5px;
   border: none;
   background-color: #f5f5f5;
@@ -260,20 +265,42 @@
 
 .info_body {
   display: flex;
+  width: 100%;
 }
-.info_body_text {
+/* .info_body_text {
   width: 25%;
   font-size: 20px;
   text-align: center;
-}
+} */
 .modinfo_partic {
-  height: 30px;
-  width: 77%;
+  height: 41px;
+  width: 100%;
+  margin-top: 1%;
+  border-radius: 5px;
+  border: none;
+  background-color: #f5f5f5;
+  padding-left: 15px;
+}
+.modinfo_partic,
+.modinfo_partic2 {
+  height: 41px;
+  width: 100%;
+  margin-top: 1%;
+  border-radius: 5px;
+  border: none;
+  background-color: #f5f5f5;
+  padding-left: 15px;
+}
+.info_content {
+  width: 100%;
+  height: 150px;
 
   border-radius: 5px;
   border: none;
   background-color: #f5f5f5;
   padding-left: 15px;
+
+  resize: none;
 }
 
 .passwordBox {
