@@ -23,6 +23,7 @@ const Calendar = () => {
     bgcolor: '',
     floor: '',
     password: '',
+    writer: '',
   });
 
   const [togleBtn, setTogleBtn] = useState('2'); //층 상태
@@ -50,7 +51,6 @@ const Calendar = () => {
         people: plan.extendedProps.people,
         content: plan.extendedProps.content,
         bgcolor: plan.backgroundColor,
-        writer: plan.extendedProps.writer,
         floor: plan.extendedProps.floor,
       })
       .then(getdata);
@@ -62,6 +62,7 @@ const Calendar = () => {
       id: Info.id,
       title: Info.title,
       people: Info.extendedProps.people,
+      writer: Info.extendedProps.writer,
       content: Info.extendedProps.content,
       bgcolor: Info.backgroundColor,
       floor: Info.extendedProps.floor,

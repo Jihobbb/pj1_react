@@ -17,26 +17,18 @@ const Modify = forwardRef((props, ref) => {
     title: '',
     people: '',
     content: '',
+    writer: '', //작성자
   });
 
   //
-  useImperativeHandle(ref, () => ({
-    testFn() {
-      asd();
-    },
-  }));
-  const asd = () => {
-    // setModifyModal(!modifyModal);
-    // console.log(modifyModal);
-    alert('hi');
-    console.log('Modify');
-  };
+
   //
   const setDefaultData = () => {
     setData({
       title: props.plan.title,
       people: props.plan.people,
       content: props.plan.content,
+      writer: props.plan.writer, //작성자
     });
   };
 
@@ -57,6 +49,7 @@ const Modify = forwardRef((props, ref) => {
         bgcolor: props.plan.bgcolor,
         floor: props.plan.floor,
         password: props.plan.password,
+        writer: updateData.writer, //작성자
       })
       .then(() => {
         props.onChange();
@@ -77,7 +70,6 @@ const Modify = forwardRef((props, ref) => {
           console.log('delErr', error);
         });
     }
-    e.calendar.render();
   };
 
   //모달 창 디자인
@@ -143,12 +135,12 @@ const Modify = forwardRef((props, ref) => {
               <input
                 disabled
                 type='text'
-                value={updateData.people}
+                value={updateData.writer}
                 className='modinfo_partic'
                 onChange={(e) => {
                   setData({
                     ...updateData,
-                    people: e.target.value,
+                    writer: e.target.value,
                   });
                 }}
               />

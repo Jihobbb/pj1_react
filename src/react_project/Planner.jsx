@@ -11,7 +11,7 @@ const Planner = (props) => {
   const [floorStatus, setFloorStatus] = useState('2');
   const [weekendActive, setWeekendActive] = useState(false);
   const [isDatePickerOpen, setisDatePickerOpen] = useState(false);
-  
+
   const calendarComponentRef = useRef();
   const datePicker = useRef();
 
@@ -20,10 +20,12 @@ const Planner = (props) => {
     return () => {
       document.removeEventListener('mousedown', clickDatePickerOutside);
     };
-  },[]);
-  const clickDatePickerOutside = event => {
-    if (isDatePickerOpen && !datePicker.current.contains(event.target) || event.target.title !== '선택 ∇') {
-      console.log(event.target.title);
+  }, []);
+  const clickDatePickerOutside = (event) => {
+    if (
+      (isDatePickerOpen && !datePicker.current.contains(event.target)) ||
+      event.target.title !== '선택 ∇'
+    ) {
       setisDatePickerOpen(false);
     }
   };
@@ -46,7 +48,6 @@ const Planner = (props) => {
   const handleEventClick = (clickInfo) => {
     props.updateForm();
     props.setPlanStatus(clickInfo.event);
-    console.log(clickInfo.event);
   };
 
   //드래깅 드랍 완료
@@ -82,7 +83,7 @@ const Planner = (props) => {
         content: planList.content,
         floor: planList.floor,
         password: planList.password,
-        writer: planList.writer
+        writer: planList.writer,
       },
     }));
     return dataList;
@@ -181,7 +182,7 @@ const Planner = (props) => {
           moveDate: {
             text: '선택 ∇',
             click() {
-                setisDatePickerOpen(!isDatePickerOpen)  
+              setisDatePickerOpen(!isDatePickerOpen);
             },
           },
         }}
