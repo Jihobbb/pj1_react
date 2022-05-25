@@ -78,7 +78,7 @@ const Modify = forwardRef((props, ref) => {
       position: 'fixed',
       top: 0,
       backgroundColor: 'rgba(255, 255, 255, 0.7)',
-      zIndex: 10,
+      zIndex: 99,
       justifyContent: 'center',
       alignItem: 'center',
       width: '100%',
