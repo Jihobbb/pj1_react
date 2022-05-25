@@ -117,7 +117,7 @@ function InputInfo(props) {
       position: 'fixed',
       top: 0,
       backgroundColor: 'rgba(255, 255, 255, 0.45)',
-      zIndex: 10,
+      zIndex: 99,
       justifyContent: 'center',
       alignItem: 'center',
       width: '100%',
