@@ -230,11 +230,7 @@ const Modify = forwardRef((props, ref) => {
               삭제
             </Button>
 
-            <Button
-              type='button'
-              variant='outline-secondary'
-              onClick={props.onChange}
-            >
+            <Button type='button' variant='secondary' onClick={props.onChange}>
               취소
             </Button>
           </div>
