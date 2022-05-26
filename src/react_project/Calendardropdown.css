@@ -1,0 +1,32 @@
+.calDayDropDown {
+  width: 100%;
+  height: 39px;
+  padding: 0;
+  text-align: center;
+  line-height: 2.3;
+  border: none;
+}
+.calDayDropDownArrow {
+  background: url('./icon/ic_arrow.png') no-repeat;
+  background-size: contain;
+  background-color: white;
+  border: none;
+  margin-left: 7px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  position: relative;
+  top: 5px;
+}
+.calDayDropDownLi {
+  list-style: none;
+  text-align: left;
+  padding-left: 5px;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.calDayDropDownLi:hover {
+  background-color: antiquewhite;
+}

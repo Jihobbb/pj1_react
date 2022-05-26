@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Calendar.css';
 import Modify from './Modify';
 import Planner from './Planner';
+import Calendardropdown from './Calendardropdown';
 
 const Calendar = () => {
   const [modal_state, setModal_state] = useState(false);
@@ -52,7 +53,7 @@ const Calendar = () => {
         content: plan.extendedProps.content,
         bgcolor: plan.backgroundColor,
         floor: plan.extendedProps.floor,
-        writer: plan.extendedProps.writer
+        writer: plan.extendedProps.writer,
       })
       .then(getdata);
   };
@@ -133,6 +134,7 @@ const Calendar = () => {
         passwordCheck={passwordCheck}
         floorChange={setTogleBtn}
       ></Planner>
+      <Calendardropdown></Calendardropdown>
     </div>
   );
 };

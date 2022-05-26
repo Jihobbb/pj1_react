@@ -101,7 +101,7 @@ function InputInfo(props) {
         bgcolor: selectedRgb,
         floor: props.floorStatus,
         password: inputData.password,
-        category: selectedColor
+        category: selectedColor,
       })
       .then(() => {
         props.onChange();
