@@ -396,47 +396,47 @@ a {
 
 /* 리스트 타이틀 셀 */
 .fc-list-event-title {
-  width: 849.2px;
-  height: 52px;
-  margin: 0 295.4px 0 0;
-  padding: 14.7px 323.2px 14.3px 320px !important;
-  border-left-width: 1px !important;
-  text-align: center;
+  /* width: 849.2px; */
+  /* height: 52px; */
+  /* margin: 0 295.4px 0 0; */
+  /* padding: 14.7px 323.2px 14.3px 100px !important; */
+  /* border-left-width: 1px !important; */
+  /* text-align: center; */
 }
 
 /* 리스트 날짜셀 */
 .fc-list-event-time {
-  width: 480px;
-  height: 52px;
-  padding: 14.7px 140.9px 14.3px 138.5px !important;
-  border: solid 1px #e8e8e8;
+  /* width: 30%; */
+  /* height: 20%; */
+  /* padding-right: 10%; */
+  /* border: solid 1px #e8e8e8;
   border-left-width: 2px !important;
   text-align: center;
-  border-collapse: collapse !important;
+  border-collapse: collapse !important; */
 }
 
 /* 리스트 일정색 셀 */
 .fc-list-event-graphic {
-  width: 295.4px;
+  /* width: 295.4px;
   height: 52px;
   padding: 14.7px 140.9px 14.3px 138.5px !important;
   border-left-width: 2px !important;
   border: solid 1px #e8e8e8;
-  text-align: center;
+  text-align: center; */
 }
 
 /* 리스트 yyyy mm dd */
 .fc-direction-ltr .fc-list-day-side-text {
   float: left !important;
-  margin-left: 9%;
+  /* margin-left: 9%; */
 }
 
 /* 리스트 요일 */
 .fc-list-day-text {
   float: none !important;
-  display: inline !important;
-  font-size: 13px;
-  margin-right: 81%;
+  /* display: inline !important; */
+  font-size: 12px;
+  /* margin-left: -100px; */
 }
 
 .fc-list-event-time {
@@ -445,7 +445,7 @@ a {
 }
 
 .fc-list-event-graphic {
-  border-right: 1px solid rgb(0, 0, 0, 0.2) !important;
+  /* border-right: 1px solid rgb(0, 0, 0, 0.2) !important; */
 }
 
 /* 선택 버튼 */
@@ -642,3 +642,4 @@ a {
 .fc-listWeek-button.fc-button.fc-button-primary.fc-button-active {
   background-color: #00c3cf !important;
 }
+
