@@ -144,21 +144,6 @@ const Planner = (props) => {
             },
           },
 
-          togleWeekend: {
-            text: '주말보기',
-            click() {
-              setWeekendActive(!weekendActive);
-              console.log(planListMapping());
-              if (!weekendActive) {
-                this.className += ' fc-button-active';
-              } else {
-                this.className = this.className.replace(
-                  ' fc-button-active',
-                  ''
-                );
-              }
-            },
-          },
           moveDate: {
             text: '선택 ∇',
             click() {
@@ -168,7 +153,7 @@ const Planner = (props) => {
           },
         }}
         headerToolbar={{
-          left: 'prev today next togleWeekend moveDate',
+          left: 'prev today next moveDate',
           center: 'title',
           right: 'floor2F,floor3F dayGridMonth,timeGridWeek,listWeek',
         }}
@@ -219,7 +204,7 @@ const Planner = (props) => {
         slotMaxTime={'20:00:00'}
         expandRows={true}
         dayMaxEvents={6}
-        weekends={weekendActive}
+        weekends={true}
         eventOverlap={false} //이벤트 겹쳐지기 막음
         selectOverlap={false} //등록시에도 겹쳐지지 않음
         dayMaxEventRows={true}

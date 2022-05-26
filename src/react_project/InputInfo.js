@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './InputInfo.css';
 import './Calendar.css';
 import Button from 'react-bootstrap/Button';
+import 'moment/locale/ko';
 import moment from 'moment';
 
 function InputInfo(props) {
