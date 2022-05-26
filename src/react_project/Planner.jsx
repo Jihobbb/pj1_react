@@ -1,12 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import FullCalendar, { CalendarApi, formatDate } from '@fullcalendar/react'; // must go before plugins
+import FullCalendar from '@fullcalendar/react'; // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
 import googleCalendarPlugin from '@fullcalendar/google-calendar';
 import CalDatePicker from './CalDatePicker';
-import { ListView } from 'fullcalendar';
 
 const Planner = (props) => {
   const [floorStatus, setFloorStatus] = useState('2');
@@ -71,6 +70,7 @@ const Planner = (props) => {
         floor: planList.floor,
         password: planList.password,
         writer: planList.writer,
+        category:planList.category
       },
     }));
     return dataList;
@@ -185,6 +185,7 @@ const Planner = (props) => {
               console.log("123");  
               var toInject = [];
               toInject.push(info.event.extendedProps.writer);
+              toInject.push(info.event.extendedProps.category==='선택' ? '없음' : info.event.extendedProps.category);
               for (var i = 0; i < toInject.length; i++) {
                 var columnElement = document.createElement('td');
                 columnElement.textContent = toInject[i];
@@ -200,7 +201,7 @@ const Planner = (props) => {
             if (arg.view.type === 'listWeek') {
               
               var defaultColumns = 3;
-              var extraColumnHeaders = ['작성자'];
+              var extraColumnHeaders = ['작성자','범주'];
               var maxCol = defaultColumns + extraColumnHeaders.length;
               for (var i = 0; i < maxCol - defaultColumns; i++) {
                 var columnHeaderElement = document.createElement('th');
