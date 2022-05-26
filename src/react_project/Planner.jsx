@@ -13,7 +13,6 @@ const Planner = (props) => {
   const [isDatePickerOpen, setisDatePickerOpen] = useState(false);
   const calendarComponentRef = useRef();
 
-
   // 2층 버튼에 활성화 클래스 아이디를 최초 렌더링시에 부여해서 활성화 상태로 만듬
   useEffect(() => {
     document
@@ -68,7 +67,7 @@ const Planner = (props) => {
         floor: planList.floor,
         password: planList.password,
         writer: planList.writer,
-        category:planList.category
+        category: planList.category,
       },
     }));
     return dataList;
@@ -90,9 +89,7 @@ const Planner = (props) => {
     <div>
       <div className='datepickerBox'>
         {isDatePickerOpen && (
-          <CalDatePicker
-            calendarRef={calendarComponentRef}
-          />
+          <CalDatePicker calendarRef={calendarComponentRef} />
         )}
       </div>
       <FullCalendar
@@ -166,56 +163,50 @@ const Planner = (props) => {
             text: '선택 ∇',
             click() {
               setisDatePickerOpen(!isDatePickerOpen);
-              console.log(planListMapping())
+              console.log(planListMapping());
             },
           },
-          SearchPopup: {
-            text: '검색'
-          }
         }}
         headerToolbar={{
           left: 'prev today next togleWeekend moveDate',
           center: 'title',
-          right: 'floor2F,floor3F dayGridMonth,timeGridWeek,listWeek SearchPopup',
+          right: 'floor2F,floor3F dayGridMonth,timeGridWeek,listWeek',
         }}
-        
-        eventWillUnmount={
-          function(info) {
-            console.log(info.event.extendedProps.writer)
-            if (info.view.type === 'listWeek') { 
-              console.log("123");  
-              var toInject = [];
-              toInject.push(info.event.extendedProps.writer);
-              toInject.push(info.event.extendedProps.category==='선택' ? '없음' : info.event.extendedProps.category);
-              for (var i = 0; i < toInject.length; i++) {
-                var columnElement = document.createElement('td');
-                columnElement.classList.add('fc-list-added-text-'+(i+1))
-                columnElement.textContent = toInject[i];
-                info.el.append(columnElement);
-              }
+        eventWillUnmount={function (info) {
+          console.log(info.event.extendedProps.writer);
+          if (info.view.type === 'listWeek') {
+            console.log('123');
+            var toInject = [];
+            toInject.push(info.event.extendedProps.writer);
+            toInject.push(
+              info.event.extendedProps.category === '선택'
+                ? '없음'
+                : info.event.extendedProps.category
+            );
+            for (var i = 0; i < toInject.length; i++) {
+              var columnElement = document.createElement('td');
+              columnElement.classList.add('fc-list-added-text-' + (i + 1));
+              columnElement.textContent = toInject[i];
+              info.el.append(columnElement);
             }
           }
-        }
-
-        dayHeaderWillUnmount = {
-          function(arg) { 
-            console.log(arg)          
-            if (arg.view.type === 'listWeek') {
-              
-              var defaultColumns = 3;
-              var extraColumnHeaders = ['작성자','범주'];
-              var maxCol = defaultColumns + extraColumnHeaders.length;
-              for (var i = 0; i < maxCol - defaultColumns; i++) {
-                var columnHeaderElement = document.createElement('th');
-                columnHeaderElement.innerHTML = '<div class="fc-list-day-cushion fc-cell-shaded"><a class="fc-list-day-text">' +
-                        extraColumnHeaders[i] + '</a></div>';
-                arg.el.append(columnHeaderElement);
-              }
+        }}
+        dayHeaderWillUnmount={function (arg) {
+          console.log(arg);
+          if (arg.view.type === 'listWeek') {
+            var defaultColumns = 3;
+            var extraColumnHeaders = ['작성자', '범주'];
+            var maxCol = defaultColumns + extraColumnHeaders.length;
+            for (var i = 0; i < maxCol - defaultColumns; i++) {
+              var columnHeaderElement = document.createElement('th');
+              columnHeaderElement.innerHTML =
+                '<div class="fc-list-day-cushion fc-cell-shaded"><a class="fc-list-day-text fc-list-day-text-added">' +
+                extraColumnHeaders[i] +
+                '</a></div>';
+              arg.el.append(columnHeaderElement);
             }
           }
-        }
-
-
+        }}
         initialView='timeGridWeek'
         //------------이벤트 리스트 정의---------------
         eventSources={[planListMapping(), holidayListMapping()]}

@@ -433,10 +433,10 @@ a {
 
 /* 리스트 요일 */
 .fc-list-day-text {
-  float: none !important;
-  /* display: inline !important; */
-  font-size: 12px;
-  /* margin-left: -100px; */
+  display: none;
+}
+.fc-list-day-text-added {
+  display: contents;
 }
 
 .fc-list-event-time {
@@ -643,9 +643,9 @@ a {
   background-color: #00c3cf !important;
 }
 
-.fc-list-added-text-1{
+.fc-list-added-text-1,
+.fc-list-added-text-2 {
   text-align: center;
-}
-.fc-list-added-text-2{
-  text-align: center;
+  border-right: 1px solid rgb(0, 0, 0, 0.2) !important;
+  border-left: 1px solid rgb(0, 0, 0, 0.2) !important;
 }
