@@ -449,21 +449,23 @@ a {
 }
 
 /* 선택 버튼 */
-.fc-moveDate-button {
-  width: 80px;
-  height: 52px;
-  flex-grow: 0;
+.fc-toolbar-chunk {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 24px;
-  border: solid 2px #00c3cf !important;
-  background-color: #00c3cf !important;
-  color: black;
-  text-align: center !important;
+}
+.fc-moveDate-button {
+  background-color: white !important;
+  background-image: url('./icon/ic_arrow.png') !important;
+  background-size: contain !important;
+  border: none !important;
+  width: 30px !important;
+  height: 30px !important;
 }
 .fc-moveDate-button fc-button fc-button-primary {
   z-index: 10;
+}
+.fc .fc-toolbar.fc-header-toolbar {
+  margin-bottom: -10px !important;
+  margin-top: -30px;
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */

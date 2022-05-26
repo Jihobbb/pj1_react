@@ -159,8 +159,8 @@ const Planner = (props) => {
               }
             },
           },
+
           moveDate: {
-            text: '선택 ∇',
             click() {
               setisDatePickerOpen(!isDatePickerOpen);
               console.log(planListMapping());
@@ -168,9 +168,18 @@ const Planner = (props) => {
           },
         }}
         headerToolbar={{
-          left: 'prev today next togleWeekend moveDate',
-          center: 'title',
+          left: 'prev today next title moveDate',
+          center: '',
           right: 'floor2F,floor3F dayGridMonth,timeGridWeek,listWeek',
+        }}
+        views={{
+          // 월 일 짧게 변경
+          dayGridMonth: {
+            titleFormat: { year: 'numeric', month: 'short' },
+          },
+          timeGridWeek: {
+            titleFormat: { year: 'numeric', month: 'short' },
+          },
         }}
         eventWillUnmount={function (info) {
           console.log(info.event.extendedProps.writer);
