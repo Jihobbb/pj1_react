@@ -11,10 +11,8 @@ const Planner = (props) => {
   const [floorStatus, setFloorStatus] = useState('2');
   const [weekendActive, setWeekendActive] = useState(false);
   const [isDatePickerOpen, setisDatePickerOpen] = useState(false);
-  const [counter, setcounter] = useState(0);
   const calendarComponentRef = useRef();
 
-  console.log(counter);
 
   // 2층 버튼에 활성화 클래스 아이디를 최초 렌더링시에 부여해서 활성화 상태로 만듬
   useEffect(() => {
@@ -171,11 +169,14 @@ const Planner = (props) => {
               console.log(planListMapping())
             },
           },
+          SearchPopup: {
+            text: '검색'
+          }
         }}
         headerToolbar={{
           left: 'prev today next togleWeekend moveDate',
           center: 'title',
-          right: 'floor2F,floor3F dayGridMonth,timeGridWeek,listWeek',
+          right: 'floor2F,floor3F dayGridMonth,timeGridWeek,listWeek SearchPopup',
         }}
         
         eventWillUnmount={
