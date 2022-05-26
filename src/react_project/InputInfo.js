@@ -80,7 +80,7 @@ function InputInfo(props) {
       content: '',
       bgcolor: '',
       password: null,
-      writer: 'null',
+      writer: null,
     });
     setSelectedColor('선택');
     setSelectedRgb('#3788d8');

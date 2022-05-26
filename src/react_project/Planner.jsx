@@ -6,13 +6,16 @@ import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
 import googleCalendarPlugin from '@fullcalendar/google-calendar';
 import CalDatePicker from './CalDatePicker';
+import { ListView } from 'fullcalendar';
 
 const Planner = (props) => {
   const [floorStatus, setFloorStatus] = useState('2');
   const [weekendActive, setWeekendActive] = useState(false);
   const [isDatePickerOpen, setisDatePickerOpen] = useState(false);
-
+  const [counter, setcounter] = useState(0);
   const calendarComponentRef = useRef();
+
+  console.log(counter);
 
   // 2층 버튼에 활성화 클래스 아이디를 최초 렌더링시에 부여해서 활성화 상태로 만듬
   useEffect(() => {
@@ -103,9 +106,7 @@ const Planner = (props) => {
           googleCalendarPlugin,
         ]}
         ref={calendarComponentRef}
-        googleCalendarApiKey={'AIzaSyDuIfK2-Xqvji3V8FC8q9mlXVdX5kYmNEo'}
         locale='ko'
-        CustomButtons
         customButtons={{
           floor2F: {
             text: '2층',
@@ -152,6 +153,7 @@ const Planner = (props) => {
             text: '주말보기',
             click() {
               setWeekendActive(!weekendActive);
+              console.log(planListMapping());
               if (!weekendActive) {
                 this.className += ' fc-button-active';
               } else {
@@ -166,6 +168,7 @@ const Planner = (props) => {
             text: '선택 ∇',
             click() {
               setisDatePickerOpen(!isDatePickerOpen);
+              console.log(planListMapping())
             },
           },
         }}
@@ -174,6 +177,42 @@ const Planner = (props) => {
           center: 'title',
           right: 'floor2F,floor3F dayGridMonth,timeGridWeek,listWeek',
         }}
+        
+        eventWillUnmount={
+          function(info) {
+            console.log(info.event.extendedProps.writer)
+            if (info.view.type === 'listWeek') { 
+              console.log("123");  
+              var toInject = [];
+              toInject.push(info.event.extendedProps.writer);
+              for (var i = 0; i < toInject.length; i++) {
+                var columnElement = document.createElement('td');
+                columnElement.textContent = toInject[i];
+                info.el.append(columnElement);
+              }
+            }
+          }
+        }
+
+        dayHeaderWillUnmount = {
+          function(arg) { 
+            console.log(arg)          
+            if (arg.view.type === 'listWeek') {
+              
+              var defaultColumns = 3;
+              var extraColumnHeaders = ['작성자'];
+              var maxCol = defaultColumns + extraColumnHeaders.length;
+              for (var i = 0; i < maxCol - defaultColumns; i++) {
+                var columnHeaderElement = document.createElement('th');
+                columnHeaderElement.innerHTML = '<div class="fc-list-day-cushion fc-cell-shaded"><a class="fc-list-day-text">' +
+                        extraColumnHeaders[i] + '</a></div>';
+                arg.el.append(columnHeaderElement);
+              }
+            }
+          }
+        }
+
+
         initialView='timeGridWeek'
         //------------이벤트 리스트 정의---------------
         eventSources={[planListMapping(), holidayListMapping()]}
