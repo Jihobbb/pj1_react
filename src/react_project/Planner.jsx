@@ -189,6 +189,7 @@ const Planner = (props) => {
               toInject.push(info.event.extendedProps.category==='선택' ? '없음' : info.event.extendedProps.category);
               for (var i = 0; i < toInject.length; i++) {
                 var columnElement = document.createElement('td');
+                columnElement.classList.add('fc-list-added-text-'+(i+1))
                 columnElement.textContent = toInject[i];
                 info.el.append(columnElement);
               }
