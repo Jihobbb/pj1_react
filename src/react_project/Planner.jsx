@@ -231,7 +231,7 @@ const Planner = (props) => {
         eventDrop={dragAnddrop} //일정 옮겨서 떨어뜨릴 때 발생
         eventResize={eventSizing} //일정을 크기조절하여 기간 변경 시 발생
         allDaySlot={false}
-        all
+        defaultRangeSeparator={' - '}
       />
     </div>
   );
