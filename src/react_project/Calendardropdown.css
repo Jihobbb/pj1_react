@@ -16,7 +16,6 @@
   border: solid 2px #e2e2e2 !important;
   background-color: #ffffff !important;
   width: 120px;
-  height: 87%;
   text-align: center;
   justify-content: center;
   line-height: 40px;
@@ -26,6 +25,7 @@
   width: 100%;
   font-size: 18px;
   padding: 0;
+  margin-bottom: 0;
   font-weight: bold;
   position: relative;
   top: 5px;
@@ -58,12 +58,10 @@
   margin-right: -100px;
 }
 
-
 /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
 @media (max-width: 1500px) {
   .dayDropDownBox {
     width: 60px;
-    height: 66%;
     margin-top: 5px;
   }
 
@@ -81,7 +79,6 @@
 @media (max-width: 680px) {
   .dayDropDownBox {
     width: 50px;
-    height: 45%;
     margin-top: 10px;
   }
 
@@ -96,7 +93,7 @@
   }
 }
 
-@media(max-width: 534px){
+@media (max-width: 534px) {
   .dayDropDownBox {
     position: relative;
     left: 50px;
