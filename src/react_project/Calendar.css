@@ -102,8 +102,8 @@ a {
 }
 
 .holiday {
-  background-color: #fff3f3 !important;
-  color: #ff0707;
+  background-color: #fca8a81a !important;
+  color: #cf0000;
   opacity: 1 !important;
   pointer-events: none;
 }

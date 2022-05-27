@@ -152,6 +152,9 @@ const Planner = (props) => {
             },
           },
         }}
+        buttonText={{
+          today:'오늘'
+        }}
         headerToolbar={{
           left: 'prev today next title moveDate',
           center: '',
