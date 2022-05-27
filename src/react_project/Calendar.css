@@ -169,6 +169,9 @@ a {
 }
 
 /* buttn All */
+.fc-button-group {
+  margin-right: 130px;
+}
 .fc-direction-ltr .fc-button-group > .fc-button:not(:last-child) {
   margin-right: 3px;
 }
@@ -257,7 +260,7 @@ a {
   gap: 8px;
   /* padding: 11px 32px 12px; */
   border-radius: 8px;
-  border: solid 1px #e2e2e2!important;
+  border: solid 1px #e2e2e2 !important;
   background-color: #e2e2e2 !important;
   color: #777777 !important;
 }
@@ -652,27 +655,39 @@ a {
   border-left: 1px solid rgb(0, 0, 0, 0.2) !important;
 }
 
-.fc-col-header-cell.fc-day.fc-day-sat { /* 토요일 header셀 backgorund color 변경 */
+.fc-col-header-cell.fc-day.fc-day-sat {
+  /* 토요일 header셀 backgorund color 변경 */
   background-color: #ffffff;
 }
 
-.fc-col-header-cell.fc-day.fc-day-sun { /* 일요일 header셀 backgorund color 변경 */
+.fc-col-header-cell.fc-day.fc-day-sun {
+  /* 일요일 header셀 backgorund color 변경 */
   background-color: #ffffff;
 }
 
-.fc-col-header-cell.fc-day.fc-day-sat > .fc-scrollgrid-sync-inner > .fc-col-header-cell-cushion {
+.fc-col-header-cell.fc-day.fc-day-sat
+  > .fc-scrollgrid-sync-inner
+  > .fc-col-header-cell-cushion {
   color: #0078cf !important;
 }
 
-.fc-col-header-cell.fc-day.fc-day-sun > .fc-scrollgrid-sync-inner > .fc-col-header-cell-cushion {
+.fc-col-header-cell.fc-day.fc-day-sun
+  > .fc-scrollgrid-sync-inner
+  > .fc-col-header-cell-cushion {
   color: #cf0000 !important;
 }
 
-.fc-daygrid-day.fc-day.fc-day-sat > .fc-daygrid-day-frame.fc-scrollgrid-sync-inner > .fc-daygrid-day-top > .fc-daygrid-day-number{
+.fc-daygrid-day.fc-day.fc-day-sat
+  > .fc-daygrid-day-frame.fc-scrollgrid-sync-inner
+  > .fc-daygrid-day-top
+  > .fc-daygrid-day-number {
   color: #0078cf !important;
 }
 
-.fc-daygrid-day.fc-day.fc-day-sun > .fc-daygrid-day-frame.fc-scrollgrid-sync-inner > .fc-daygrid-day-top > .fc-daygrid-day-number{
+.fc-daygrid-day.fc-day.fc-day-sun
+  > .fc-daygrid-day-frame.fc-scrollgrid-sync-inner
+  > .fc-daygrid-day-top
+  > .fc-daygrid-day-number {
   color: #cf0000 !important;
 }
 
@@ -680,7 +695,6 @@ a {
 
 } */
 
-.fc-col-header-cell .fc-day .fc-day-mon .fc-day-past{
+.fc-col-header-cell .fc-day .fc-day-mon .fc-day-past {
   border-top-width: 0px !important;
 }
-

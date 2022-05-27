@@ -61,7 +61,7 @@ const Planner = (props) => {
       end: planList.end_time,
       backgroundColor: planList.bgcolor,
       borderColor: planList.bgcolor,
-      textColor:planList.textcolor ,
+      textColor: planList.textcolor,
       extendedProps: {
         people: planList.people,
         content: planList.content,
@@ -87,13 +87,16 @@ const Planner = (props) => {
   };
 
   return (
-    <div>
+    <div className='clendarAll'>
+      <div className='dayDropDown'>
+        <Calendardropdown change={calendarComponentRef}></Calendardropdown>
+      </div>
       <div className='datepickerBox'>
         {isDatePickerOpen && (
           <CalDatePicker calendarRef={calendarComponentRef} />
         )}
       </div>
-      
+
       <FullCalendar
         plugins={[
           dayGridPlugin,
@@ -153,7 +156,7 @@ const Planner = (props) => {
           },
         }}
         buttonText={{
-          today:'오늘'
+          today: '오늘',
         }}
         headerToolbar={{
           left: 'prev today next title moveDate',
@@ -230,9 +233,6 @@ const Planner = (props) => {
         allDaySlot={false}
         all
       />
-      <Calendardropdown
-        change={calendarComponentRef}
-      ></Calendardropdown>
     </div>
   );
 };
