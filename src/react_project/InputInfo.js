@@ -20,6 +20,7 @@ function InputInfo(props) {
 
   const [selectedColor, setSelectedColor] = useState('선택'); //컬러 이름만 담은거
   const [selectedRgb, setSelectedRgb] = useState('#3788d8'); //  컬러 코드
+  const [selectedTextColor, setSelectedTextColor] = useState('#3788d81a');
   const [iActive, setActive] = useState(false);
 
   //컬러 선택하는 리스트 출력 여부
@@ -36,12 +37,11 @@ function InputInfo(props) {
 
   //일정 컬러 목록
   const color_list = [
-    { value: '#3788d8', color: '기본' },
-    { value: '#BEC5CB', color: '그레이' },
-    { value: '#F6D8D8', color: '핑크' },
-    { value: '#e5f8ea', color: '그린' },
-    { value: '#B3D3D3', color: '블루' },
-    { value: '#F3E3AD', color: '옐로우' },
+    { bg_color: '#eaeff7', text_color: '#3788d8', color: '기본' },
+    { bg_color: '#fde9e9', text_color: '#e92c2c', color: '빨강' },
+    { bg_color: '#fff5ea', text_color: '#ff9f2d', color: '노랑' },
+    { bg_color: '#e5f8ea', text_color: '#00ba34', color: '초록' },
+    { bg_color: '#eeeeee', text_color: '#585757', color: '블랙' },
   ];
 
   //컬러 선택
@@ -49,7 +49,7 @@ function InputInfo(props) {
     return (
       <div>
         <ul className='selectul' onClick={active}>
-          <span style={{ color: selectedRgb, paddingRight: '15px' }}>●</span>
+          <span style={{ color: selectedTextColor, paddingRight: '15px' }}>●</span>
           {selectedColor}
           <label className='selectArrow'></label>
           {iActive &&
@@ -58,12 +58,12 @@ function InputInfo(props) {
                 className='selectli'
                 onClick={() => {
                   setSelectedColor(c.color); // 이름을 담은거
-                  setSelectedRgb(c.value); // 색상코드 담은거
-                  // onSelect();
+                  setSelectedRgb(c.bg_color); // 색상코드 담은거
+                  setSelectedTextColor(c.text_color)
                 }}
                 key={c.value}
               >
-                <span style={{ color: c.value, paddingRight: '15px' }}>●</span>
+                <span style={{ color: c.text_color, paddingRight: '15px' }}>●</span>
                 {c.color}
               </li>
             ))}
@@ -84,20 +84,21 @@ function InputInfo(props) {
       writer: null,
     });
     setSelectedColor('선택');
-    setSelectedRgb('#3788d8');
+    setSelectedRgb('#eaeff7');
+    setSelectedTextColor('#3788d8')
     setActive(false);
   };
 
   const planSaveApi = () => {
     axios
       .post('http://localhost:8081/api/planSave', {
-        // id : createEventId(),
         title: inputData.title,
         writer: inputData.writer,
         start_time: props.start,
         end_time: props.end,
         people: inputData.people,
         content: inputData.content,
+        textcolor: selectedTextColor,
         bgcolor: selectedRgb,
         floor: props.floorStatus,
         password: inputData.password,
