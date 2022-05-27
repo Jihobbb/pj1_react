@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 /* .formSelectColor {
   text-align: center;
   height: 30px;
@@ -59,6 +63,12 @@
 }
 .contentIcon {
   background: url('./icon/ic_text.png') no-repeat;
+  background-size: contain;
+  border: none;
+  padding: 15px;
+}
+.locationIcon {
+  background: url('./icon/ic_location.png') no-repeat;
   background-size: contain;
   border: none;
   padding: 15px;
@@ -300,16 +310,16 @@
   resize: none;
 }
 
+/* 비번, 저장 */
 .passwordBox {
-  /* border-radius: 5px;
-  border: none;
-  background-color: #f5f5f5;
-  padding-left: 15px; */
-  /* display: flex; */
+  display: flex;
+}
+.pwBox {
+  width: 100%;
 }
 .passwordInput {
   position: relative;
-  top: -7px;
+  width: 100%;
   height: 35px;
   border-radius: 5px;
   border: none;
@@ -317,24 +327,52 @@
   padding-left: 15px;
 }
 .psfeed {
-  padding-left: 45px;
-  /* background-color: aqua; */
+  width: 100%;
 }
 .formbutton {
-  position: relative;
-  top: -45px;
-  float: right;
-  padding-bottom: 0px;
+  width: 100%;
+}
+.saveButton {
+  margin-top: 20px !important;
+  width: 100%;
+  height: 45px;
+  border-radius: 8px;
+  /* background-color: #00c3cf !important; */
+  background-color: rgba(0, 195, 207, 0.4);
+  color: white;
+  border: none;
+}
+.saveButton:hover {
+  background-color: rgba(0, 195, 207, 0.6);
+  border: solid 2px #00c3cf;
+  border: none;
+}
+.saveButton:active {
+  background-color: rgba(0, 195, 207);
+  border: none;
 }
 
-* {
-  margin: 0;
-  padding: 0;
+.floorBox {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: -35px;
+  width: 100%;
 }
-/* ul {
-  list-style: none;
+.floorBox_input {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
 }
-a {
-  text-decoration: none;
-  color: #333;
-} */
+
+.floorInputPlace::placeholder {
+  color: black;
+}
+.floorInput1,
+.floorInput2 {
+  font-weight: bold;
+  text-align: center;
+  height: 50px;
+  border-radius: 8px;
+  border: solid 1px #00c3cf;
+  width: 49%;
+}
