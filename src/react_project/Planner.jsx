@@ -62,6 +62,7 @@ const Planner = (props) => {
       backgroundColor: planList.bgcolor,
       borderColor: planList.bgcolor,
       textColor: planList.textcolor,
+      className:'fc-dot-color-'+ planList.category,
       extendedProps: {
         people: planList.people,
         content: planList.content,
@@ -172,10 +173,11 @@ const Planner = (props) => {
             titleFormat: { year: 'numeric', month: 'short' },
           },
         }}
+
         eventWillUnmount={function (info) {
-          console.log(info.event.extendedProps.writer);
+
           if (info.view.type === 'listWeek') {
-            console.log('123');
+            console.log(info.event.id);
             var toInject = [];
             toInject.push(info.event.extendedProps.writer);
             toInject.push(
@@ -192,7 +194,6 @@ const Planner = (props) => {
           }
         }}
         dayHeaderWillUnmount={function (arg) {
-          console.log(arg);
           if (arg.view.type === 'listWeek') {
             var defaultColumns = 3;
             var extraColumnHeaders = ['작성자', '범주'];
@@ -223,6 +224,7 @@ const Planner = (props) => {
         eventOverlap={false} //이벤트 겹쳐지기 막음
         selectOverlap={false} //등록시에도 겹쳐지지 않음
         dayMaxEventRows={true}
+        eventDisplay={'block'} 
         //------------드래깅으로 수정--------------
         editable={true} // 수정 가능
         eventStartEditable={true}

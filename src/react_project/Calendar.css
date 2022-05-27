@@ -269,6 +269,10 @@ a {
   opacity: 1 !important;
 }
 
+/* .fc-list-event-dot {
+  border-color: #cf0000 !important;
+} */
+
 /* 라벨(label, 고정시간 적혀져 있는 곳) 가로 구분선 제거 */
 .fc-timegrid-slot.fc-timegrid-slot-label {
   border-top-width: 0px;
@@ -701,4 +705,50 @@ a {
 
 .fc-col-header-cell .fc-day .fc-day-mon .fc-day-past {
   border-top-width: 0px !important;
+}
+
+
+/* 도트 컬러 리스트 */
+
+.fc-dot-color-기본 > .fc-list-event-graphic > span {
+  border-color: #3788d8 !important;
+}
+
+.fc-dot-color-빨강 > .fc-list-event-graphic > span {
+  border-color: #e92c2c !important;
+}
+
+.fc-dot-color-노랑 > .fc-list-event-graphic > span {
+  border-color: #ff9f2d !important;
+}
+
+.fc-dot-color-초록 > .fc-list-event-graphic > span {
+  border-color: #00ba34 !important;
+}
+
+.fc-dot-color-블랙 > .fc-list-event-graphic > span {
+  border-color: #585757 !important;
+}
+
+
+/* 도트 컬러 월별 */
+
+.fc-dot-color-기본 > .fc-daygrid-event-dot {
+  border-color: #3788d8 !important;
+}
+
+.fc-dot-color-빨강 > .fc-daygrid-event-dot {
+  border-color: #e92c2c !important;
+}
+
+.fc-dot-color-노랑 > .fc-daygrid-event-dot {
+  border-color: #ff9f2d !important;
+}
+
+.fc-dot-color-초록 > .fc-daygrid-event-dot {
+  border-color: #00ba34 !important;
+}
+
+.fc-dot-color-블랙 > .fc-daygrid-event-dot {
+  border-color: #585757 !important;
 }
