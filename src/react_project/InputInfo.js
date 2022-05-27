@@ -30,6 +30,15 @@ function InputInfo(props) {
 
   // 지우기
 
+  const hen = () => {
+    if (props.floorStatus === '2') {
+      document
+        .querySelector('.floorInput1')
+        .classList.add('floor-input-active');
+    }
+    document.querySelector('.floorInput2').classList.add('floor-input-active');
+  };
+
   //모달창이 켜지거나 꺼질 떄마다 Inpudata초기화
   useEffect(() => {
     inputDataRefresh();
@@ -236,7 +245,6 @@ function InputInfo(props) {
             <div className='floorBox_input'>
               <input
                 type='text'
-                value={''}
                 className='floorInput1 floorInputPlace'
                 placeholder='2층'
                 disabled
