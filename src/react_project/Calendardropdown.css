@@ -39,6 +39,7 @@
   border-radius: 5px;
   cursor: pointer;
   height: 30px;
+  margin-bottom: 10px;
 }
 .calDayDropDownLi:hover {
   background-color: antiquewhite;
@@ -96,7 +97,7 @@
 @media (max-width: 534px) {
   .dayDropDownBox {
     position: relative;
-    left: 50px;
+    left: 20px;
   }
 }
 /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
