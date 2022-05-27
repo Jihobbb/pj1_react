@@ -6,6 +6,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
 import googleCalendarPlugin from '@fullcalendar/google-calendar';
 import CalDatePicker from './CalDatePicker';
+import Calendardropdown from './Calendardropdown';
 
 const Planner = (props) => {
   const [floorStatus, setFloorStatus] = useState('2');
@@ -92,6 +93,7 @@ const Planner = (props) => {
           <CalDatePicker calendarRef={calendarComponentRef} />
         )}
       </div>
+      
       <FullCalendar
         plugins={[
           dayGridPlugin,
@@ -147,14 +149,13 @@ const Planner = (props) => {
           moveDate: {
             click() {
               setisDatePickerOpen(!isDatePickerOpen);
-              console.log(planListMapping());
             },
           },
         }}
         headerToolbar={{
           left: 'prev today next title moveDate',
           center: '',
-          right: 'floor2F,floor3F dayGridMonth,timeGridWeek,listWeek',
+          right: 'floor2F,floor3F',
         }}
         views={{
           // 월 일 짧게 변경
@@ -224,6 +225,9 @@ const Planner = (props) => {
         eventDrop={dragAnddrop} //일정 옮겨서 떨어뜨릴 때 발생
         eventResize={eventSizing} //일정을 크기조절하여 기간 변경 시 발생
       />
+      <Calendardropdown
+        change={calendarComponentRef}
+      ></Calendardropdown>
     </div>
   );
 };

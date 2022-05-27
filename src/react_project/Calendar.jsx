@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Calendar.css';
 import Modify from './Modify';
 import Planner from './Planner';
-import Calendardropdown from './Calendardropdown';
+
 
 const Calendar = () => {
   const [modal_state, setModal_state] = useState(false);
@@ -134,7 +134,6 @@ const Calendar = () => {
         passwordCheck={passwordCheck}
         floorChange={setTogleBtn}
       ></Planner>
-      <Calendardropdown></Calendardropdown>
     </div>
   );
 };
