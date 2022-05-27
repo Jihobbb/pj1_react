@@ -156,7 +156,7 @@ a {
 
 /* header tool bar */
 .fc-header-toolbar.fc-toolbar.fc-toolbar-ltr {
-  height: 120px;
+  height: 150px;
   align-self: stretch;
   flex-grow: 0;
   display: flex;
