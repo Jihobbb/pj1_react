@@ -39,7 +39,7 @@ function InputInfo(props) {
     { value: '#3788d8', color: '기본' },
     { value: '#BEC5CB', color: '그레이' },
     { value: '#F6D8D8', color: '핑크' },
-    { value: '#D0D4B2', color: '그린' },
+    { value: '#e5f8ea', color: '그린' },
     { value: '#B3D3D3', color: '블루' },
     { value: '#F3E3AD', color: '옐로우' },
   ];

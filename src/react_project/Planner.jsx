@@ -10,7 +10,6 @@ import Calendardropdown from './Calendardropdown';
 
 const Planner = (props) => {
   const [floorStatus, setFloorStatus] = useState('2');
-  const [weekendActive, setWeekendActive] = useState(false);
   const [isDatePickerOpen, setisDatePickerOpen] = useState(false);
   const calendarComponentRef = useRef();
 
@@ -62,6 +61,7 @@ const Planner = (props) => {
       end: planList.end_time,
       backgroundColor: planList.bgcolor,
       borderColor: planList.bgcolor,
+      textColor:planList.bgcolor ,
       extendedProps: {
         people: planList.people,
         content: planList.content,
@@ -224,6 +224,7 @@ const Planner = (props) => {
         droppable={true}
         eventDrop={dragAnddrop} //일정 옮겨서 떨어뜨릴 때 발생
         eventResize={eventSizing} //일정을 크기조절하여 기간 변경 시 발생
+        allDaySlot={false}
       />
       <Calendardropdown
         change={calendarComponentRef}
