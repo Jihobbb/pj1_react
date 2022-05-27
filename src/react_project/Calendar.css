@@ -193,7 +193,7 @@ a {
   justify-content: center;
   align-items: center;
   padding: 10px 24px;
-  border: solid 1px #00c3cf;
+  border: solid 2px #00c3cf;
   background-color: white;
   color: #00c3cf;
 }
@@ -213,7 +213,7 @@ a {
   justify-content: center;
   align-items: center;
   padding: 10px 24px;
-  border: solid 1px #00c3cf;
+  border: solid 2px #00c3cf;
   background-color: #fff;
   color: #00c3cf;
 }
@@ -466,6 +466,7 @@ a {
 .fc .fc-toolbar.fc-header-toolbar {
   margin-bottom: -10px !important;
   margin-top: -30px;
+  border-bottom-width: 10px !important;
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -629,7 +630,6 @@ a {
     padding: 10px 20px 10px 14px;
     border-left-width: 0px;
     border-right-width: 0px;
-    border-top-width: 2px !important;
   }
 }
 
@@ -675,3 +675,12 @@ a {
 .fc-daygrid-day.fc-day.fc-day-sun > .fc-daygrid-day-frame.fc-scrollgrid-sync-inner > .fc-daygrid-day-top > .fc-daygrid-day-number{
   color: #cf0000 !important;
 }
+
+/* .fc-timegrid-event-harness.fc-timegrid-event-harness-inset > .fc-timegrid-event .fc-v-event .fc-event .fc-event-draggable .fc-event-resizable .fc-event-start .fc-event-end{
+
+} */
+
+.fc-col-header-cell .fc-day .fc-day-mon .fc-day-past{
+  border-top-width: 0px !important;
+}
+
