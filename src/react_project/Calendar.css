@@ -245,7 +245,6 @@ a {
 }
 
 /* today 버튼 */
-
 .fc-today-button.fc-button.fc-button-primary {
   width: 98px;
   height: 49px;
@@ -257,8 +256,8 @@ a {
   gap: 8px;
   /* padding: 11px 32px 12px; */
   border-radius: 8px;
-  border: solid 1px #e2e2e2!important;
-  background-color: #e2e2e2 !important;
+  border: solid 2px #e2e2e2!important;
+  /* background-color: #e2e2e2 !important; */
   color: #777777 !important;
 }
 
@@ -684,3 +683,6 @@ a {
   border-top-width: 0px !important;
 }
 
+button[type="button"]:disabled {
+  background-color: #ffffff !important;
+}
