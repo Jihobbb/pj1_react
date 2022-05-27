@@ -49,7 +49,9 @@ function InputInfo(props) {
     return (
       <div>
         <ul className='selectul' onClick={active}>
-          <span style={{ color: selectedTextColor, paddingRight: '15px' }}>●</span>
+          <span style={{ color: selectedTextColor, paddingRight: '15px' }}>
+            ●
+          </span>
           {selectedColor}
           <label className='selectArrow'></label>
           {iActive &&
@@ -59,11 +61,13 @@ function InputInfo(props) {
                 onClick={() => {
                   setSelectedColor(c.color); // 이름을 담은거
                   setSelectedRgb(c.bg_color); // 색상코드 담은거
-                  setSelectedTextColor(c.text_color)
+                  setSelectedTextColor(c.text_color);
                 }}
                 key={c.value}
               >
-                <span style={{ color: c.text_color, paddingRight: '15px' }}>●</span>
+                <span style={{ color: c.text_color, paddingRight: '15px' }}>
+                  ●
+                </span>
                 {c.color}
               </li>
             ))}
@@ -85,7 +89,7 @@ function InputInfo(props) {
     });
     setSelectedColor('선택');
     setSelectedRgb('#eaeff7');
-    setSelectedTextColor('#3788d8')
+    setSelectedTextColor('#3788d8');
     setActive(false);
   };
 
@@ -133,8 +137,8 @@ function InputInfo(props) {
       background: 'white',
       borderRadius: '20px',
       margin: '0 auto',
-      width: '35%',
-      height: '80%',
+      width: '50%',
+      height: '90%',
       zIndex: 10,
     },
   };
@@ -226,6 +230,27 @@ function InputInfo(props) {
               />
             </div>
           </div>
+
+          <div className='floorBox'>
+            <label className='locationIcon modalIcon'></label>
+            <div className='floorBox_input'>
+              <input
+                type='text'
+                value={''}
+                className='floorInput1 floorInputPlace'
+                placeholder='2층'
+                disabled
+              />
+              <input
+                type='text'
+                value={''}
+                className='floorInput2 floorInputPlace'
+                placeholder='3층'
+                disabled
+              />
+            </div>
+          </div>
+
           <br />
           <br />
           <div className='contentBox'>
@@ -247,31 +272,28 @@ function InputInfo(props) {
           <hr className='formHeadHr' />
           <div className='passwordBox'>
             <label className='lockIcon modalIcon'></label>
-
-            <input
-              required
-              type='password'
-              className='passwordInput'
-              placeholder='비밀번호 (필수)'
-              onChange={(e) =>
-                setData({
-                  ...inputData,
-                  password: e.target.value,
-                })
-              }
-            />
-            <div className='invalid-feedback psfeed'>
-              *비밀번호 입력해주세요
+            <div className='pwBox'>
+              <input
+                required
+                type='password'
+                className='passwordInput'
+                placeholder='비밀번호 (필수)'
+                onChange={(e) =>
+                  setData({
+                    ...inputData,
+                    password: e.target.value,
+                  })
+                }
+              />
+              <div className='invalid-feedback psfeed'>
+                *비밀번호 입력해주세요
+              </div>
             </div>
           </div>
           <div className='formbutton'>
-            <Button variant='primary' type='button' onClick={planSaveApi}>
+            <button className='saveButton' type='button' onClick={planSaveApi}>
               저장
-            </Button>
-
-            <Button variant='secondary' type='button' onClick={props.onChange}>
-              취소
-            </Button>
+            </button>
           </div>
         </form>
       </Modal>
