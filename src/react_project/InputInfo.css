@@ -113,6 +113,7 @@
   text-align: center;
   line-height: 2.3;
   border: none;
+  z-index: 99;
 }
 .liBox {
   /* display: none; */

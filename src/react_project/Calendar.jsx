@@ -6,7 +6,6 @@ import './Calendar.css';
 import Modify from './Modify';
 import Planner from './Planner';
 
-
 const Calendar = () => {
   const [modal_state, setModal_state] = useState(false);
   const [modify_state, setModify_state] = useState(false);

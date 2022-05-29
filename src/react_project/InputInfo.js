@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Modal from 'react-modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './InputInfo.css';
@@ -22,22 +22,14 @@ function InputInfo(props) {
   const [selectedRgb, setSelectedRgb] = useState('#3788d8'); //  컬러 코드
   const [selectedTextColor, setSelectedTextColor] = useState('#3788d81a');
   const [iActive, setActive] = useState(false);
-
+  const change = useRef(null);
+  // change.current.style.backgroundColor = 'red';
   //컬러 선택하는 리스트 출력 여부
   const active = () => {
     setActive(!iActive);
   };
 
   // 지우기
-
-  const hen = () => {
-    if (props.floorStatus === '2') {
-      document
-        .querySelector('.floorInput1')
-        .classList.add('floor-input-active');
-    }
-    document.querySelector('.floorInput2').classList.add('floor-input-active');
-  };
 
   //모달창이 켜지거나 꺼질 떄마다 Inpudata초기화
   useEffect(() => {
@@ -72,7 +64,7 @@ function InputInfo(props) {
                   setSelectedRgb(c.bg_color); // 색상코드 담은거
                   setSelectedTextColor(c.text_color);
                 }}
-                key={c.value}
+                key={c.color}
               >
                 <span style={{ color: c.text_color, paddingRight: '15px' }}>
                   ●
@@ -244,15 +236,24 @@ function InputInfo(props) {
             <label className='locationIcon modalIcon'></label>
             <div className='floorBox_input'>
               <input
+                style={{
+                  backgroundColor: `${
+                    props.floorStatus === '2' ? '#00c3cf' : 'none'
+                  }`,
+                }}
                 type='text'
-                className='floorInput1 floorInputPlace'
+                className='floorInputPlace floorInput1'
                 placeholder='2층'
                 disabled
               />
               <input
                 type='text'
-                value={''}
-                className='floorInput2 floorInputPlace'
+                style={{
+                  backgroundColor: `${
+                    props.floorStatus === '3' ? '#00c3cf' : 'none'
+                  }`,
+                }}
+                className='floorInputPlace floorInput2'
                 placeholder='3층'
                 disabled
               />

@@ -707,7 +707,6 @@ a {
   border-top-width: 0px !important;
 }
 
-
 /* 도트 컬러 리스트 */
 
 .fc-dot-color-기본 > .fc-list-event-graphic > span {
@@ -730,7 +729,6 @@ a {
   border-color: #585757 !important;
 }
 
-
 /* 도트 컬러 월별 */
 
 .fc-dot-color-기본 > .fc-daygrid-event-dot {
@@ -751,4 +749,8 @@ a {
 
 .fc-dot-color-블랙 > .fc-daygrid-event-dot {
   border-color: #585757 !important;
+}
+
+.floor-input-active {
+  background-color: #00ba34;
 }
