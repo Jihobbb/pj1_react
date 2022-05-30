@@ -243,9 +243,7 @@ function InputInfo(props) {
                   borderColor: `${
                     props.floorStatus === '2' ? '#00c3cf' : '#efefef'
                   }`,
-                  color:  `${
-                    props.floorStatus === '2' ? '#00c3cf' : 'none'
-                  }`
+                  color: `${props.floorStatus === '2' ? '#00c3cf' : 'none'}`,
                 }}
                 className='floorInputPlace floorInput1'
                 value='2층'
@@ -258,9 +256,7 @@ function InputInfo(props) {
                   borderColor: `${
                     props.floorStatus === '3' ? '#00c3cf' : '#efefef'
                   }`,
-                  color:  `${
-                    props.floorStatus === '3' ? '#00c3cf' : 'none'
-                  }`
+                  color: `${props.floorStatus === '3' ? '#00c3cf' : 'none'}`,
                 }}
                 className='floorInputPlace floorInput2'
                 value='3층'

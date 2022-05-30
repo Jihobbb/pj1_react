@@ -127,13 +127,13 @@
   border-radius: 5px;
 }
 .selectli:nth-child(3):hover {
-  background-color: rgb(126, 175, 223);
+  background-color: rgba(126, 175, 223);
 }
 .selectli:nth-child(4):hover {
-  background-color: rgba(190, 197, 203);
+  background-color: rgba(253, 233, 233);
 }
 .selectli:nth-child(5):hover {
-  background-color: rgba(246, 216, 216);
+  background-color: rgba(253, 255, 162);
 }
 .selectli:nth-child(6):hover {
   background-color: rgba(208, 212, 178);
@@ -367,11 +367,9 @@
 
 .floorInput1,
 .floorInput2 {
-  color: #00c3cf;
-  /* font-weight: bold; */
   text-align: center;
   height: 50px;
   border-radius: 8px;
-
+  border: 2px solid;
   width: 49%;
 }
