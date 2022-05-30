@@ -328,15 +328,6 @@
   color: white;
   border: none;
 }
-.saveButton:hover {
-  background-color: rgba(0, 195, 207, 0.6);
-  border: solid 2px #00c3cf;
-  border: none;
-}
-.saveButton:active {
-  background-color: rgba(0, 195, 207);
-  border: none;
-}
 /* 비번, 저장 */
 .passwordBox {
   display: flex;
@@ -365,12 +356,12 @@
   width: 100%;
   height: 45px;
   border-radius: 8px;
-  background-color: rgba(0, 195, 207, 0.4);
+  background-color: rgba(0, 195, 207, 0.75);
   color: white;
   border: none;
 }
 .saveButton:hover {
-  background-color: rgba(0, 195, 207, 0.6);
+  background-color: rgba(0, 195, 207, 0.9);
   border: solid 2px #00c3cf;
   border: none;
 }
