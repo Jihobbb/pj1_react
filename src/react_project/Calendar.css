@@ -783,8 +783,9 @@ a {
   border-top: 2px solid #ddd !important;
 }
 
+/* 1px 로 안하면 월에서 가운데 줄생김  */
 .fc-view-harness {
-  border-top: #dddddd 2px solid;
+  border-top: #dddddd 1px solid;
 }
 
 .holiday-text {

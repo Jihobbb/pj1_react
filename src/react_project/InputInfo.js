@@ -46,7 +46,7 @@ function InputInfo(props) {
   //모달창이 켜지거나 꺼질 떄마다 Inpudata초기화
   useEffect(() => {
     inputDataRefresh();
-    console.log('모달on');
+    console.log('모달on Refresh');
   }, [props.modal_state]);
 
   //일정 컬러 목록
@@ -105,6 +105,7 @@ function InputInfo(props) {
     setSelectedRgb('#eaeff7');
     setSelectedTextColor('#3788d8');
     setActive(false);
+    setText('');
   };
 
   const planSaveApi = () => {
