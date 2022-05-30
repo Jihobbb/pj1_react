@@ -62,7 +62,7 @@ const Planner = (props) => {
       backgroundColor: planList.bgcolor,
       borderColor: planList.bgcolor,
       textColor: planList.textcolor,
-      className: 'fc-dot-color-' + planList.category,
+      className:'fc-dot-color-'+ planList.category,
       extendedProps: {
         people: planList.people,
         content: planList.content,
@@ -167,13 +167,15 @@ const Planner = (props) => {
         views={{
           // 월 일 짧게 변경
           dayGridMonth: {
-            titleFormat: { year: 'numeric', month: 'short' },
+            titleFormat: { year: 'numeric', month: 'short'},
           },
           timeGridWeek: {
             titleFormat: { year: 'numeric', month: 'short' },
           },
         }}
+
         eventWillUnmount={function (info) {
+
           if (info.view.type === 'listWeek') {
             console.log(info.event.id);
             var toInject = [];
@@ -222,7 +224,7 @@ const Planner = (props) => {
         eventOverlap={false} //이벤트 겹쳐지기 막음
         selectOverlap={false} //등록시에도 겹쳐지지 않음
         dayMaxEventRows={true}
-        eventDisplay={'block'}
+        eventDisplay={'block'} 
         //------------드래깅으로 수정--------------
         editable={true} // 수정 가능
         eventStartEditable={true}

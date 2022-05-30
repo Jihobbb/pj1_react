@@ -190,14 +190,14 @@ function InputInfo(props) {
             />
             <input
               type='text'
-              value={moment(props.start).format('A h시 mm분')}
+              value={moment(props.start).format('A h:mm')}
               className='formDate2 formDate'
               disabled
             />
             <span className='dateText'>~</span>
             <input
               type='text'
-              value={moment(props.end).format('A h시 mm분')}
+              value={moment(props.end).format('A h:mm')}
               className='formDate3 formDate'
               disabled
             />
