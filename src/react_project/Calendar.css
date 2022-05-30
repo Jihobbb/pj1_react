@@ -94,8 +94,16 @@ a {
 }
 
 .clendarAll {
-  margin-right: -120px;
-  margin-bottom: 10px;
+  /* margin-left: 0px; */
+  margin-right: -100px;
+}
+* {
+  /* margin: 100 auto; */
+}
+.fc-list-day-side-text {
+}
+.fc-day-future {
+  opacity: 0.7 !important;
 }
 /*--------------------------------------날짜별 디자인---------------------------------------------------------------------------------------- */
 .fc-day-sat {
@@ -172,14 +180,20 @@ a {
   /* border: solid 2px #e8e8e8; */
   background-color: #fff;
 }
-
+.fc .fc-view-harness-active > .fc-view {
+  border-top: 2px solid #ddd;
+}
+.fc .fc-toolbar.fc-header-toolbar {
+  /* border-bottom: 10px solid #ddd; */
+  /* z-index: ; */
+}
 .fc-col-header {
-  border-top: 1px solid !important;
+  /* border-top: 3px solid #ddd !important; */
 }
 .fc-day-future {
 }
 .fc-cell-shaded {
-  border-top: 2px solid #ddd;
+  /* border-top: 1px solid #ddd; */
 }
 /* buttn All */
 .fc-button-group {
@@ -780,12 +794,12 @@ a {
 
 /* 새로추가하는것들 5.30 */
 .fc-timegrid-axis {
-  border-top: 2px solid #ddd !important;
+  /* border-top: 2px solid #ddd !important; */
 }
 
 /* 1px 로 안하면 월에서 가운데 줄생김  */
 .fc-view-harness {
-  border-top: #dddddd 1px solid;
+  /* border-top: #dddddd 1px solid; */
 }
 
 .holiday-text {
