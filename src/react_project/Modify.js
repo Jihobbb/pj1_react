@@ -128,9 +128,32 @@ const Modify = forwardRef((props, ref) => {
 
           <br />
 
+          <div className='modify_formDate'>
+            <label className='calenadrIcon modalIcon'></label>
+            <input
+              type='text'
+              value={moment(props.start).format('YYYY년 MM월 DD일')}
+              className='formDate1 formDate'
+              disabled
+            />
+            <input
+              type='text'
+              value={moment(props.start).format('A h시 mm분')}
+              className='formDate2 formDate'
+              disabled
+            />
+            <span className='dateText'>~</span>
+            <input
+              type='text'
+              value={moment(props.end).format('A h시 mm분')}
+              className='formDate3 formDate'
+              disabled
+            />
+          </div>
+          <br/>
+          <br/>
           <div className='info_body'>
             <label className='particIcon modalIcon'></label>
-            {/* <div className='info_body_text'>참여자</div> */}
             <div className='inputBox2'>
               <input
                 type='text'
@@ -159,30 +182,6 @@ const Modify = forwardRef((props, ref) => {
               />
             </div>
           </div>
-          <div className='modify_formDate'>
-            <label className='calenadrIcon modalIcon'></label>
-            <input
-              type='text'
-              value={moment(props.start).format('YYYY년 MM월 DD일')}
-              className='formDate1 formDate'
-              disabled
-            />
-            <input
-              type='text'
-              value={moment(props.start).format('A h시 mm분')}
-              className='formDate2 formDate'
-              disabled
-            />
-            <span className='dateText'>~</span>
-            <input
-              type='text'
-              value={moment(props.end).format('A h시 mm분')}
-              className='formDate3 formDate'
-              disabled
-            />
-          </div>
-
-          <br />
 
           <br />
 
@@ -229,7 +228,6 @@ const Modify = forwardRef((props, ref) => {
             >
               삭제
             </Button>
-
             <Button type='button' variant='secondary' onClick={props.onChange}>
               취소
             </Button>

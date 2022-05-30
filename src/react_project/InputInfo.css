@@ -367,11 +367,10 @@
 
 .floorInput1,
 .floorInput2 {
-  color: #00c3cf;
   /* font-weight: bold; */
   text-align: center;
   height: 50px;
   border-radius: 8px;
-
+  border: 1px solid;
   width: 49%;
 }
