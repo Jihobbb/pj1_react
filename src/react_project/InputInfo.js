@@ -238,24 +238,24 @@ function InputInfo(props) {
             <div className='floorBox_input'>
               <input
                 style={{
-                  backgroundColor: `${
+                  borderColor: `${
                     props.floorStatus === '2' ? '#00c3cf' : 'none'
                   }`,
                 }}
                 type='text'
                 className='floorInputPlace floorInput1'
-                placeholder='2층'
+                value='2층'
                 disabled
               />
               <input
                 type='text'
                 style={{
-                  backgroundColor: `${
+                  borderColor: `${
                     props.floorStatus === '3' ? '#00c3cf' : 'none'
                   }`,
                 }}
                 className='floorInputPlace floorInput2'
-                placeholder='3층'
+                value='3층'
                 disabled
               />
             </div>

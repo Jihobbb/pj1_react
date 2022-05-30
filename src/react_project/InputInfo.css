@@ -365,15 +365,13 @@
   justify-content: space-between;
 }
 
-.floorInputPlace::placeholder {
-  color: black;
-}
 .floorInput1,
 .floorInput2 {
-  font-weight: bold;
+  color: #00c3cf;
+  /* font-weight: bold; */
   text-align: center;
   height: 50px;
   border-radius: 8px;
-  border: solid 1px #00c3cf;
+
   width: 49%;
 }
