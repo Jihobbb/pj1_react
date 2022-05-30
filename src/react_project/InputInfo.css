@@ -10,6 +10,7 @@
 /* form 공용 */
 .validation-form {
   width: 100%;
+  height: 100%;
 }
 .info_form {
   background-color: white;

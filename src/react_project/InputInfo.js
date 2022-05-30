@@ -124,13 +124,13 @@ function InputInfo(props) {
   const modalStyle = {
     overlay: {
       position: 'fixed',
-      top: 0,
-      backgroundColor: 'rgba(255, 255, 255, 0.45)',
+      top: -30,
+      backgroundColor: 'rgba(255, 255, 255, 0.5)',
       zIndex: 99,
       justifyContent: 'center',
       alignItem: 'center',
       width: '100%',
-      height: '100%',
+      height: '90%',
     },
     content: {
       display: 'flex',
