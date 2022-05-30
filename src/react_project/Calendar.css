@@ -782,3 +782,7 @@ a {
 .fc-timegrid-axis {
   border-top: 2px solid #ddd !important;
 }
+
+.fc-view-harness {
+  border-top: #dddddd 2px solid;
+}
