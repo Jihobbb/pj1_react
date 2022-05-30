@@ -177,9 +177,7 @@ a {
 .fc-button-group {
   margin-right: 130px;
 }
-.fc-direction-ltr .fc-button-group > .fc-button:not(:last-child) {
-  margin-right: 3px;
-}
+
 .fc-button-active {
   background-color: #00c3cf !important;
   border: solid 1px #00c3cf !important;

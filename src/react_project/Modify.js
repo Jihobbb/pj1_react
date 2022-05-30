@@ -56,6 +56,7 @@ const Modify = forwardRef((props, ref) => {
         props.refresh();
       });
   };
+  console.log(props.plan.floor);
 
   //삭제 버튼 클릭
   const delete_btn = (e) => {
