@@ -107,14 +107,14 @@
   margin-top: 20px !important;
   margin-bottom: 20px;
   border-radius: 8px;
-  background-color: white;
+  background-color: rgba(238, 238, 238);
   position: relative;
 }
 .modifyDeliteButton:hover {
-  background-color: rgba(0, 195, 207, 0.85);
+  background-color: rgba(201, 197, 197, 0.9);
 }
 .modifyDeliteButton:active {
-  background-color: rgba(0, 195, 207);
+  background-color: rgba(201, 197, 197);
 }
 /* select */
 .Sel_input_Box {
