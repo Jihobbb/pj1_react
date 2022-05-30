@@ -252,15 +252,8 @@
   margin-top: 15px;
   margin-bottom: -25px;
 }
-.modify_formbutton {
-  float: right;
-  margin-top: -5px;
-}
-.input_body_text {
-  width: 25%;
-  font-size: 20px;
-  text-align: center;
-}
+/* 층수 */
+
 .inputBox2 {
   width: 100%;
 }
@@ -320,7 +313,30 @@
 
   resize: none;
 }
-
+/* 수정창 하단 버튼 */
+.modify_formbutton {
+  display: flex;
+  margin-top: -5px;
+}
+.ModifyButton {
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+  width: 100%;
+  height: 45px;
+  border-radius: 8px;
+  background-color: rgba(0, 195, 207, 0.4);
+  color: white;
+  border: none;
+}
+.saveButton:hover {
+  background-color: rgba(0, 195, 207, 0.6);
+  border: solid 2px #00c3cf;
+  border: none;
+}
+.saveButton:active {
+  background-color: rgba(0, 195, 207);
+  border: none;
+}
 /* 비번, 저장 */
 .passwordBox {
   display: flex;
@@ -377,6 +393,36 @@
 
 .floorInput1,
 .floorInput2 {
+  text-align: center;
+  height: 50px;
+  border-radius: 8px;
+  border: 2px solid;
+  width: 49%;
+}
+/*  */
+
+.floorBox2 {
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.locationIcon2 {
+  background: url('./icon/ic_location.png') no-repeat;
+  background-size: contain;
+  border: none;
+  padding: 15px;
+  position: relative;
+  top: 6px;
+}
+.floorBox_input2 {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.floorModifyInput1,
+.floorModifyInput2 {
   text-align: center;
   height: 50px;
   border-radius: 8px;

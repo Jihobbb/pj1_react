@@ -153,8 +153,39 @@ const Modify = forwardRef((props, ref) => {
               disabled
             />
           </div>
-          <br />
-          <br />
+
+          <div className='floorBox2'>
+            <label className='locationIcon2 modalIcon'></label>
+            <div className='floorBox_input2'>
+              <input
+                type='text'
+                style={{
+                  backgroundColor: 'white',
+                  borderColor: `${
+                    props.plan.floor === '2' ? '#00c3cf' : '#efefef'
+                  }`,
+                  color: `${props.plan.floor === '2' ? '#00c3cf' : 'none'}`,
+                }}
+                className='floorInputPlace2 floorModifyInput1'
+                value='2층'
+                disabled
+              />
+              <input
+                type='text'
+                style={{
+                  backgroundColor: 'white',
+                  borderColor: `${
+                    props.plan.floor === '3' ? '#00c3cf' : '#efefef'
+                  }`,
+                  color: `${props.plan.floor === '3' ? '#00c3cf' : 'none'}`,
+                }}
+                className='floorInputPlac2 floorModifyInput2'
+                value='3층'
+                disabled
+              />
+            </div>
+          </div>
+
           <div className='info_body'>
             <label className='particIcon modalIcon'></label>
             <div className='inputBox2'>
@@ -207,11 +238,10 @@ const Modify = forwardRef((props, ref) => {
 
           <br />
 
-          <hr className='formHeadHr' />
           <div className='modify_formbutton'>
-            <Button
+            <button
               type='button'
-              variant='primary'
+              className='ModifyButton'
               onClick={() => {
                 if (props.pwCheck(props.plan.password)) {
                   planUpdateApi();
@@ -219,10 +249,9 @@ const Modify = forwardRef((props, ref) => {
               }}
             >
               수정
-            </Button>
-            <Button
+            </button>
+            <button
               type='button'
-              variant='danger'
               onClick={() => {
                 if (props.pwCheck(props.plan.password)) {
                   delete_btn();
@@ -230,10 +259,10 @@ const Modify = forwardRef((props, ref) => {
               }}
             >
               삭제
-            </Button>
-            <Button type='button' variant='secondary' onClick={props.onChange}>
+            </button>
+            {/* <Button type='button' variant='secondary' onClick={props.onChange}>
               취소
-            </Button>
+            </Button> */}
           </div>
         </form>
       </Modal>
