@@ -94,7 +94,7 @@ a {
 }
 
 .clendarAll {
-  margin-right: -100px;
+  margin-right: -120px;
   margin-bottom: 10px;
 }
 /*--------------------------------------날짜별 디자인---------------------------------------------------------------------------------------- */
@@ -173,6 +173,14 @@ a {
   background-color: #fff;
 }
 
+.fc-col-header {
+  border-top: 1px solid !important;
+}
+.fc-day-future {
+}
+.fc-cell-shaded {
+  border-top: 3px solid #ddd;
+}
 /* buttn All */
 .fc-button-group {
   margin-right: 130px;
@@ -438,11 +446,17 @@ a {
   border: solid 1px #e8e8e8;
   text-align: center; */
 }
-
+/* .fc-list-day-side-text::after {
+  content: '제목' !important;
+  position: relative;
+  left: 130%;
+} */
 /* 리스트 yyyy mm dd */
 .fc-direction-ltr .fc-list-day-side-text {
   float: left !important;
   /* margin-left: 9%; */
+}
+.fc-list-day-side-text {
 }
 
 /* 리스트 요일 */
@@ -758,4 +772,13 @@ a {
 
 .floor-input-active {
   background-color: #00ba34;
+}
+
+.fc-list-event-time {
+  padding-right: 90px !important;
+}
+
+/* 새로추가하는것들 5.30 */
+.fc-timegrid-axis {
+  border-top: 2px solid #ddd !important;
 }
