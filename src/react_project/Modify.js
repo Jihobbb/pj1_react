@@ -110,6 +110,9 @@ const Modify = forwardRef((props, ref) => {
         ariaHideApp={false}
       >
         <form className='info_form'>
+          <span className='formHead'>수정</span>
+          <div className='formClose2' onClick={props.onChange}></div>
+          <hr className='formHeadHr' />
           <div className='modifyhead'>
             <label className='titleIcon modalIcon'></label>
 
@@ -204,6 +207,7 @@ const Modify = forwardRef((props, ref) => {
 
           <br />
 
+          <hr className='formHeadHr' />
           <div className='modify_formbutton'>
             <Button
               type='button'
@@ -216,7 +220,6 @@ const Modify = forwardRef((props, ref) => {
             >
               수정
             </Button>
-
             <Button
               type='button'
               variant='danger'
