@@ -237,25 +237,33 @@ function InputInfo(props) {
             <label className='locationIcon modalIcon'></label>
             <div className='floorBox_input'>
               <input
-                style={{
-                  backgroundColor: `${
-                    props.floorStatus === '2' ? '#00c3cf' : 'none'
-                  }`,
-                }}
                 type='text'
+                style={{
+                  backgroundColor: 'white',
+                  borderColor: `${
+                    props.floorStatus === '2' ? '#00c3cf' : '#efefef'
+                  }`,
+                  color:  `${
+                    props.floorStatus === '2' ? '#00c3cf' : 'none'
+                  }`
+                }}
                 className='floorInputPlace floorInput1'
-                placeholder='2층'
+                value='2층' 
                 disabled
               />
               <input
                 type='text'
                 style={{
-                  backgroundColor: `${
-                    props.floorStatus === '3' ? '#00c3cf' : 'none'
+                  backgroundColor: 'white',
+                  borderColor: `${
+                    props.floorStatus === '3' ? '#00c3cf' : '#efefef'
                   }`,
+                  color:  `${
+                    props.floorStatus === '3' ? '#00c3cf' : 'none'
+                  }`
                 }}
                 className='floorInputPlace floorInput2'
-                placeholder='3층'
+                value='3층'
                 disabled
               />
             </div>

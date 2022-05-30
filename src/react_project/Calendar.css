@@ -713,7 +713,8 @@ a {
 
 /* 도트 컬러 리스트 */
 
-.fc-dot-color-기본 > .fc-list-event-graphic > span {
+.fc-dot-color-기본 > .fc-list-event-graphic > span,
+.fc-dot-color-선택 > .fc-list-event-graphic > span  {
   border-color: #3788d8 !important;
 }
 
@@ -735,7 +736,9 @@ a {
 
 /* 도트 컬러 월별 */
 
-.fc-dot-color-기본 > .fc-daygrid-event-dot {
+.fc-dot-color-기본 > .fc-daygrid-event-dot,
+.fc-dot-color-선택 > .fc-daygrid-event-dot
+{
   border-color: #3788d8 !important;
 }
 
