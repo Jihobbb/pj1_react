@@ -238,7 +238,7 @@ const Modify = forwardRef((props, ref) => {
           </div>
 
           <br />
-
+          <hr className='formHeadHr' />
           <div className='modify_formbutton'>
             <button
               type='button'
