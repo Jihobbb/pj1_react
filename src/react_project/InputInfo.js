@@ -176,17 +176,15 @@ function InputInfo(props) {
               <SelectColor colorList={color_list}></SelectColor>
             </div>
             <div className='inputBox'>
-              <div>
-                <input
-                  type='text'
-                  placeholder='제목 (필수)'
-                  className='input_head_text'
-                  required
-                  onChange={displayText}
-                  value={text}
-                />
-                <button className='titledelButton' onClick={onReset}></button>
-              </div>
+              <input
+                type='text'
+                placeholder='제목 (필수)'
+                className='input_head_text'
+                required
+                onChange={displayText}
+                value={text}
+              />
+              <button className='titledelButton' onClick={onReset}></button>
 
               <div className='invalid-feedback'>*제목을 입력해 주세요</div>
             </div>
@@ -217,7 +215,7 @@ function InputInfo(props) {
           <br />
           <div className='inputinfo_body'>
             <label className='particIcon modalIcon'></label>
-            <div className='inputBox'>
+            <div className='inputParBox'>
               <input
                 type='text'
                 placeholder='작성자 (필수)'

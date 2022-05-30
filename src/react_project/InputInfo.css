@@ -101,11 +101,13 @@
   background: url('./icon/ic_clear@3x.png') no-repeat;
   background-size: contain;
   border: none;
-  padding: 10px;
-  position: relative;
-  top: -40px;
-  left: 290px;
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 10px;
+  right: 3px;
 }
+
 .modifyDeliteButton {
   background: url('./icon/ic_del.png') no-repeat;
   background-size: contain;
@@ -200,6 +202,10 @@
   padding-left: 15px;
 }
 .inputBox {
+  position: relative;
+  width: 100%;
+}
+.inputParBox {
   width: 100%;
 }
 
