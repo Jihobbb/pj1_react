@@ -91,8 +91,8 @@ const Modify = forwardRef((props, ref) => {
       background: 'white',
       borderRadius: '20px',
       margin: '0 auto',
-      width: '60%',
-      height: '85%',
+      width: '50%',
+      height: '100%',
 
       zIndex: 10,
     },
@@ -252,14 +252,13 @@ const Modify = forwardRef((props, ref) => {
             </button>
             <button
               type='button'
+              className='modifyDeliteButton'
               onClick={() => {
                 if (props.pwCheck(props.plan.password)) {
                   delete_btn();
                 }
               }}
-            >
-              삭제
-            </button>
+            />
             {/* <Button type='button' variant='secondary' onClick={props.onChange}>
               취소
             </Button> */}

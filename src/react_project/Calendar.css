@@ -110,6 +110,7 @@ a {
   color: #cf0000;
   opacity: 1 !important;
   pointer-events: none;
+  font-style: normal !important;
 }
 
 /* --------------------------------------디자인 내려온 것 커스텀 CSS 입히는 중--------------------------------------------------------------- */

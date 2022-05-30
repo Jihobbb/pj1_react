@@ -28,7 +28,7 @@ const Calendardropdown = (props) => {
                   setselTapList(c.day);
                   calendarApi.changeView(c.view);
                 }}
-                // key={c.color}
+                key={c.day}
               >
                 {c.day}
               </li>
