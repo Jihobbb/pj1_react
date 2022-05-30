@@ -248,7 +248,7 @@ function InputInfo(props) {
                   }`
                 }}
                 className='floorInputPlace floorInput1'
-                value='2층' 
+                value='2층'
                 disabled
               />
               <input
