@@ -98,8 +98,8 @@ function InputInfo(props) {
   const planSaveApi = () => {
     axios
       .post('http://localhost:8081/api/planSave', {
-        title: inputData.title,
-        writer: inputData.writer,
+        title: inputData.title === '' ? null : inputData.title,
+        writer: inputData.writer === '' ? null : inputData.writer,
         start_time: props.start,
         end_time: props.end,
         people: inputData.people,
@@ -107,7 +107,7 @@ function InputInfo(props) {
         textcolor: selectedTextColor,
         bgcolor: selectedRgb,
         floor: props.floorStatus,
-        password: inputData.password,
+        password: inputData.password === '' ? null : inputData.password,
         category: selectedColor,
       })
       .then(() => {

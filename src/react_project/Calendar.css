@@ -759,3 +759,8 @@ a {
 .floor-input-active {
   background-color: #00ba34;
 }
+
+
+.fc-view-harness {
+  border-top: #dddddd 2px solid;
+}

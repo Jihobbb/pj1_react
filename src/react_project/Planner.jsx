@@ -171,6 +171,7 @@ const Planner = (props) => {
           },
           timeGridWeek: {
             titleFormat: { year: 'numeric', month: 'short' },
+            dayHeaderFormat:{day:'numeric',weekday:'short'}
           },
         }}
 
