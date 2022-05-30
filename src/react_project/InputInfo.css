@@ -97,6 +97,15 @@
   cursor: pointer;
   float: right;
 }
+.titledelButton {
+  background: url('./icon/ic_clear@3x.png') no-repeat;
+  background-size: contain;
+  border: none;
+  padding: 10px;
+  position: relative;
+  top: -40px;
+  left: 290px;
+}
 .modifyDeliteButton {
   background: url('./icon/ic_del.png') no-repeat;
   background-size: contain;

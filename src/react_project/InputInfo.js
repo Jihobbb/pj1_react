@@ -21,7 +21,8 @@ function InputInfo(props) {
   const [selectedRgb, setSelectedRgb] = useState('#3788d8'); //  컬러 코드
   const [selectedTextColor, setSelectedTextColor] = useState('#3788d81a');
   const [iActive, setActive] = useState(false);
-  const change = useRef(null);
+  const [text, setText] = useState('');
+
   // change.current.style.backgroundColor = 'red';
   //컬러 선택하는 리스트 출력 여부
   const active = () => {
@@ -30,7 +31,18 @@ function InputInfo(props) {
   };
 
   // 지우기
-
+  const displayText = (e) => {
+    setText(e.target.value);
+    setData({
+      ...inputData,
+      title: e.target.value,
+    });
+    //
+  };
+  // 제목 텍스트 제거
+  const onReset = (e) => {
+    setText('');
+  };
   //모달창이 켜지거나 꺼질 떄마다 Inpudata초기화
   useEffect(() => {
     inputDataRefresh();
@@ -164,18 +176,18 @@ function InputInfo(props) {
               <SelectColor colorList={color_list}></SelectColor>
             </div>
             <div className='inputBox'>
-              <input
-                type='text'
-                placeholder='제목 (필수)'
-                className='input_head_text'
-                required
-                onChange={(e) =>
-                  setData({
-                    ...inputData,
-                    title: e.target.value,
-                  })
-                }
-              />
+              <div>
+                <input
+                  type='text'
+                  placeholder='제목 (필수)'
+                  className='input_head_text'
+                  required
+                  onChange={displayText}
+                  value={text}
+                />
+                <button className='titledelButton' onClick={onReset}></button>
+              </div>
+
               <div className='invalid-feedback'>*제목을 입력해 주세요</div>
             </div>
           </div>
