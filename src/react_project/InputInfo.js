@@ -4,7 +4,6 @@ import Modal from 'react-modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './InputInfo.css';
 import './Calendar.css';
-import Button from 'react-bootstrap/Button';
 import 'moment/locale/ko';
 import moment from 'moment';
 
@@ -27,6 +26,7 @@ function InputInfo(props) {
   //컬러 선택하는 리스트 출력 여부
   const active = () => {
     setActive(!iActive);
+    console.log('컬러 리스트 선택');
   };
 
   // 지우기
@@ -34,6 +34,7 @@ function InputInfo(props) {
   //모달창이 켜지거나 꺼질 떄마다 Inpudata초기화
   useEffect(() => {
     inputDataRefresh();
+    console.log('모달on');
   }, [props.modal_state]);
 
   //일정 컬러 목록
@@ -138,8 +139,8 @@ function InputInfo(props) {
       background: 'white',
       borderRadius: '20px',
       margin: '0 auto',
-      width: '50%',
-      height: '90%',
+      width: '60%',
+      height: '100%',
       zIndex: 10,
     },
   };
