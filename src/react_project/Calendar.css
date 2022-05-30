@@ -786,3 +786,7 @@ a {
 .fc-view-harness {
   border-top: #dddddd 2px solid;
 }
+
+.holiday-text {
+  color: #cf0000 !important;
+}

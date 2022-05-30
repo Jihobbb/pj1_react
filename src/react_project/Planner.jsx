@@ -193,6 +193,11 @@ const Planner = (props) => {
               info.el.append(columnElement);
             }
           }
+          
+          //공휴일 날짜 색깔 변경
+          if (info.el.className.includes('holiday')) {
+            info.el.parentElement.parentElement.parentElement.firstChild.firstChild.classList.add('holiday-text') 
+          }
         }}
         dayHeaderWillUnmount={function (arg) {
           if (arg.view.type === 'listWeek') {
@@ -209,6 +214,7 @@ const Planner = (props) => {
             }
           }
         }}
+
         initialView='timeGridWeek'
         //------------이벤트 리스트 정의---------------
         eventSources={[planListMapping(), holidayListMapping()]}
