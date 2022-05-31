@@ -5,7 +5,7 @@ const Calendardropdown = (props) => {
   const tapList = [
     { day: '월', view: 'dayGridMonth' },
     { day: '주', view: 'timeGridWeek' },
-    { day: '목록', view: 'listWeek' },
+    { day: '목록', view: 'listMonth' },
   ];
   const [selTapList, setselTapList] = useState('주');
   const [iActive, setActive] = useState(false);

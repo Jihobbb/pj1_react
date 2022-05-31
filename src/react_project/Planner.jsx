@@ -175,7 +175,7 @@ const Planner = (props) => {
           },
         }}
         eventWillUnmount={function (info) {
-          if (info.view.type === 'listWeek') {
+          if (info.view.type === 'listMonth') {
             var toInject = [];
             toInject.push(info.event.extendedProps.writer);
             toInject.push(
@@ -199,7 +199,7 @@ const Planner = (props) => {
           }
         }}
         dayHeaderWillUnmount={function (arg) {
-          if (arg.view.type === 'listWeek') {
+          if (arg.view.type === 'listMonth') {
             var defaultColumns = 3;
             var extraColumnHeaders = ['작성자', '범주'];
             var maxCol = defaultColumns + extraColumnHeaders.length;
@@ -239,6 +239,7 @@ const Planner = (props) => {
         eventDrop={dragAnddrop} //일정 옮겨서 떨어뜨릴 때 발생
         eventResize={eventSizing} //일정을 크기조절하여 기간 변경 시 발생
         allDaySlot={false}
+        allDa
         defaultRangeSeparator={' - '}
       />
     </div>

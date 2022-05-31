@@ -114,7 +114,15 @@ a {
   font-style: normal !important;
 }
 
+.fc-scrollgrid-sync-table {
+  pointer-events: none !important;
+}
+
 /* --------------------------------------디자인 내려온 것 커스텀 CSS 입히는 중--------------------------------------------------------------- */
+.fc-direction-ltr .fc-daygrid-event .fc-event-time {
+  display: none;
+}
+
 /* header tool bar 제목 */
 .fc-toolbar-title {
   font-family: NotoSansKR !important;
@@ -467,11 +475,10 @@ a {
   float: left !important;
   /* margin-left: 9%; */
 }
-.fc-list-day-side-text {
-}
 
 /* 리스트 요일 */
-.fc-list-day-text {
+.fc-direction-ltr .fc-list-day-side-text,
+.fc-direction-rtl .fc-list-day-text {
   display: none;
 }
 .fc-list-day-text-added {
@@ -686,7 +693,6 @@ a {
 
 .fc-list-added-text-1 {
   position: relative;
-  left: 1%;
 }
 .fc-list-added-text-1,
 .fc-list-added-text-2 {
