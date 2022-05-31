@@ -293,11 +293,10 @@ function InputInfo(props) {
             <label className='lockIcon modalIcon'></label>
             <div className='pwBox'>
               <input
-                maxLength={4}
                 required
                 type='password'
                 className='passwordInput'
-                placeholder='비밀번호 4자리 (필수)'
+                placeholder='비밀번호 (필수)'
                 onChange={(e) =>
                   setData({
                     ...inputData,
