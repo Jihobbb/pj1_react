@@ -132,7 +132,11 @@ a {
 .fc-col-header-cell-cushion {
   font-size: 14px;
   white-space: nowrap;
+
+  align-items: center !important;
+  justify-content: center !important;
 }
+
 /* Prev, Next 버튼 이미지 */
 .fc-icon {
   width: 14px;
@@ -329,10 +333,8 @@ a {
 /* 월/주간창의 월/일/요일 padding 및 cell 선 제거 */
 .fc-col-header-cell.fc-day {
   height: 52px;
-  padding: 14.7px 104.5px 14.3px 101px;
-  border-left-width: 0px;
-  border-right-width: 0px;
-  border-top-width: 2px !important;
+  border-left: none;
+  border-right: none;
 }
 
 /* 월/일/요일 창 왼쪽 공백 병합(cell 선 제거) */
@@ -433,12 +435,7 @@ a {
 
 /* 리스트 타이틀 셀 */
 .fc-list-event-title {
-  /* width: 849.2px; */
-  /* height: 52px; */
-  /* margin: 0 295.4px 0 0; */
-  /* padding: 14.7px 323.2px 14.3px 100px !important; */
-  /* border-left-width: 1px !important; */
-  /* text-align: center; */
+  width: 300px;
 }
 
 /* 리스트 날짜셀 */
@@ -750,22 +747,27 @@ a {
 .fc-dot-color-기본 > .fc-list-event-graphic > span,
 .fc-dot-color-선택 > .fc-list-event-graphic > span {
   border-color: #3788d8 !important;
+  background-color: #3788d8;
 }
 
 .fc-dot-color-빨강 > .fc-list-event-graphic > span {
   border-color: #e92c2c !important;
+  background-color: #e92c2c;
 }
 
 .fc-dot-color-노랑 > .fc-list-event-graphic > span {
   border-color: #ff9f2d !important;
+  background-color: #ff9f2d;
 }
 
 .fc-dot-color-초록 > .fc-list-event-graphic > span {
   border-color: #00ba34 !important;
+  background-color: #00ba34;
 }
 
 .fc-dot-color-블랙 > .fc-list-event-graphic > span {
   border-color: #585757 !important;
+  background-color: #585757;
 }
 
 /* 도트 컬러 월별 */
@@ -776,7 +778,7 @@ a {
 }
 
 .fc-dot-color-빨강 > .fc-daygrid-event-dot {
-  border-color: #e92c2c !important;
+  background-color: #e92c2c !important;
 }
 
 .fc-dot-color-노랑 > .fc-daygrid-event-dot {
@@ -815,4 +817,9 @@ a {
 
 .fc-list-day-cushion.fc-cell-shaded {
   opacity: 0.7 !important;
+}
+
+.fc .fc-list-event-graphic,
+.fc .fc-list-event-time {
+  width: 1px;
 }
