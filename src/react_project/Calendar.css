@@ -97,14 +97,7 @@ a {
   /* margin-left: 0px; */
   margin-right: -100px;
 }
-* {
-  /* margin: 100 auto; */
-}
-.fc-list-day-side-text {
-}
-.fc-day-future {
-  opacity: 0.7 !important;
-}
+
 /*--------------------------------------날짜별 디자인---------------------------------------------------------------------------------------- */
 .fc-day-sat {
   background-color: rgba(0, 120, 207, 0.02);
@@ -804,4 +797,8 @@ a {
 
 .holiday-text {
   color: #cf0000 !important;
+}
+
+.fc-list-day-cushion.fc-cell-shaded {
+  opacity: 0.7 !important;
 }
