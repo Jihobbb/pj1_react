@@ -206,9 +206,10 @@ const Planner = (props) => {
             for (var i = 0; i < maxCol - defaultColumns; i++) {
               var columnHeaderElement = document.createElement('th');
               columnHeaderElement.innerHTML =
-                '<div class="fc-list-day-cushion fc-cell-shaded"><a class="fc-list-day-text fc-list-day-text-added">' +
+                '<div class="fc-list-day-cushion fc-cell-shaded"><a class="fc-list-day-text-added">' +
                 extraColumnHeaders[i] +
                 '</a></div>';
+              columnHeaderElement.classList.add('fc-list-day-text-type-'+extraColumnHeaders[i]);  
               arg.el.append(columnHeaderElement);
             }
           }
