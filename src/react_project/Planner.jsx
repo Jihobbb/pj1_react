@@ -62,7 +62,7 @@ const Planner = (props) => {
       backgroundColor: planList.bgcolor,
       borderColor: planList.bgcolor,
       textColor: planList.textcolor,
-      className:'fc-dot-color-'+ planList.category,
+      className: 'fc-dot-color-' + planList.category,
       extendedProps: {
         people: planList.people,
         content: planList.content,
@@ -167,16 +167,14 @@ const Planner = (props) => {
         views={{
           // 월 일 짧게 변경
           dayGridMonth: {
-            titleFormat: { year: 'numeric', month: 'short'},
+            titleFormat: { year: 'numeric', month: 'short' },
           },
           timeGridWeek: {
             titleFormat: { year: 'numeric', month: 'short' },
-            dayHeaderFormat:{day:'numeric',weekday:'short'}
+            dayHeaderFormat: { day: 'numeric', weekday: 'short' },
           },
         }}
-
         eventWillUnmount={function (info) {
-
           if (info.view.type === 'listWeek') {
             var toInject = [];
             toInject.push(info.event.extendedProps.writer);
@@ -192,10 +190,12 @@ const Planner = (props) => {
               info.el.append(columnElement);
             }
           }
-          
+
           //공휴일 날짜 색깔 변경
           if (info.el.className.includes('holiday')) {
-            info.el.parentElement.parentElement.parentElement.firstChild.firstChild.classList.add('holiday-text') 
+            info.el.parentElement.parentElement.parentElement.firstChild.firstChild.classList.add(
+              'holiday-text'
+            );
           }
         }}
         dayHeaderWillUnmount={function (arg) {
@@ -213,7 +213,6 @@ const Planner = (props) => {
             }
           }
         }}
-
         initialView='timeGridWeek'
         //------------이벤트 리스트 정의---------------
         eventSources={[planListMapping(), holidayListMapping()]}
@@ -230,7 +229,7 @@ const Planner = (props) => {
         eventOverlap={false} //이벤트 겹쳐지기 막음
         selectOverlap={false} //등록시에도 겹쳐지지 않음
         dayMaxEventRows={true}
-        eventDisplay={'block'} 
+        eventDisplay={'block'}
         //------------드래깅으로 수정--------------
         editable={true} // 수정 가능
         eventStartEditable={true}

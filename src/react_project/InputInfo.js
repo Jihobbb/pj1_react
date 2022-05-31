@@ -95,6 +95,7 @@ function InputInfo(props) {
     setSelectedRgb('#eaeff7');
     setSelectedTextColor('#3788d8');
     setActive(false);
+    setText('');
   };
 
   const planSaveApi = () => {
