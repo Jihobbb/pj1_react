@@ -453,11 +453,15 @@ a {
   border: solid 1px #e8e8e8;
   text-align: center; */
 }
-/* .fc-list-day-side-text::after {
-  content: '제목' !important;
+.fc-list-day-text-added.fc-list-day-text-type-작성자 {
+  margin-left: 10px !important;
+  background-color: #0078cf !important;
+}
+.fc-list-day-text-added.fc-list-day-text-type-작성자::before {
+  content: '제목';
   position: relative;
-  left: 130%;
-} */
+  right: 70%;
+}
 /* 리스트 yyyy mm dd */
 .fc-direction-ltr .fc-list-day-side-text {
   float: left !important;
@@ -680,6 +684,10 @@ a {
   background-color: #00c3cf !important;
 }
 
+.fc-list-added-text-1 {
+  position: relative;
+  left: 1%;
+}
 .fc-list-added-text-1,
 .fc-list-added-text-2 {
   text-align: center;
