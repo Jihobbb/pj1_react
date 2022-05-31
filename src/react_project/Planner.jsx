@@ -209,8 +209,7 @@ const Planner = (props) => {
                 '<div class="fc-list-day-cushion fc-cell-shaded"><a class="fc-list-day-text-added">' +
                 extraColumnHeaders[i] +
                 '</a></div>';
-              columnHeaderElement.querySelector('.fc-list-day-text-added')
-              .classList.add('fc-list-day-text-type-'+extraColumnHeaders[i]);  
+              columnHeaderElement.classList.add('fc-list-day-text-type-'+extraColumnHeaders[i]);  
               arg.el.append(columnHeaderElement);
             }
           }
