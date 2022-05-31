@@ -178,7 +178,6 @@ const Planner = (props) => {
         eventWillUnmount={function (info) {
 
           if (info.view.type === 'listWeek') {
-            console.log(info.event.id);
             var toInject = [];
             toInject.push(info.event.extendedProps.writer);
             toInject.push(

@@ -21,32 +21,22 @@ function InputInfo(props) {
   const [selectedRgb, setSelectedRgb] = useState('#3788d8'); //  컬러 코드
   const [selectedTextColor, setSelectedTextColor] = useState('#3788d81a');
   const [iActive, setActive] = useState(false);
-  const [text, setText] = useState('');
 
-  // change.current.style.backgroundColor = 'red';
   //컬러 선택하는 리스트 출력 여부
   const active = () => {
     setActive(!iActive);
-    console.log('컬러 리스트 선택');
   };
 
-  // 지우기
-  const displayText = (e) => {
-    setText(e.target.value);
-    setData({
-      ...inputData,
-      title: e.target.value,
-    });
-    //
-  };
   // 제목 텍스트 제거
   const onReset = (e) => {
-    setText('');
+    setData({
+      ...inputData,
+      title:''
+    })
   };
   //모달창이 켜지거나 꺼질 떄마다 Inpudata초기화
   useEffect(() => {
     inputDataRefresh();
-    console.log('모달on');
   }, [props.modal_state]);
 
   //일정 컬러 목록
@@ -181,8 +171,13 @@ function InputInfo(props) {
                 placeholder='제목 (필수)'
                 className='input_head_text'
                 required
-                onChange={displayText}
-                value={text}
+                onChange={(e) =>
+                  setData({
+                    ...inputData,
+                    title: e.target.value,
+                  })
+                }
+                value={inputData.title}
               />
               <button className='titledelButton' onClick={onReset}></button>
 
